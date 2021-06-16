@@ -35,8 +35,21 @@ public class Grafo {
           //si quiero que sea no-dirigido:
           destino.agregarArista(origen); 
           
-          ventana.matriz.getModel().setValueAt("auto", origen.dato-1, destino.dato);
-          ventana.matriz.getModel().setValueAt("auto", destino.dato-1,origen.dato);
+          ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
+          ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
+        }
+            
+    }
+    
+    public void agregarAristaNave(Vertice origen, Vertice destino)
+    {
+        if (origen != null && destino != null){
+          origen.agregarArista(destino);
+          //si quiero que sea no-dirigido:
+          destino.agregarArista(origen); 
+          
+          ventana.matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
+          ventana.matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
         }
             
     }

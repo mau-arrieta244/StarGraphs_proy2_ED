@@ -20,6 +20,10 @@ public class Main {
         principal_gui ventana =  new principal_gui();
         ventana.setVisible(true);
         
+        //para rellenar celdas con colores si tienen cierto valor
+        TableColorCellRenderer render = new TableColorCellRenderer();
+        ventana.matriz.setDefaultRenderer(Object.class,render);
+        
         Grafo g = new Grafo(ventana);
         
         
@@ -37,9 +41,9 @@ public class Main {
         
         g.agregarArista(g.buscarVertice(3), g.buscarVertice(4));
         g.agregarArista(g.buscarVertice(4), g.buscarVertice(5));
-        g.agregarArista(g.buscarVertice(1), g.buscarVertice(3));
+        g.agregarAristaNave(g.buscarVertice(1), g.buscarVertice(3));
         g.agregarArista(g.buscarVertice(2), g.buscarVertice(9));
-        g.agregarArista(g.buscarVertice(9), g.buscarVertice(7));
+        g.agregarAristaNave(g.buscarVertice(8), g.buscarVertice(6));
 
 
         
