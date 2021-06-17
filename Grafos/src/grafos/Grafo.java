@@ -14,6 +14,9 @@ public class Grafo {
     principal_gui ventana;
     //tendra arraylist para no repetir aristas entre soldados y naves
     ArrayList<Integer> verticesNaves;
+    //tendra arraylist para no repetir aristas entre naves y soldados
+    //(no se podra agregar nave si ya hay soldado en ese origen/destino)
+    ArrayList<Integer> verticesSoldados;
     
     //profe
     ArrayList<Vertice> vertices;
@@ -22,6 +25,7 @@ public class Grafo {
     {
         vertices = new ArrayList<Vertice>();
         verticesNaves = new ArrayList<Integer>();
+        verticesSoldados = new ArrayList<Integer>();
         ventana = pVentana;
     }
 
@@ -56,17 +60,25 @@ public class Grafo {
     
     public void agregarAristaNave(Vertice origen, Vertice destino)
     {   
-        
+        System.out.println("soldados "+verticesSoldados);
         if (origen != null && destino != null){
-          origen.agregarArista(destino);
-          //si quiero que sea no-dirigido:
-          destino.agregarArista(origen); 
+          if(!verticesSoldados.contains(origen.dato)){
+              origen.agregarArista(destino);
+              //si quiero que sea no-dirigido:
+              destino.agregarArista(origen); 
           
-          //aa testing
-          verticesNaves.add(destino.dato);
+
+              ventana.matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
+              ventana.matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
+              
+              //aa testing
+              verticesNaves.add(destino.dato);
+              verticesNaves.add(origen.dato);
+          }
+          else{
+              System.out.println("ya hay soldado en esa arista...");
+          }
           
-          ventana.matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
-          ventana.matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
         }
             
     }
@@ -74,6 +86,8 @@ public class Grafo {
     public void agregarAristaFuente(Vertice origen, Vertice destino)
     {
         if (origen != null && destino != null){
+           
+          
           origen.agregarArista(destino);
           //si quiero que sea no-dirigido:
           destino.agregarArista(origen); 
@@ -89,13 +103,16 @@ public class Grafo {
         //no dejar poner un soldado en arista donde haya nave
         
         if (origen != null && destino != null){
-          if (!verticesNaves.contains(origen) | !verticesNaves.contains(destino)){
+          if (!verticesNaves.contains(origen.dato) | !verticesNaves.contains(destino.dato)){
             origen.agregarArista(destino);
             //si quiero que sea no-dirigido:
             destino.agregarArista(origen); 
           
             ventana.matriz.getModel().setValueAt("..", origen.dato-1, destino.dato);
             ventana.matriz.getModel().setValueAt("..", destino.dato-1,origen.dato);
+            
+            verticesSoldados.add(origen.dato);
+            verticesSoldados.add(destino.dato);
           }
           else
             System.out.println("ya hay nave en esa arista...");

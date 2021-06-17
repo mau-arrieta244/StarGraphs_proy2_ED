@@ -41,15 +41,20 @@ public class Main {
         
         g.agregarFuentePoder(3);
         
-        g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(3));
+        g.agregarAristaNave(g.buscarVertice(3), g.buscarVertice(5));
         g.agregarAristaNave(g.buscarVertice(8), g.buscarVertice(3));
         g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(10));
         
         //no deberia dejar poner el siguiente ya que seria ambiguo con nave del 8...
-        g.agregarAristaSoldado(g.buscarVertice(8), g.buscarVertice(5));
+        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(8));
         
-        //ya si la agregamos (repetida) no le cae encima a la agregada anteriormente
-        //g.agregarFuentePoder(5);
+        //estos sí los agrega, no hay confusion
+        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(7));
+        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(1));
+        
+        g.agregarAristaNave(g.buscarVertice(3), g.buscarVertice(2));
+        
+        
         
         g.imprimir();
         System.out.println("");
