@@ -602,6 +602,10 @@ public class Grafo {
         while(valorSigilo == false){
             valorSigilo = ajustarRiqueza(tribu1);
         }
+        boolean valorTecnologia = ajustarTecnologia(tribu1);
+        while(valorTecnologia == false){
+            valorTecnologia = ajustarTecnologia(tribu1);
+        }
         //La velocidad no ocupa modificacion.
     }
     //Tomar en cuenta el otro ajuste de los parametros de la tribu 2.    
