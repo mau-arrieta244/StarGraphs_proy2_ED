@@ -38,7 +38,7 @@ public class TableColorCellRenderer implements TableCellRenderer {
             c.setBackground(Color.yellow);
         
         //soldados en celeste/cyan
-        else if(",".equals(valor))
+        else if("..".equals(valor))
             c.setBackground(Color.CYAN);
         
         //los que no tienen arista vacios / blanco

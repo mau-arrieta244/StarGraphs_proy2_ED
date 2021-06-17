@@ -12,12 +12,16 @@ public class Grafo {
     
     //recibe ventana
     principal_gui ventana;
-
+    //tendra arraylist para no repetir aristas entre soldados y naves
+    ArrayList<Integer> verticesNaves;
+    
+    //profe
     ArrayList<Vertice> vertices;
 
     public Grafo(principal_gui pVentana)
     {
         vertices = new ArrayList<Vertice>();
+        verticesNaves = new ArrayList<Integer>();
         ventana = pVentana;
     }
 
@@ -35,24 +39,97 @@ public class Grafo {
           //si quiero que sea no-dirigido:
           destino.agregarArista(origen); 
           
+          //estos estan ahorita con "." por default, los podemos cambiar
           ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
           ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
         }
             
     }
     
+    
+    //__________________________________________________________________________
+    //__________________________________________________________________________
+    
+    //agregarAristas pero para cada tipo (nave, fuente poder, soldado)
+    
+    //luego cuando queramos hacer lo de bajarles vida, etc.. hay que ponerles peso
+    
     public void agregarAristaNave(Vertice origen, Vertice destino)
-    {
+    {   
+        
         if (origen != null && destino != null){
           origen.agregarArista(destino);
           //si quiero que sea no-dirigido:
           destino.agregarArista(origen); 
+          
+          //aa testing
+          verticesNaves.add(destino.dato);
           
           ventana.matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
           ventana.matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
         }
             
     }
+    
+    public void agregarAristaFuente(Vertice origen, Vertice destino)
+    {
+        if (origen != null && destino != null){
+          origen.agregarArista(destino);
+          //si quiero que sea no-dirigido:
+          destino.agregarArista(origen); 
+          
+          ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
+          ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
+        }
+            
+    }
+    
+    public void agregarAristaSoldado(Vertice origen, Vertice destino)
+    {   
+        //no dejar poner un soldado en arista donde haya nave
+        
+        if (origen != null && destino != null){
+          if (!verticesNaves.contains(origen) | !verticesNaves.contains(destino)){
+            origen.agregarArista(destino);
+            //si quiero que sea no-dirigido:
+            destino.agregarArista(origen); 
+          
+            ventana.matriz.getModel().setValueAt("..", origen.dato-1, destino.dato);
+            ventana.matriz.getModel().setValueAt("..", destino.dato-1,origen.dato);
+          }
+          else
+            System.out.println("ya hay nave en esa arista...");
+        }
+            
+    }
+    
+    
+    public void agregarFuentePoder(int valor){
+        // a diferencia de solo arista, este agrega aristas para toda la columna/
+        // fila que indiquemos
+        
+        //valoresAristas = arrayList con los valores (int) de otras aristas..
+        //.. con las que arista buscada posee relacion
+        System.out.println(this.buscarVertice(valor).valoresAristas);
+        
+        //condicion = si en vertice ya hay fuente de poder, no la pone repetida
+        if(!this.buscarVertice(valor).valoresAristas.contains(valor)){
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(1));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(2));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(3));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(4));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(5));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(6));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(7));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(8));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(9));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(10)); 
+        }
+        
+    }
+    
+    //__________________________________________________________________________
+    //__________________________________________________________________________
 
     // agrega las aristas con peso
     public void agregarArista(Vertice origen, Vertice destino, int peso)
