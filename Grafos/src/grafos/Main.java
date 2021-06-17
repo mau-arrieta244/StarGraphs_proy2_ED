@@ -5,8 +5,6 @@
 
 package grafos;
 
-import java.util.Random;
-
 /**
  *
  * @author dmora
@@ -54,15 +52,11 @@ public class Main {
         
         g.agregarAristaNave(g.buscarVertice(3), g.buscarVertice(2));
         
-        
-        
         g.imprimir();
         System.out.println("");
         //g.profundidad();
         System.out.println("");
 
         //g.anchura(g.vertices.get(0));
-
     }
-
 }
