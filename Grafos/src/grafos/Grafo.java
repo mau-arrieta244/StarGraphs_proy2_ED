@@ -522,7 +522,7 @@ public class Grafo {
     }
     public boolean ajustarSigilo(Tribu tribu1, Tribu tribu2){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el atributo que quiere disminuir segun el sigilo: " + tribu1.getArray() [4]);
+        System.out.println("Ingrese el atributo que quiere disminuir segun el sigilo: " + tribu1.getArray() [5]);
         String atributo = scanner.nextLine();
         if(atributo.equalsIgnoreCase("cantidad")){
             tribu2.getArray() [0] -= tribu1.getArray() [5];
@@ -608,8 +608,38 @@ public class Grafo {
         }
         //La velocidad no ocupa modificacion.
     }
-    //Tomar en cuenta el otro ajuste de los parametros de la tribu 2.    
-    //Posteriormente se eliminaran los parametros al integrar la GUI
+    public double determinarGolpe(Tribu tribu){
+        double porcentajeLadoOscuro = 1;
+        double porcentajeVelocidad;
+        double golpe;
+        //Solo el numPorcentaje se usa en nightsisters.
+        if(tribu.getArray() [3] != 0){
+            porcentajeLadoOscuro = 1 + (tribu.getArray() [3] / 100);
+        }
+        System.out.println(porcentajeLadoOscuro);
+        porcentajeVelocidad = 1 + (tribu.getArray() [7] * 1.0 / 100 * 1.0);
+        System.out.println(porcentajeVelocidad);
+        golpe = ((tribu.getArray() [0] * tribu.getArray() [1]) * 
+                porcentajeVelocidad * porcentajeLadoOscuro) * tribu.getArray() [2];
+        return golpe;
+    }
+    public void imprimirAtributos(Tribu tribu){
+        System.out.println(tribu.getNombre());
+        System.out.println("Cantidad: " +tribu.getArray() [0]);
+        System.out.println("Fuerza: " +tribu.getArray() [1]);
+        System.out.println("Infanteria: " +tribu.getArray() [2]);
+        System.out.println("Lado oscuro: " +tribu.getArray() [3]);
+        System.out.println("Riqueza: " +tribu.getArray() [4]);
+        System.out.println("Sigilo: " +tribu.getArray() [5]);
+        System.out.println("Tecnologia: " +tribu.getArray() [6]);
+        System.out.println("Velocidad: " + tribu.getArray() [7]);
+        System.out.println("Fuerza: " + determinarGolpe(tribu));
+        
+    }
+    
+    
+    //Falta iniciar poderes de la tribu 2.    
+    //Posteriormente, se eliminaran los parametros al integrar la GUI
     public void iniciarPoderes(String nombre1, String nombre2){
         Tribu tribu1 = crearTribu(nombre1);
         if(tribu1 != null){
@@ -620,6 +650,10 @@ public class Grafo {
                 System.out.println(tribu1);
                 System.out.println(tribu2);
                 ajustarPoderes(tribu1, tribu2);
+                System.out.println("\n");
+                imprimirAtributos(tribu1);
+                System.out.println("\n");
+                imprimirAtributos(tribu2);
             }
             else{
                 System.out.println("El nombre de la tribu 2 no existe.");

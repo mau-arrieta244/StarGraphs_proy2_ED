@@ -24,7 +24,6 @@ public class Main {
         
         Grafo g = new Grafo(ventana);
         
-        
         g.agregarVertice(1);
         g.agregarVertice(2);
         g.agregarVertice(3);
@@ -35,8 +34,7 @@ public class Main {
         g.agregarVertice(8);
         g.agregarVertice(9);
         g.agregarVertice(10);
-        
-        
+               
         g.agregarFuentePoder(3);
         
         g.agregarAristaNave(g.buscarVertice(3), g.buscarVertice(5));
@@ -58,5 +56,9 @@ public class Main {
         System.out.println("");
 
         //g.anchura(g.vertices.get(0));
+        
+        //Ataques
+        g.iniciarPoderes("clon", "teek");
+        
     }
 }
