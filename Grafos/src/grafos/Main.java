@@ -36,19 +36,13 @@ public class Main {
         g.agregarVertice(10);
                
         g.agregarFuentePoder(3);
-        
-        g.agregarAristaNave(g.buscarVertice(3), g.buscarVertice(5));
-        g.agregarAristaNave(g.buscarVertice(8), g.buscarVertice(3));
-        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(10));
-        
-        //no deberia dejar poner el siguiente ya que seria ambiguo con nave del 8...
+        g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(3));
+        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(6));
         g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(8));
+        g.agregarAristaSoldado(g.buscarVertice(9), g.buscarVertice(8));
         
-        //estos sí los agrega, no hay confusion
-        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(7));
-        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(1));
-        
-        g.agregarAristaNave(g.buscarVertice(3), g.buscarVertice(2));
+        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(10));
+        g.agregarAristaSoldado(g.buscarVertice(9), g.buscarVertice(7));
         
         g.imprimir();
         System.out.println("");
@@ -58,7 +52,7 @@ public class Main {
         //g.anchura(g.vertices.get(0));
         
         //Ataques
-        g.iniciarPoderes("clon", "teek");
+        //g.iniciarPoderes("clon", "teek");
         
     }
 }
