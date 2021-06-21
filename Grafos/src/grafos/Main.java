@@ -22,8 +22,12 @@ public class Main {
         TableColorCellRenderer render = new TableColorCellRenderer();
         ventana.matriz.setDefaultRenderer(Object.class,render);
         
-        Grafo g = new Grafo(ventana);
         
+        Grafo a = new Grafo(ventana);
+        a.generarGrafoEnemigo();
+        
+        /*
+        Grafo g = new Grafo(ventana);
         g.agregarVertice(1);
         g.agregarVertice(2);
         g.agregarVertice(3);
@@ -34,17 +38,16 @@ public class Main {
         g.agregarVertice(8);
         g.agregarVertice(9);
         g.agregarVertice(10);
-               
-        g.agregarFuentePoder(3);
-        g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(3));
-        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(6));
-        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(8));
-        g.agregarAristaSoldado(g.buscarVertice(9), g.buscarVertice(8));
         
-        g.agregarAristaSoldado(g.buscarVertice(5), g.buscarVertice(10));
-        g.agregarAristaSoldado(g.buscarVertice(9), g.buscarVertice(7));
+        g.agregarFuentePoder(2);
+        g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
+        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
         
-        g.imprimir();
+        g.imprimir3();
+        */
+        
+        
+        
         System.out.println("");
         //g.profundidad();
         System.out.println("");

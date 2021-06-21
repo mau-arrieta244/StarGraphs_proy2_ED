@@ -3,6 +3,7 @@
 package grafos;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import modelo.Tribu;
 /**
@@ -40,7 +41,14 @@ public class Grafo {
         
         verticesNaves2 = new ArrayList<Integer>();
     }
-
+    public void imprimir2(){
+        for (Vertice vert : vertices){
+            System.out.println("\n lista ------- ");
+            System.out.println(vert.aristas);
+            System.out.println(" ------- \n");
+            
+        }
+    }
     // agrega a la lista
     public void agregarVertice(int valor)
     {
@@ -62,6 +70,80 @@ public class Grafo {
             
     }
     
+    public void generarGrafoEnemigo(){
+        //para meter naves solo donde hayan fuentes de poder
+        ArrayList<Integer> verticesEnemigo;
+        verticesEnemigo = new ArrayList<Integer>();
+        
+        //para meter naves solo donde hayan fuentes de poder
+        ArrayList<Integer> verticesEnemigoNaves;
+        verticesEnemigoNaves = new ArrayList<Integer>();
+        
+        //vertices se meten manual segun cant. nodos matriz
+        this.agregarVertice(1);
+        this.agregarVertice(2);
+        this.agregarVertice(3);
+        this.agregarVertice(4);
+        this.agregarVertice(5);
+        this.agregarVertice(6);
+        this.agregarVertice(7);
+        this.agregarVertice(8);
+        this.agregarVertice(9);
+        this.agregarVertice(10);
+        
+        //meter fuentes de poder , cuantas? cant. aleatoria entre un rango
+        Random r1 = new Random();
+        int random1 = r1.nextInt(3-1)+1;
+        
+        while(random1>0){
+            Random r2 = new Random();
+            int random2 = r2.nextInt(10-2)+2;
+            this.agregarFuentePoder(random2);
+            verticesEnemigo.add(random2);
+            random1--;
+            System.out.println(verticesEnemigo);
+        }
+        //meter naves, cuantas? cant. aleatoria, origen o destino debe ser donde
+        //haya fuente de poder.
+        Random r3 = new Random();
+        //maximo 3 naves en total
+        int random3 = r3.nextInt(4-1)+1;
+        while(random3>0){
+            //fuente de poder random
+            Random r4 = new Random();
+            int random4 = verticesEnemigo.get(r4.nextInt(verticesEnemigo.size()));
+            //destino aleatorio
+            Random r5 = new Random();
+            int random5 = r5.nextInt(11-1)+1;
+            
+            //si hay fuente en vertice 2, random4 será ese 2
+            this.agregarAristaNave(this.buscarVertice(random5), this.buscarVertice(random4));
+            random3--;
+            verticesEnemigoNaves.add(random5);
+                 
+        }
+        
+        //meter soldados, cuantos? cant. aleatoria, origen o destino debe ser donde
+        //haya nave.
+        
+        Random r6 = new Random();
+        //maximo 5 soldados en total
+        int random6 = r6.nextInt(6-1)+1;
+        while(random6>0){
+            //fuente de poder random
+            Random r7 = new Random();
+            int random7 = verticesEnemigoNaves.get(r7.nextInt(verticesEnemigoNaves.size()));
+            //destino aleatorio
+            Random r8 = new Random();
+            int random8 = r8.nextInt(11-1)+1;
+            
+            this.agregarAristaSoldado(this.buscarVertice(random7), this.buscarVertice(random8));
+            random6--;
+                 
+        }
+        
+    }
+    
     
     //__________________________________________________________________________
     //__________________________________________________________________________
@@ -77,12 +159,20 @@ public class Grafo {
         if (origen != null && destino != null){
           //solo colocar nave en fuentes de poder
           if(verticesFuentesPoder.contains(origen.dato)|verticesFuentesPoder.contains(destino.dato)){
-             //no colocar nave si ya hay soldado en ese origen
+              
+          //no colocar nave si ya hay soldado en ese origen
           if(!verticesSoldados.contains(origen.dato)){
               
-              origen.agregarArista(destino);
+              
+              //lo elimina de vertices
+              //this.eliminar(origen);
+              //this.vertices.add(origen.dato-1,origen); 
+             
+              origen.agregarAristaNaves(destino,250);
               //si quiero que sea no-dirigido:
-              destino.agregarArista(origen); 
+              destino.agregarAristaNaves(origen,250); 
+              
+              
           
               ventana.matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
               ventana.matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
@@ -106,10 +196,10 @@ public class Grafo {
     public void agregarAristaFuente(Vertice origen, Vertice destino)
     {
         if (origen != null && destino != null){
-          origen.agregarArista(destino);
+          origen.agregarArista(destino,0);
           //si quiero que sea no-dirigido:
-          destino.agregarArista(origen); 
-          
+          destino.agregarArista(origen,0); 
+         
           ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
           ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
         }
@@ -123,13 +213,14 @@ public class Grafo {
           //soldado debe ir en nave (no a la deriva)
           if(verticesNaves2.contains(origen.dato)){
              
-              // si no hay una nave en esa arista..
-            if (!verticesNaves.contains(origen.dato) | !verticesNaves.contains(destino.dato)){
+            // si no hay una nave en esa arista..
+            if (!verticesNaves.contains(destino.dato) ){
+                
                 //si no está ese soldado ya ocupado en otra nave
                 if (!verticesSoldados.contains(destino.dato)){
-                    origen.agregarArista(destino);
+                    origen.agregarArista(destino,24);
                     //si quiero que sea no-dirigido:
-                    destino.agregarArista(origen); 
+                    destino.agregarArista(origen,24); 
           
                     ventana.matriz.getModel().setValueAt("..", origen.dato-1, destino.dato);
                     ventana.matriz.getModel().setValueAt("..", destino.dato-1,origen.dato);
@@ -137,29 +228,36 @@ public class Grafo {
                     verticesSoldados.add(origen.dato);
                     verticesSoldados.add(destino.dato);
             }
+                else
+                    System.out.println("soldado ya en otra nave");
             
           }
+            else
+                System.out.println("hay nave en esa arista");
               
           }
           
           else
-            System.out.println("ya hay nave en esa arista...");
+            System.out.println("soldado debe ir en nave no a la deriva");
         }
-            
+        
+          else
+            System.out.println("origen o destino null");  
     }
     
     
     public void agregarFuentePoder(int valor){
-        verticesFuentesPoder.add(valor);
+        //verticesFuentesPoder.add(valor);
         // a diferencia de solo arista, este agrega aristas para toda la columna/
         // fila que indiquemos
         
         //valoresAristas = arrayList con los valores (int) de otras aristas..
         //.. con las que arista buscada posee relacion
-        System.out.println(this.buscarVertice(valor).valoresAristas);
+        //System.out.println(this.buscarVertice(valor).valoresAristas);
         
         //condicion = si en vertice ya hay fuente de poder, no la pone repetida
         if(!this.buscarVertice(valor).valoresAristas.contains(valor)){
+            verticesFuentesPoder.add(valor);
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(1));
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(2));
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(3));
@@ -171,6 +269,9 @@ public class Grafo {
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(9));
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(10)); 
         }
+        else
+            System.out.println("ya hay fuente de poder en ese vertice");
+            
         
     }
     
@@ -202,18 +303,37 @@ public class Grafo {
     // imprime la lista con sus listas de adyacencia
     public void imprimir ()
     {
+        //para cada vertice
         for (int i = 0; i < vertices.size(); i++)
         {
             System.out.print("Vertice "+vertices.get(i).dato+":  ");
+            //para cada arista del vertice
             for (int j = 0; j < vertices.get(i).aristas.size(); j++) {
                 System.out.print(vertices.get(i).aristas.get(j).dato +"  ");
             }
             System.out.println("");
         }
     }
+    
+    // imprime la lista con sus listas de adyacencia+ =  tupla (arista y peso)
+    public void imprimir3 ()
+    {
+        //para cada vertice
+        for (int i = 0; i < vertices.size(); i++)
+        {
+            System.out.print("Vertice "+vertices.get(i).dato+":  ");
+            //para cada arista del vertice
+            for (int j = 0; j < vertices.get(i).aristas.size(); j++) {
+                System.out.print(" | ");
+                System.out.print("( "+vertices.get(i).aristas.get(j).dato +"  ");
+                System.out.print(vertices.get(i).aristas.get(j).peso+" ) ");
+                System.out.print(" | ");
+            }
+            System.out.println("");
+        }
+    }
 
     // elimina un vertice, de la lista y de las listas de adyacencia
-    // imprime la lista con sus listas de adyacencia
     public void eliminar (Vertice v)
     {
         for (int i = 0; i < vertices.size(); i++)
@@ -318,6 +438,12 @@ public class Grafo {
         }
         limpiarVisitados();
     }
+    
+    //==========================================================================
+    //==========================================================================
+    //==========================================================================
+    //==========================================================================
+    
     public Tribu crearTribu(String nombreTribu){
         Tribu tribu;
         if(nombreTribu.equalsIgnoreCase("clon")){

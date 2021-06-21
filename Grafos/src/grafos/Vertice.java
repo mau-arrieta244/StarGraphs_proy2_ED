@@ -49,6 +49,21 @@ public class Vertice {
         if (buscarArista(arista) == -1)
             aristas.add(new Vertice(arista.dato, peso));
     }
+    
+    public void agregarAristaNaves (Vertice arista, int peso)
+    //para poder darle add con cierto indice, que no se desordene output...
+    //..cuando imprimimos grafo.vertices()
+    {
+        // si no está la arista para no repetir
+        if (buscarArista(arista) == -1)
+            aristas.add(arista.dato-1,new Vertice(arista.dato, peso));
+        
+        //si arista ya está en la lista le cambiamos peso
+        else{
+            Vertice ar = retornarArista(arista);
+            ar.peso = 250;
+        }
+    }
 
     public int buscarArista(Vertice v)
     {
@@ -57,5 +72,14 @@ public class Vertice {
                 return i;
         }
         return -1;
+    }
+    
+    public Vertice retornarArista(Vertice v)
+    {
+        for (int i = 0; i < aristas.size(); i++) {
+            if (v.dato == aristas.get(i).dato)
+                return aristas.get(i);
+        }
+        return null;
     }
 }
