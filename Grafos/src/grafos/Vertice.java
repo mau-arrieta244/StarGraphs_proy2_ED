@@ -6,6 +6,7 @@
 package grafos;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Vertice {
@@ -61,7 +62,9 @@ public class Vertice {
         //si arista ya está en la lista le cambiamos peso
         else{
             Vertice ar = retornarArista(arista);
-            ar.peso = 250;
+            
+            ar.peso = peso;
+            
         }
     }
 

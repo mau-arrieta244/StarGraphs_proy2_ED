@@ -4,6 +4,7 @@
  */
 
 package grafos;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,10 +12,14 @@ package grafos;
  */
 public class Main {
     
+    //para que ventana pueda acceder al actual sin pasarselo como parametro
+    //ArrayList<Grafo> grafos;
+    public static ArrayList grafos = new ArrayList<Grafo>();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         principal_gui ventana =  new principal_gui();
         ventana.setVisible(true);
         
@@ -23,11 +28,14 @@ public class Main {
         ventana.matriz.setDefaultRenderer(Object.class,render);
         
         
-        Grafo a = new Grafo(ventana);
-        a.generarGrafoEnemigo();
+        //Grafo a = new Grafo(ventana);
+        //a.generarGrafoEnemigo();
+        //a.imprimir3();
         
-        /*
+        
         Grafo g = new Grafo(ventana);
+        grafos.add(g);
+        System.out.println(grafos);
         g.agregarVertice(1);
         g.agregarVertice(2);
         g.agregarVertice(3);
@@ -42,9 +50,10 @@ public class Main {
         g.agregarFuentePoder(2);
         g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
         g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
+        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(6));
         
         g.imprimir3();
-        */
+        //g.atacarXY(2, 4,50);
         
         
         

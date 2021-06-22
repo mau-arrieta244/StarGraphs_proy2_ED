@@ -69,6 +69,47 @@ public class Grafo {
         }
             
     }
+    /*
+    public int vidaActual(){
+       int inicial = 100;
+       
+    }
+    */
+    public void atacarXY(int x,int y,int golpe){
+        
+        //ataca arista x,y
+        for (Vertice v : vertices){
+            if(v.dato == x){
+                for (Vertice arista : v.aristas){
+                    if(arista.dato == y){
+                        System.out.println("\n ----- X -----");
+                        System.out.println(arista.peso);
+                        arista.peso-=golpe;
+                        System.out.println(arista.peso);
+                        System.out.println(" -----------\n");
+                        
+                    }
+                }
+            }
+        }
+        //ataca su arista espejo (y,x)
+        for (Vertice v : vertices){
+            if(v.dato == y){
+                for (Vertice arista : v.aristas){
+                    if(arista.dato == x){
+                        System.out.println("\n ----- Y -----");
+                        System.out.println(arista.peso);
+                        arista.peso-=golpe;
+                        System.out.println(arista.peso);
+                        System.out.println(" -----------\n");
+                        
+                    }
+                }
+            }
+        }
+        
+    }
+    
     
     public void generarGrafoEnemigo(){
         //para meter naves solo donde hayan fuentes de poder
@@ -167,10 +208,13 @@ public class Grafo {
               //lo elimina de vertices
               //this.eliminar(origen);
               //this.vertices.add(origen.dato-1,origen); 
+              
+              Random r1 = new Random();
+              int random1 = r1.nextInt(1001-100)+100;
              
-              origen.agregarAristaNaves(destino,250);
+              origen.agregarAristaNaves(destino,random1);
               //si quiero que sea no-dirigido:
-              destino.agregarAristaNaves(origen,250); 
+              destino.agregarAristaNaves(origen,random1); 
               
               
           
@@ -218,9 +262,13 @@ public class Grafo {
                 
                 //si no está ese soldado ya ocupado en otra nave
                 if (!verticesSoldados.contains(destino.dato)){
-                    origen.agregarArista(destino,24);
+                    
+                    Random r1 = new Random();
+                    int random1 = r1.nextInt(501-50)+50;
+        
+                    origen.agregarArista(destino,random1);
                     //si quiero que sea no-dirigido:
-                    destino.agregarArista(origen,24); 
+                    destino.agregarArista(origen,random1); 
           
                     ventana.matriz.getModel().setValueAt("..", origen.dato-1, destino.dato);
                     ventana.matriz.getModel().setValueAt("..", destino.dato-1,origen.dato);
