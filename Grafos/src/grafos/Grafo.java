@@ -91,7 +91,23 @@ public class Grafo {
     */
     public void atacarXY(int x,int y,int golpe){
         
-        //ataca arista x,y
+        //obtiene lo que haya en GUI en ese punto X,Y
+        String valor = ventana.matriz.getModel().getValueAt(x-1, y).toString();
+        //si el valor es soldado
+        if(valor.equals("..")){
+           atacarXYSoldado(x,y,golpe);
+        }
+        //si el valor es una nave
+        else if(valor.equals(",")){
+            atacarXYNave(x,y,golpe);
+        }
+        
+        
+        
+        
+        
+    }
+    public void atacarXYSoldado(int x,int y,int golpe){
         
         for (Vertice v : vertices){
             if(v.dato == x){
@@ -104,7 +120,7 @@ public class Grafo {
                         System.out.println(" -----------\n");
                         if(arista.peso>0){
                           arista.peso-=golpe; 
-                          //si llegó a 0 o menor con ese golpe, sacar de GUI, falta sacar del propio grafo!
+                          //si llegó a 0 o menor con ese golpe, sacar de Grafo y GUI
                           if(arista.peso<=0){
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
                               ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
@@ -132,7 +148,7 @@ public class Grafo {
                         System.out.println(" -----------\n");
                         if(arista.peso>0){
                           arista.peso-=golpe; 
-                          //si llegó a 0 o menor con ese golpe, sacar de GUI, falta sacar del propio grafo!
+                          //si llegó a 0 o menor con ese golpe, sacar de grafo y GUI
                           if(arista.peso<=0){
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
                               ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
@@ -149,10 +165,136 @@ public class Grafo {
         }
         
         //Si arista es destruida y era soldado, sacar del grafo y de GUI
-        
-        
     }
     
+    //elimina por fila
+    public void eliminarSoldadosAsociados(int y){
+        for(Vertice a: vertices)
+            {
+                if(a.dato == y)
+                {
+                    for (Iterator<Vertice> iterator1 = a.aristas.iterator(); iterator1.hasNext();) 
+                      {
+                        Vertice x1 = iterator1.next();
+                        if(ventana.matriz.getModel().getValueAt(y-1, x1.dato)!=null)
+                            {
+                               String valor = ventana.matriz.getModel().getValueAt(y-1, x1.dato).toString(); 
+                               if(valor.equals(".."))
+                               {
+                                  iterator1.remove();
+                                  ventana.matriz.getModel().setValueAt(" ",y-1, x1.dato);
+                               }
+                            }
+                                            
+                                            
+                                            
+                      }
+                }
+            } //fin de lo nuevo
+    }
+    //elimina por columna
+    public void eliminarSoldadosAsociadosAbajo(int y){
+        for(Vertice a: vertices)
+            {
+                
+                    for (Iterator<Vertice> iterator1 = a.aristas.iterator(); iterator1.hasNext();) 
+                      {
+                        Vertice x1 = iterator1.next();
+                        if(x1.dato == y){
+                          if(ventana.matriz.getModel().getValueAt(a.dato-1, y)!=null){
+                            String valor = ventana.matriz.getModel().getValueAt(a.dato-1, y).toString(); 
+                            if(valor.equals(".."))
+                               {
+                                  iterator1.remove();
+                                  ventana.matriz.getModel().setValueAt(" ",a.dato-1, y);
+                               }  
+                          }
+                            
+                             
+                        }
+                        
+                                            
+                                            
+                                            
+                      }
+                
+            } //fin de lo nuevo
+    }
+    
+    public void atacarXYNave(int x,int y,int golpe){
+        
+        for (Vertice v : vertices){
+            if(v.dato == x){
+                //ocupamos iterador para quitar arista de arrayList mientras lo recorremos
+                for (Iterator<Vertice> iterator = v.aristas.iterator(); iterator.hasNext();) {
+                Vertice arista = iterator.next();
+                if(arista.dato == y){
+                        System.out.println("\n --- X antes ---");
+                        System.out.println(arista.peso);
+                        System.out.println(" -----------\n");
+                        if(arista.peso>0){
+                          arista.peso-=golpe; 
+                          //si llegó a 0 o menor con ese golpe, sacar de Grafo y GUI
+                          if(arista.peso<=0){
+                              System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
+                              //ponemos un "." para que quede la "arista fuente"
+                              ventana.matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
+                              //no hace falta sacar la arista del grafo, por que queda la fuente sobre la que estaba la nave
+                              //iterator.remove();
+                              arista.peso=0;
+                              
+                              
+                              //si hay soldados asociados, eliminarlos
+                              //y=4 , x=2
+                              eliminarSoldadosAsociados(y);
+                              eliminarSoldadosAsociadosAbajo(y);
+                              
+                          }
+                          System.out.println("\n ---- Y despues ------ ");
+                          System.out.println(arista.peso);
+                          System.out.println(" -----------\n");
+                        }  
+                    }
+                }
+                
+            }
+        }
+        
+        
+        //ataca su arista espejo (y,x)
+        for (Vertice v : vertices){
+            if(v.dato == y){
+                //ocupamos iterador para quitar arista de arrayList mientras lo recorremos
+                for (Iterator<Vertice> iterator = v.aristas.iterator(); iterator.hasNext();) {
+                Vertice arista = iterator.next();
+                if(arista.dato == x){
+                        System.out.println("\n --- X antes ---");
+                        System.out.println(arista.peso);
+                        System.out.println(" -----------\n");
+                        if(arista.peso>0){
+                          arista.peso-=golpe; 
+                          //si llegó a 0 o menor con ese golpe, sacar de grafo y GUI
+                          if(arista.peso<=0){
+                              System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
+                              //ponemos un "." para que quede la "arista fuente"
+                              ventana.matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
+                              //no hace falta sacar la arista del grafo, por que queda la fuente sobre la que estaba la nave
+                              //iterator.remove();
+                              arista.peso=0;
+                              //eliminarSoldadosAsociadosAbajo(x);
+                          }
+                          System.out.println("\n ---- Y despues ------ ");
+                          System.out.println(arista.peso);
+                          System.out.println(" -----------\n");
+                        }  
+                    }
+                }
+                
+            }
+        }
+        
+        //Si arista es destruida y era soldado, sacar del grafo y de GUI
+    }
     
     public void generarGrafoEnemigo(){
         //para meter naves solo donde hayan fuentes de poder

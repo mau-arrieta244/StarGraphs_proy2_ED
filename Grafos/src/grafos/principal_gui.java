@@ -106,7 +106,7 @@ public class principal_gui extends javax.swing.JFrame {
         //aca poner el grafo enemigo
         Grafo a = (Grafo) Main.grafos.get(0);
         int valor = Integer.valueOf(this.textField_ataque.getText());
-        a.atacarXY(4,6,valor);
+        a.atacarXY(2,4,valor);
         a.imprimir3();
         int vidaActual = a.pesoAristas();
         System.out.println("vida actual: "+vidaActual);
