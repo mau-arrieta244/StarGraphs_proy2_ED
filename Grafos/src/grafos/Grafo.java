@@ -3,6 +3,7 @@
 package grafos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 import modelo.Tribu;
@@ -11,7 +12,8 @@ import modelo.Tribu;
  * @author dmora
  */
 public class Grafo {
-    
+    //para usar al calcular % de vida
+    int pesoTotal;
     //recibe ventana
     principal_gui ventana;
     //tendra arraylist para no repetir aristas entre soldados y naves
@@ -33,6 +35,7 @@ public class Grafo {
 
     public Grafo(principal_gui pVentana)
     {
+        
         vertices = new ArrayList<Vertice>();
         verticesNaves = new ArrayList<Integer>();
         verticesSoldados = new ArrayList<Integer>();
@@ -53,6 +56,17 @@ public class Grafo {
     public void agregarVertice(int valor)
     {
         vertices.add(new Vertice(valor));
+    }
+    
+    //peso total de todas las aristas
+    public int pesoAristas(){
+        int peso = 0;
+        for (Vertice v : vertices){
+            for(Vertice arista : v.aristas){
+                peso+=arista.peso;
+            }
+        }
+        return peso;
     }
 
     // agrega las aristas
@@ -78,35 +92,64 @@ public class Grafo {
     public void atacarXY(int x,int y,int golpe){
         
         //ataca arista x,y
+        
         for (Vertice v : vertices){
             if(v.dato == x){
-                for (Vertice arista : v.aristas){
-                    if(arista.dato == y){
-                        System.out.println("\n ----- X -----");
-                        System.out.println(arista.peso);
-                        arista.peso-=golpe;
+                //ocupamos iterador para quitar arista de arrayList mientras lo recorremos
+                for (Iterator<Vertice> iterator = v.aristas.iterator(); iterator.hasNext();) {
+                Vertice arista = iterator.next();
+                if(arista.dato == y){
+                        System.out.println("\n --- X antes ---");
                         System.out.println(arista.peso);
                         System.out.println(" -----------\n");
-                        
+                        if(arista.peso>0){
+                          arista.peso-=golpe; 
+                          //si llegó a 0 o menor con ese golpe, sacar de GUI, falta sacar del propio grafo!
+                          if(arista.peso<=0){
+                              System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
+                              ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
+                              iterator.remove();
+                          }
+                          System.out.println("\n ---- Y despues ------ ");
+                          System.out.println(arista.peso);
+                          System.out.println(" -----------\n");
+                        }  
                     }
                 }
+                
             }
         }
+        
         //ataca su arista espejo (y,x)
         for (Vertice v : vertices){
             if(v.dato == y){
-                for (Vertice arista : v.aristas){
-                    if(arista.dato == x){
-                        System.out.println("\n ----- Y -----");
-                        System.out.println(arista.peso);
-                        arista.peso-=golpe;
+                //ocupamos iterador para quitar arista de arrayList mientras lo recorremos
+                for (Iterator<Vertice> iterator = v.aristas.iterator(); iterator.hasNext();) {
+                Vertice arista = iterator.next();
+                if(arista.dato == x){
+                        System.out.println("\n --- X antes ---");
                         System.out.println(arista.peso);
                         System.out.println(" -----------\n");
-                        
+                        if(arista.peso>0){
+                          arista.peso-=golpe; 
+                          //si llegó a 0 o menor con ese golpe, sacar de GUI, falta sacar del propio grafo!
+                          if(arista.peso<=0){
+                              System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
+                              ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
+                              iterator.remove();
+                          }
+                          System.out.println("\n ---- Y despues ------ ");
+                          System.out.println(arista.peso);
+                          System.out.println(" -----------\n");
+                        }  
                     }
                 }
+                
             }
         }
+        
+        //Si arista es destruida y era soldado, sacar del grafo y de GUI
+        
         
     }
     

@@ -54,10 +54,10 @@ public class Main {
         
         g.imprimir3();
         //g.atacarXY(2, 4,50);
+        int a = g.pesoAristas();
+        g.pesoTotal = a;
         
-        
-        
-        System.out.println("");
+        System.out.println("peso: "+g.pesoTotal);
         //g.profundidad();
         System.out.println("");
 

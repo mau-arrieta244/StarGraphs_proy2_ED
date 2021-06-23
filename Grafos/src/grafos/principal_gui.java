@@ -10,6 +10,7 @@ public class principal_gui extends javax.swing.JFrame {
      */
     public principal_gui() {
         initComponents();
+        this.labelVidaJugador.setText("100 %");
     }
 
     /**
@@ -102,10 +103,17 @@ public class principal_gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtacarActionPerformed
+        //aca poner el grafo enemigo
         Grafo a = (Grafo) Main.grafos.get(0);
         int valor = Integer.valueOf(this.textField_ataque.getText());
-        a.atacarXY(2,4,valor);
+        a.atacarXY(4,6,valor);
         a.imprimir3();
+        int vidaActual = a.pesoAristas();
+        System.out.println("vida actual: "+vidaActual);
+        System.out.println("vida original: "+a.pesoTotal);
+        int porcentaje = vidaActual*100/(a.pesoTotal);
+        this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+                
     }//GEN-LAST:event_botonAtacarActionPerformed
 
     /**
