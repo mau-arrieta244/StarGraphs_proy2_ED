@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JTable;
 import modelo.Tribu;
 /**
  *
@@ -16,6 +17,11 @@ public class Grafo {
     int pesoTotal;
     //recibe ventana
     principal_gui ventana;
+    
+    //tal vez en vez de recibir ventana, recibe matriz por modificar
+    //asi podemos hacer dos grafos (jugador y enemigo) y pasarles misma ventana pero diferente matriz
+    JTable matriz;
+    
     //tendra arraylist para no repetir aristas entre soldados y naves
     ArrayList<Integer> verticesNaves;
     
@@ -33,7 +39,7 @@ public class Grafo {
     //profe
     ArrayList<Vertice> vertices;
 
-    public Grafo(principal_gui pVentana)
+    public Grafo(principal_gui pVentana,JTable pMatriz)
     {
         
         vertices = new ArrayList<Vertice>();
@@ -41,6 +47,7 @@ public class Grafo {
         verticesSoldados = new ArrayList<Integer>();
         verticesFuentesPoder = new ArrayList<Integer>();
         ventana = pVentana;
+        matriz = pMatriz;
         
         verticesNaves2 = new ArrayList<Integer>();
     }
@@ -78,8 +85,10 @@ public class Grafo {
           destino.agregarArista(origen); 
           
           //estos estan ahorita con "." por default, los podemos cambiar
-          ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
-          ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
+          //ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
+          //ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
+          matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
+          matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
         }
             
     }
@@ -92,7 +101,8 @@ public class Grafo {
     public void atacarXY(int x,int y,int golpe){
         
         //obtiene lo que haya en GUI en ese punto X,Y
-        String valor = ventana.matriz.getModel().getValueAt(x-1, y).toString();
+        //String valor = ventana.matriz.getModel().getValueAt(x-1, y).toString();
+        String valor = matriz.getModel().getValueAt(x-1, y).toString();
         //si el valor es soldado
         if(valor.equals("..")){
            atacarXYSoldado(x,y,golpe);
@@ -123,7 +133,8 @@ public class Grafo {
                           //si llegó a 0 o menor con ese golpe, sacar de Grafo y GUI
                           if(arista.peso<=0){
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
-                              ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
+                              //ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
+                              matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
                               iterator.remove();
                           }
                           System.out.println("\n ---- Y despues ------ ");
@@ -151,7 +162,8 @@ public class Grafo {
                           //si llegó a 0 o menor con ese golpe, sacar de grafo y GUI
                           if(arista.peso<=0){
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
-                              ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
+                              //ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
+                              matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
                               iterator.remove();
                           }
                           System.out.println("\n ---- Y despues ------ ");
@@ -176,13 +188,16 @@ public class Grafo {
                     for (Iterator<Vertice> iterator1 = a.aristas.iterator(); iterator1.hasNext();) 
                       {
                         Vertice x1 = iterator1.next();
-                        if(ventana.matriz.getModel().getValueAt(y-1, x1.dato)!=null)
+                        //if(ventana.matriz.getModel().getValueAt(y-1, x1.dato)!=null)
+                        if(matriz.getModel().getValueAt(y-1, x1.dato)!=null)
                             {
-                               String valor = ventana.matriz.getModel().getValueAt(y-1, x1.dato).toString(); 
+                               //String valor = ventana.matriz.getModel().getValueAt(y-1, x1.dato).toString(); 
+                               String valor = matriz.getModel().getValueAt(y-1, x1.dato).toString(); 
                                if(valor.equals(".."))
                                {
                                   iterator1.remove();
-                                  ventana.matriz.getModel().setValueAt(" ",y-1, x1.dato);
+                                  //ventana.matriz.getModel().setValueAt(" ",y-1, x1.dato);
+                                  matriz.getModel().setValueAt(" ",y-1, x1.dato);
                                }
                             }
                                             
@@ -201,12 +216,15 @@ public class Grafo {
                       {
                         Vertice x1 = iterator1.next();
                         if(x1.dato == y){
-                          if(ventana.matriz.getModel().getValueAt(a.dato-1, y)!=null){
-                            String valor = ventana.matriz.getModel().getValueAt(a.dato-1, y).toString(); 
+                          //if(ventana.matriz.getModel().getValueAt(a.dato-1, y)!=null){
+                          if(matriz.getModel().getValueAt(a.dato-1, y)!=null){  
+                            //String valor = ventana.matriz.getModel().getValueAt(a.dato-1, y).toString(); 
+                            String valor = matriz.getModel().getValueAt(a.dato-1, y).toString();
                             if(valor.equals(".."))
                                {
                                   iterator1.remove();
-                                  ventana.matriz.getModel().setValueAt(" ",a.dato-1, y);
+                                  //ventana.matriz.getModel().setValueAt(" ",a.dato-1, y);
+                                  matriz.getModel().setValueAt(" ",a.dato-1, y);
                                }  
                           }
                             
@@ -238,7 +256,8 @@ public class Grafo {
                           if(arista.peso<=0){
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
                               //ponemos un "." para que quede la "arista fuente"
-                              ventana.matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
+                              //ventana.matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
+                              matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
                               //no hace falta sacar la arista del grafo, por que queda la fuente sobre la que estaba la nave
                               //iterator.remove();
                               arista.peso=0;
@@ -277,7 +296,8 @@ public class Grafo {
                           if(arista.peso<=0){
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
                               //ponemos un "." para que quede la "arista fuente"
-                              ventana.matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
+                              //ventana.matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
+                              matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
                               //no hace falta sacar la arista del grafo, por que queda la fuente sobre la que estaba la nave
                               //iterator.remove();
                               arista.peso=0;
@@ -403,8 +423,10 @@ public class Grafo {
               
               
           
-              ventana.matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
-              ventana.matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
+              //ventana.matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
+              //ventana.matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
+              matriz.getModel().setValueAt(",", origen.dato-1, destino.dato);
+              matriz.getModel().setValueAt(",", destino.dato-1,origen.dato);
               
               //aa testing
               verticesNaves.add(destino.dato);
@@ -429,8 +451,11 @@ public class Grafo {
           //si quiero que sea no-dirigido:
           destino.agregarArista(origen,0); 
          
-          ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
-          ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
+          //ventana.matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
+          //ventana.matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
+          
+          matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
+          matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
         }
             
     }
@@ -455,8 +480,10 @@ public class Grafo {
                     //si quiero que sea no-dirigido:
                     destino.agregarArista(origen,random1); 
           
-                    ventana.matriz.getModel().setValueAt("..", origen.dato-1, destino.dato);
-                    ventana.matriz.getModel().setValueAt("..", destino.dato-1,origen.dato);
+                    //ventana.matriz.getModel().setValueAt("..", origen.dato-1, destino.dato);
+                    //ventana.matriz.getModel().setValueAt("..", destino.dato-1,origen.dato);
+                    matriz.getModel().setValueAt("..", origen.dato-1, destino.dato);
+                    matriz.getModel().setValueAt("..", destino.dato-1,origen.dato);
             
                     verticesSoldados.add(origen.dato);
                     verticesSoldados.add(destino.dato);

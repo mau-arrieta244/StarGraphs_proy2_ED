@@ -26,6 +26,7 @@ public class Main {
         //para rellenar celdas con colores si tienen cierto valor
         TableColorCellRenderer render = new TableColorCellRenderer();
         ventana.matriz.setDefaultRenderer(Object.class,render);
+        ventana.matriz1.setDefaultRenderer(Object.class,render);
         
         
         //Grafo a = new Grafo(ventana);
@@ -33,8 +34,9 @@ public class Main {
         //a.imprimir3();
         
         
-        Grafo g = new Grafo(ventana);
-        grafos.add(g);
+        //Grafo g = new Grafo(ventana);
+        Grafo g = new Grafo(ventana,ventana.matriz);
+        //grafos.add(g);
         System.out.println(grafos);
         g.agregarVertice(1);
         g.agregarVertice(2);
@@ -52,10 +54,27 @@ public class Main {
         g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
         g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(6));
         
-        g.imprimir3();
+        //Grafo g = new Grafo(ventana);
+        Grafo a = new Grafo(ventana,ventana.matriz1);
+        grafos.add(a);
+        System.out.println(grafos);
+        a.agregarVertice(1);
+        a.agregarVertice(2);
+        a.agregarVertice(3);
+        a.agregarVertice(4);
+        a.agregarVertice(5);
+        a.agregarVertice(6);
+        a.agregarVertice(7);
+        a.agregarVertice(8);
+        a.agregarVertice(9);
+        a.agregarVertice(10);
+        
+        a.agregarFuentePoder(2);
+        a.agregarAristaNave(a.buscarVertice(4), a.buscarVertice(2));
+        a.imprimir3();
         //g.atacarXY(2, 4,50);
-        int a = g.pesoAristas();
-        g.pesoTotal = a;
+        int abc = a.pesoAristas();
+        a.pesoTotal = abc;
         
         System.out.println("peso: "+g.pesoTotal);
         //g.profundidad();
