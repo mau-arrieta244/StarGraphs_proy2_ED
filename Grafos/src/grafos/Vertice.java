@@ -62,7 +62,6 @@ public class Vertice {
         //si arista ya está en la lista le cambiamos peso
         else{
             Vertice ar = retornarArista(arista);
-            
             ar.peso = peso;
             
         }

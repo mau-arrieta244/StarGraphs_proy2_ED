@@ -33,10 +33,10 @@ public class Main {
         //a.generarGrafoEnemigo();
         //a.imprimir3();
         
+        /*
         
-        //Grafo g = new Grafo(ventana);
         Grafo g = new Grafo(ventana,ventana.matriz);
-        //grafos.add(g);
+        grafos.add(g);
         System.out.println(grafos);
         g.agregarVertice(1);
         g.agregarVertice(2);
@@ -50,13 +50,22 @@ public class Main {
         g.agregarVertice(10);
         
         g.agregarFuentePoder(2);
+        
+        
         g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
         g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
-        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(6));
+        g.agregarAristaNave(g.buscarVertice(9), g.buscarVertice(2));
+        g.imprimir3();
+        */
+        //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
+        
+        //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(6));
         
         //Grafo g = new Grafo(ventana);
         Grafo a = new Grafo(ventana,ventana.matriz1);
         grafos.add(a);
+        
+        
         System.out.println(grafos);
         a.agregarVertice(1);
         a.agregarVertice(2);
@@ -71,12 +80,14 @@ public class Main {
         
         a.agregarFuentePoder(2);
         a.agregarAristaNave(a.buscarVertice(4), a.buscarVertice(2));
+        a.agregarAristaSoldado(a.buscarVertice(4), a.buscarVertice(9));
+        a.agregarAristaSoldado(a.buscarVertice(4), a.buscarVertice(6));
         a.imprimir3();
         //g.atacarXY(2, 4,50);
         int abc = a.pesoAristas();
         a.pesoTotal = abc;
         
-        System.out.println("peso: "+g.pesoTotal);
+        //System.out.println("peso: "+g.pesoTotal);
         //g.profundidad();
         System.out.println("");
 

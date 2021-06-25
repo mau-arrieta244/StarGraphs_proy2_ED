@@ -3,14 +3,20 @@
 
 package grafos;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 public class principal_gui extends javax.swing.JFrame {
 
-    /**
+     /*
      * Creates new form principal_gui
      */
+    ArrayList<String> colaAtaques;
+    
     public principal_gui() {
         initComponents();
         this.labelVidaJugador.setText("100 %");
+        colaAtaques = new ArrayList<String>();
     }
 
     /**
@@ -30,6 +36,8 @@ public class principal_gui extends javax.swing.JFrame {
         textField_ataque = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         matriz1 = new javax.swing.JTable();
+        coordenadasAtaque = new javax.swing.JTextField();
+        botonAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +96,13 @@ public class principal_gui extends javax.swing.JFrame {
         matriz1.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(matriz1);
 
+        botonAgregar.setText("Agregar");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,12 +114,19 @@ public class principal_gui extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(botonAtacar)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(coordenadasAtaque))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(botonAtacar)
+                            .addGap(18, 18, 18)
+                            .addComponent(botonAgregar))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,9 +141,13 @@ public class principal_gui extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(coordenadasAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonAtacar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAtacar)
+                    .addComponent(botonAgregar))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -131,16 +157,51 @@ public class principal_gui extends javax.swing.JFrame {
     private void botonAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtacarActionPerformed
         //aca poner el grafo enemigo
         Grafo a = (Grafo) Main.grafos.get(0);
+        if(colaAtaques!=null){
+            while(colaAtaques.size()>0){
+                System.out.println("ultimo "+colaAtaques.get(colaAtaques.size()-1));
+                String[] valores = colaAtaques.get(colaAtaques.size()-1).split("");
+                int x = Integer.valueOf(valores[1]);
+                int y = Integer.valueOf(valores[3]);;
+                
+                int valor = Integer.valueOf(this.textField_ataque.getText());
+                a.atacarXY(x,y,valor);
+                a.imprimir3();
+                colaAtaques.remove(colaAtaques.size()-1);
+                
+                int vidaActual = a.pesoAristas();
+                System.out.println("vida actual: "+vidaActual);
+                System.out.println("vida original: "+a.pesoTotal);
+                int porcentaje = vidaActual*100/(a.pesoTotal);
+                this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+            }
+        }
+        
+        /*
+        //aca poner el grafo enemigo
+        Grafo a = (Grafo) Main.grafos.get(0);
         int valor = Integer.valueOf(this.textField_ataque.getText());
         a.atacarXY(2,4,valor);
         a.imprimir3();
         int vidaActual = a.pesoAristas();
         System.out.println("vida actual: "+vidaActual);
         System.out.println("vida original: "+a.pesoTotal);
-        //int porcentaje = vidaActual*100/(a.pesoTotal);
-        //this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+        int porcentaje = vidaActual*100/(a.pesoTotal);
+        this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+        */
                 
     }//GEN-LAST:event_botonAtacarActionPerformed
+
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        if(colaAtaques.size()<10){
+           String valor = coordenadasAtaque.getText().toString();
+            this.colaAtaques.add(valor);
+            System.out.println("coordenadas "+colaAtaques); 
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Maximo 10 ataques en la cola","warning",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_botonAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,7 +239,9 @@ public class principal_gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAtacar;
+    private javax.swing.JTextField coordenadasAtaque;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

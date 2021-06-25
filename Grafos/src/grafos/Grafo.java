@@ -302,6 +302,11 @@ public class Grafo {
                               //iterator.remove();
                               arista.peso=0;
                               //eliminarSoldadosAsociadosAbajo(x);
+                              
+                              //si hay soldados asociados, eliminarlos
+                              //y=4 , x=2
+                              eliminarSoldadosAsociados(x);
+                              eliminarSoldadosAsociadosAbajo(x);
                           }
                           System.out.println("\n ---- Y despues ------ ");
                           System.out.println(arista.peso);
