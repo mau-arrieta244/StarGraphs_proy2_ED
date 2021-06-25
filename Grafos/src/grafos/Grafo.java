@@ -105,12 +105,16 @@ public class Grafo {
         String valor = matriz.getModel().getValueAt(x-1, y).toString();
         //si el valor es soldado
         if(valor.equals("..")){
+           ventana.bitacora.append("\nArista Soldado");
            atacarXYSoldado(x,y,golpe);
         }
         //si el valor es una nave
         else if(valor.equals(",")){
+            ventana.bitacora.append("\nArista Nave");
             atacarXYNave(x,y,golpe);
+            
         }
+        //que hacemos cuando ataque va a arista fuente de poder?
         
         
         
@@ -127,19 +131,24 @@ public class Grafo {
                 if(arista.dato == y){
                         System.out.println("\n --- X antes ---");
                         System.out.println(arista.peso);
+                        ventana.bitacora.append("\nVida antes: "+String.valueOf(arista.peso));
                         System.out.println(" -----------\n");
                         if(arista.peso>0){
                           arista.peso-=golpe; 
+                          ventana.bitacora.append("\nVida actual: "+String.valueOf(arista.peso));
                           //si llegó a 0 o menor con ese golpe, sacar de Grafo y GUI
                           if(arista.peso<=0){
+                              ventana.bitacora.append("\nArista fue destruida");
+                              ventana.bitacora.append("\n----------------------\n");
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
                               //ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
                               matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
                               iterator.remove();
                           }
-                          System.out.println("\n ---- Y despues ------ ");
-                          System.out.println(arista.peso);
-                          System.out.println(" -----------\n");
+                          
+                          //System.out.println("\n ---- Y despues ------ ");
+                          //System.out.println(arista.peso);
+                          //System.out.println(" -----------\n");
                         }  
                     }
                 }
@@ -154,21 +163,25 @@ public class Grafo {
                 for (Iterator<Vertice> iterator = v.aristas.iterator(); iterator.hasNext();) {
                 Vertice arista = iterator.next();
                 if(arista.dato == x){
+                        //ventana.bitacora.append("\nVida antes: "+String.valueOf(arista.peso));
                         System.out.println("\n --- X antes ---");
                         System.out.println(arista.peso);
                         System.out.println(" -----------\n");
                         if(arista.peso>0){
-                          arista.peso-=golpe; 
+                          arista.peso-=golpe;
+                          //ventana.bitacora.append("Vida actual: "+String.valueOf(arista.peso));
                           //si llegó a 0 o menor con ese golpe, sacar de grafo y GUI
                           if(arista.peso<=0){
+                              
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
                               //ventana.matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
                               matriz.getModel().setValueAt("  ", arista.dato-1, v.dato);
                               iterator.remove();
                           }
-                          System.out.println("\n ---- Y despues ------ ");
-                          System.out.println(arista.peso);
-                          System.out.println(" -----------\n");
+                          
+                          //System.out.println("\n ---- Y despues ------ ");
+                          //System.out.println(arista.peso);
+                          //System.out.println(" -----------\n");
                         }  
                     }
                 }
@@ -195,6 +208,9 @@ public class Grafo {
                                String valor = matriz.getModel().getValueAt(y-1, x1.dato).toString(); 
                                if(valor.equals(".."))
                                {
+                                  ventana.bitacora.append("\n ---------- \nEliminado");
+                                  ventana.bitacora.append("\nSoldado asociado: ("+String.valueOf(y)+","+String.valueOf(x1.dato)+")");
+                                  ventana.bitacora.append("\n-----------------");
                                   iterator1.remove();
                                   //ventana.matriz.getModel().setValueAt(" ",y-1, x1.dato);
                                   matriz.getModel().setValueAt(" ",y-1, x1.dato);
@@ -222,9 +238,16 @@ public class Grafo {
                             String valor = matriz.getModel().getValueAt(a.dato-1, y).toString();
                             if(valor.equals(".."))
                                {
+                                   
+                                  //ventana.bitacora.append("\n ---------- \nEliminado");
+                                  //ventana.bitacora.append("\nSoldado asociado: ("+String.valueOf(y)+","+String.valueOf(y)+")");
+                                  //ventana.bitacora.append("\n-----------------");
+                                  
                                   iterator1.remove();
                                   //ventana.matriz.getModel().setValueAt(" ",a.dato-1, y);
                                   matriz.getModel().setValueAt(" ",a.dato-1, y);
+                                  
+                                  
                                }  
                           }
                             
@@ -249,11 +272,14 @@ public class Grafo {
                 if(arista.dato == y){
                         System.out.println("\n --- X antes ---");
                         System.out.println(arista.peso);
+                        ventana.bitacora.append("\nVida antes: "+String.valueOf(arista.peso));
                         System.out.println(" -----------\n");
                         if(arista.peso>0){
                           arista.peso-=golpe; 
+                          ventana.bitacora.append("\nVida actual: "+String.valueOf(arista.peso));
                           //si llegó a 0 o menor con ese golpe, sacar de Grafo y GUI
                           if(arista.peso<=0){
+                              ventana.bitacora.append("\nArista fue destruida ");
                               System.out.println("saque arista:"+arista.dato+" de: "+v.dato);
                               //ponemos un "." para que quede la "arista fuente"
                               //ventana.matriz.getModel().setValueAt(".", arista.dato-1, v.dato);
