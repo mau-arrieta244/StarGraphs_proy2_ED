@@ -102,19 +102,27 @@ public class Grafo {
         
         //obtiene lo que haya en GUI en ese punto X,Y
         //String valor = ventana.matriz.getModel().getValueAt(x-1, y).toString();
-        String valor = matriz.getModel().getValueAt(x-1, y).toString();
-        //si el valor es soldado
-        if(valor.equals("..")){
-           ventana.bitacora.append("\nArista Soldado");
-           atacarXYSoldado(x,y,golpe);
-        }
-        //si el valor es una nave
-        else if(valor.equals(",")){
-            ventana.bitacora.append("\nArista Nave");
-            atacarXYNave(x,y,golpe);
+        
+        //si hay arista en ese (X,Y)
+        if(matriz.getModel().getValueAt(x-1, y)!=null){
+           String valor = matriz.getModel().getValueAt(x-1, y).toString();
+            //si el valor es soldado
+            if(valor.equals("..")){
+                ventana.bitacora.append("\nArista Soldado");
+                atacarXYSoldado(x,y,golpe);
+            }
+            //si el valor es una nave
+            else if(valor.equals(",")){
+                ventana.bitacora.append("\nArista Nave");
+                atacarXYNave(x,y,golpe);
             
+            }
+            //que hacemos cuando ataque va a arista fuente de poder? 
         }
-        //que hacemos cuando ataque va a arista fuente de poder?
+        else{
+           ventana.bitacora.append("\nSin daños (arista vacia)"); 
+        }
+        
         
         
         

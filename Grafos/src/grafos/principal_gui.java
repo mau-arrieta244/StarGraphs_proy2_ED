@@ -4,6 +4,7 @@
 package grafos;
 
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 public class principal_gui extends javax.swing.JFrame {
@@ -69,7 +70,7 @@ public class principal_gui extends javax.swing.JFrame {
         if (matriz.getColumnModel().getColumnCount() > 0) {
             matriz.getColumnModel().getColumn(0).setMinWidth(15);
             matriz.getColumnModel().getColumn(0).setPreferredWidth(15);
-            matriz.getColumnModel().getColumn(0).setMaxWidth(15);
+            matriz.getColumnModel().getColumn(0).setMaxWidth(20);
             matriz.getColumnModel().getColumn(1).setMinWidth(15);
             matriz.getColumnModel().getColumn(1).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(1).setMaxWidth(15);
@@ -93,13 +94,13 @@ public class principal_gui extends javax.swing.JFrame {
             matriz.getColumnModel().getColumn(7).setMaxWidth(15);
             matriz.getColumnModel().getColumn(8).setMinWidth(15);
             matriz.getColumnModel().getColumn(8).setPreferredWidth(15);
-            matriz.getColumnModel().getColumn(8).setMaxWidth(15);
+            matriz.getColumnModel().getColumn(8).setMaxWidth(20);
             matriz.getColumnModel().getColumn(9).setMinWidth(15);
             matriz.getColumnModel().getColumn(9).setPreferredWidth(15);
-            matriz.getColumnModel().getColumn(9).setMaxWidth(15);
+            matriz.getColumnModel().getColumn(9).setMaxWidth(20);
             matriz.getColumnModel().getColumn(10).setMinWidth(15);
             matriz.getColumnModel().getColumn(10).setPreferredWidth(15);
-            matriz.getColumnModel().getColumn(10).setMaxWidth(15);
+            matriz.getColumnModel().getColumn(10).setMaxWidth(20);
         }
 
         jLabel1.setText("Vida : ");
@@ -167,8 +168,8 @@ public class principal_gui extends javax.swing.JFrame {
                             .addComponent(botonAtacar)
                             .addGap(18, 18, 18)
                             .addComponent(botonAgregar)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,13 +185,13 @@ public class principal_gui extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(coordenadasAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -203,7 +204,7 @@ public class principal_gui extends javax.swing.JFrame {
                         .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,7 +212,10 @@ public class principal_gui extends javax.swing.JFrame {
 
     private void botonAtacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtacarActionPerformed
         //aca poner el grafo enemigo
-        Grafo a = (Grafo) Main.grafos.get(0);
+        Grafo a = (Grafo) Main.grafos.get(1);
+        //nuestro grafo
+        Grafo b = (Grafo) Main.grafos.get(0);
+        
         if(colaAtaques!=null){
             while(colaAtaques.size()>0){
                 System.out.println("ultimo "+colaAtaques.get(colaAtaques.size()-1));
@@ -230,23 +234,31 @@ public class principal_gui extends javax.swing.JFrame {
                 int vidaActual = a.pesoAristas();
                 System.out.println("vida actual: "+vidaActual);
                 System.out.println("vida original: "+a.pesoTotal);
+                //este label de vida iria donde recibimos ataques no donde los hacemos
                 int porcentaje = vidaActual*100/(a.pesoTotal);
                 this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+                
+                //recibir misma cantidad de ataques
+                //X , Y aleatorios
+                bitacora.append("\n-------------------------");
+                bitacora.append("\nGolpe enemigo: ");
+                Random r = new Random();
+                int rand = r.nextInt(11-1) + 1;
+                
+                Random r1 = new Random();
+                int rand1 = r1.nextInt(11-1) + 1;
+                bitacora.append("\nAtaque en : ("+String.valueOf(rand)+","+String.valueOf(rand1)+")");
+                
+                int valor1 = Integer.valueOf(this.textField_ataque.getText());
+                bitacora.append("\nValor golpe: "+String.valueOf(valor));
+                b.atacarXY(rand,rand1,valor);
+                
             }
+            
+            
         }
         
-        /*
-        //aca poner el grafo enemigo
-        Grafo a = (Grafo) Main.grafos.get(0);
-        int valor = Integer.valueOf(this.textField_ataque.getText());
-        a.atacarXY(2,4,valor);
-        a.imprimir3();
-        int vidaActual = a.pesoAristas();
-        System.out.println("vida actual: "+vidaActual);
-        System.out.println("vida original: "+a.pesoTotal);
-        int porcentaje = vidaActual*100/(a.pesoTotal);
-        this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
-        */
+        
                 
     }//GEN-LAST:event_botonAtacarActionPerformed
 
@@ -302,7 +314,6 @@ public class principal_gui extends javax.swing.JFrame {
     private javax.swing.JButton botonAtacar;
     private javax.swing.JTextField coordenadasAtaque;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

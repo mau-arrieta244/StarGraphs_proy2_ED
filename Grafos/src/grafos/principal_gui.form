@@ -43,9 +43,9 @@
                           <Component id="botonAgregar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane2" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="190" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="label_bitacora" min="-2" pref="65" max="-2" attributes="0"/>
@@ -65,15 +65,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" min="-2" pref="185" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" pref="185" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="183" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="labelVidaJugador" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="labelVidaJugador" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="textField_ataque" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="coordenadasAtaque" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                       <Component id="jScrollPane4" min="-2" pref="112" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="9" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -139,7 +139,7 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="15" minWidth="15" prefWidth="15" resizable="true">
+                <Column maxWidth="20" minWidth="15" prefWidth="15" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -179,17 +179,17 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="15" minWidth="15" prefWidth="15" resizable="true">
+                <Column maxWidth="20" minWidth="15" prefWidth="15" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="15" minWidth="15" prefWidth="15" resizable="true">
+                <Column maxWidth="20" minWidth="15" prefWidth="15" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="15" minWidth="15" prefWidth="15" resizable="true">
+                <Column maxWidth="20" minWidth="15" prefWidth="15" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>

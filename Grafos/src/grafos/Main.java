@@ -33,7 +33,7 @@ public class Main {
         //a.generarGrafoEnemigo();
         //a.imprimir3();
         
-        /*
+        
         
         Grafo g = new Grafo(ventana,ventana.matriz);
         grafos.add(g);
@@ -54,14 +54,21 @@ public class Main {
         
         g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
         g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
-        g.agregarAristaNave(g.buscarVertice(9), g.buscarVertice(2));
+        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(7));
+        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(8));
+        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(10));
+        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(3));
+        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(1));
+        g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(2));
+        g.agregarAristaNave(g.buscarVertice(6), g.buscarVertice(2));
+        
         g.imprimir3();
-        */
+        
         //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
         
         //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(6));
         
-        //Grafo g = new Grafo(ventana);
+        
         Grafo a = new Grafo(ventana,ventana.matriz1);
         grafos.add(a);
         
