@@ -6,6 +6,7 @@
 package grafos;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +51,7 @@ public class Main {
         
         if(tribusEnemigas.containsKey(tribuSeleccionada)){
             
+            //seteamos poder de nuestro ataque
             poderJugador = tribusEnemigas.get(tribuSeleccionada);
             //para no batallar contra nuestra misma tribu
             tribusEnemigas.remove(tribuSeleccionada);
@@ -61,10 +63,11 @@ public class Main {
         ventana.matriz1.setDefaultRenderer(Object.class,render);
         
         //mientras queden tribus enemigas por batallar
-        while(tribusEnemigas!=null){
+        while(tribusEnemigas.size()>=1){
             //siempre van a ser los mismos dos grafos/matrices
             //los limpiamos luego de cada batalla
-            
+            vidaEnemigo = 100; // reset babeyy
+            vidaJugador = 100;
             Grafo g = new Grafo(ventana,ventana.matriz);
             grafos.add(g);
             //System.out.println(grafos);
@@ -86,8 +89,8 @@ public class Main {
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(7));
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(8));
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(10));
-            g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(3));
-            g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(1));
+            //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(3));
+            //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(1));
             g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(2));
             g.agregarAristaNave(g.buscarVertice(6), g.buscarVertice(2));
         
@@ -95,16 +98,44 @@ public class Main {
             int abcd = g.pesoAristas();
             g.pesoTotal = abcd;
             
+            int porcentaje = abcd*100/(g.pesoTotal);
+            ventana.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+            vidaJugador = porcentaje; // reseteamos
+            
+            
             Grafo a = new Grafo(ventana,ventana.matriz1);
+            //luego hay que sacarlo por que estamos atacando indice 1
             grafos.add(a);
             a.generarGrafoEnemigo();
             //batallar con la primera
             int abc = a.pesoAristas();
             a.pesoTotal = abc;
             
+            int porcentaje1 = abc*100/(a.pesoTotal);
+            ventana.labelVidaEnemigo.setText(String.valueOf(porcentaje1)+" %");
+            //vidaEnemigo = porcentaje1; // reseteamos
+            
+            g.poderAtaque = poderJugador;
+            Object myKey = tribusEnemigas.keySet().toArray()[0];
+            a.poderAtaque = Integer.valueOf(tribusEnemigas.get(myKey));
+            
+            //mientras tribu enemiga tenga vida... espere
+            while(vidaEnemigo>0){
+                Thread.sleep(2000);
+            }
+            System.out.println("se quedo sin vida!");
+            JOptionPane.showMessageDialog(ventana,"vencio una tribu","warning",JOptionPane.WARNING_MESSAGE);
+            //cuando se salga del while es que ya no tiene vida, seguimos con proxima tribu
+            tribusEnemigas.remove(myKey); // sacamos tribu que ya vencimos y se repite este ciclo
+            Thread.sleep(2000);
+            a.limpiarMatriz();
+            g.limpiarMatriz();
+            grafos.remove(a);
             
         }
         
+        //aca ya vencimos a todas las tribus
+        JOptionPane.showMessageDialog(ventana,"EASY DUB! :)","warning",JOptionPane.WARNING_MESSAGE);
         /*
         Grafo g = new Grafo(ventana,ventana.matriz);
         grafos.add(g);
