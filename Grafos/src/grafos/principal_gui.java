@@ -14,9 +14,13 @@ public class principal_gui extends javax.swing.JFrame {
      */
     ArrayList<String> colaAtaques;
     
+    //para saber cual tribu seleccionó jugador y no dejarlo cambiarla
+    //ArrayList<String> tribuUsuario;
+    
     public principal_gui() {
         initComponents();
         this.labelVidaJugador.setText("100 %");
+        this.labelVidaEnemigo.setText("100 %");
         colaAtaques = new ArrayList<String>();
     }
 
@@ -42,6 +46,12 @@ public class principal_gui extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         bitacora = new javax.swing.JTextArea();
         label_bitacora = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        labelVidaEnemigo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        seleccionTribu = new javax.swing.JTextField();
+        botonOKtribu = new javax.swing.JButton();
+        botonLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,6 +158,39 @@ public class principal_gui extends javax.swing.JFrame {
 
         label_bitacora.setText("Bitacora");
 
+        jLabel2.setText("Vida : ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 106, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 52, Short.MAX_VALUE)
+        );
+
+        seleccionTribu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionTribuActionPerformed(evt);
+            }
+        });
+
+        botonOKtribu.setText("Escoger");
+        botonOKtribu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOKtribuActionPerformed(evt);
+            }
+        });
+
+        botonLimpiar.setText("jButton1");
+        botonLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,26 +211,54 @@ public class principal_gui extends javax.swing.JFrame {
                             .addComponent(botonAtacar)
                             .addGap(18, 18, 18)
                             .addComponent(botonAgregar)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
+                        .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonOKtribu)))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(88, 88, 88)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(botonLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
+                        .addGap(76, 76, 76)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
+                        .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonOKtribu))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -198,13 +269,18 @@ public class principal_gui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonAtacar)
-                            .addComponent(botonAgregar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                            .addComponent(botonAgregar))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonLimpiar)
+                .addGap(69, 69, 69))
         );
 
         pack();
@@ -221,7 +297,7 @@ public class principal_gui extends javax.swing.JFrame {
                 System.out.println("ultimo "+colaAtaques.get(colaAtaques.size()-1));
                 String[] valores = colaAtaques.get(colaAtaques.size()-1).split("");
                 int x = Integer.valueOf(valores[1]);
-                int y = Integer.valueOf(valores[3]);;
+                int y = Integer.valueOf(valores[3]);
                 bitacora.append("\n ---------------- ");
                 bitacora.append("\nAtaque en : ("+String.valueOf(x)+","+String.valueOf(y)+")");
                 
@@ -234,9 +310,12 @@ public class principal_gui extends javax.swing.JFrame {
                 int vidaActual = a.pesoAristas();
                 System.out.println("vida actual: "+vidaActual);
                 System.out.println("vida original: "+a.pesoTotal);
-                //este label de vida iria donde recibimos ataques no donde los hacemos
+                
                 int porcentaje = vidaActual*100/(a.pesoTotal);
-                this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+                this.labelVidaEnemigo.setText(String.valueOf(porcentaje)+" %");
+                //con esta vida se ira midiendo cuando termina una partida / perdemos
+                Main.vidaEnemigo = porcentaje;
+                
                 
                 //recibir misma cantidad de ataques
                 //X , Y aleatorios
@@ -250,8 +329,14 @@ public class principal_gui extends javax.swing.JFrame {
                 bitacora.append("\nAtaque en : ("+String.valueOf(rand)+","+String.valueOf(rand1)+")");
                 
                 int valor1 = Integer.valueOf(this.textField_ataque.getText());
-                bitacora.append("\nValor golpe: "+String.valueOf(valor));
-                b.atacarXY(rand,rand1,valor);
+                bitacora.append("\nValor golpe: "+String.valueOf(valor1));
+                b.atacarXY(rand,rand1,valor1);
+                
+                int vidaActualJugador = b.pesoAristas();
+                int porcentajeJugador = vidaActualJugador*100/(b.pesoTotal);
+                this.labelVidaJugador.setText(String.valueOf(porcentajeJugador)+" %");
+                //con esta vida se ira midiendo cuando termina una partida / perdemos
+                Main.vidaJugador = porcentajeJugador;
                 
             }
             
@@ -264,7 +349,7 @@ public class principal_gui extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         if(colaAtaques.size()<10){
-           String valor = coordenadasAtaque.getText().toString();
+           String valor = coordenadasAtaque.getText();
             this.colaAtaques.add(valor);
             System.out.println("coordenadas "+colaAtaques); 
         }
@@ -273,9 +358,30 @@ public class principal_gui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonAgregarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void seleccionTribuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionTribuActionPerformed
+         
+        
+    }//GEN-LAST:event_seleccionTribuActionPerformed
+
+    private void botonOKtribuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKtribuActionPerformed
+        //si aun no hemos seleccionado tribu...
+        if(Main.tribuSeleccionada==""){
+            Main.tribuSeleccionada = this.seleccionTribu.getText();
+            System.out.println("tribu: "+Main.tribuSeleccionada);
+        }
+        //tribu ya habia sido seleccionada
+        else{
+            JOptionPane.showMessageDialog(this,"Tribu ya fue seleccionada","warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_botonOKtribuActionPerformed
+
+    private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
+        Grafo a = (Grafo) Main.grafos.get(1);
+        a.limpiarMatriz();
+    }//GEN-LAST:event_botonLimpiarActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -312,15 +418,21 @@ public class principal_gui extends javax.swing.JFrame {
     public static javax.swing.JTextArea bitacora;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAtacar;
+    private javax.swing.JButton botonLimpiar;
+    private javax.swing.JButton botonOKtribu;
     private javax.swing.JTextField coordenadasAtaque;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel labelVidaEnemigo;
     private javax.swing.JLabel labelVidaJugador;
     private javax.swing.JLabel label_bitacora;
     public javax.swing.JTable matriz;
     public javax.swing.JTable matriz1;
+    private javax.swing.JTextField seleccionTribu;
     private javax.swing.JTextField textField_ataque;
     // End of variables declaration//GEN-END:variables
 }

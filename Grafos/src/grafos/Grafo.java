@@ -38,6 +38,11 @@ public class Grafo {
     
     //profe
     ArrayList<Vertice> vertices;
+    
+    //para pasarle poder de ataque a atacarXY
+    int poderAtaque;
+    
+    
 
     public Grafo(principal_gui pVentana,JTable pMatriz)
     {
@@ -50,6 +55,7 @@ public class Grafo {
         matriz = pMatriz;
         
         verticesNaves2 = new ArrayList<Integer>();
+        poderAtaque = 0;
     }
     public void imprimir2(){
         for (Vertice vert : vertices){
@@ -90,6 +96,33 @@ public class Grafo {
           matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
           matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
         }
+            
+    }
+    
+    //limpia la matriz del enemigo y deja vertices en blanco
+    public void limpiarMatriz()
+    {
+        for(Vertice v : this.vertices){
+            int total = this.vertices.size();
+            while(total>0){
+              matriz.getModel().setValueAt("", v.dato-1, total);  
+              total--;
+            }
+            //eliminar todas las aristas (limpiar los vertices)
+            for (Iterator<Vertice> iterator = v.aristas.iterator(); iterator.hasNext();) 
+            {
+                Vertice arista = iterator.next();
+                iterator.remove();
+                //v.aristas.remove(arista);
+            }
+        }
+        System.out.println("\n ----- grafo limpio : -----------------");
+        this.imprimir3();
+        System.out.println("\n --------------------------------------\n");
+        
+        
+          
+        
             
     }
     /*
