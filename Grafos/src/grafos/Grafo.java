@@ -15,6 +15,10 @@ import modelo.Tribu;
 public class Grafo {
     //para usar al calcular % de vida
     int pesoTotal;
+    
+    //para calcular su vida restante ej: 100 , 73 , 24, 0 (el propio numero)
+    int vidaGrafo;
+    
     //recibe ventana
     principal_gui ventana;
     
@@ -56,6 +60,8 @@ public class Grafo {
         
         verticesNaves2 = new ArrayList<Integer>();
         poderAtaque = 0;
+        
+        vidaGrafo=0;
     }
     public void imprimir2(){
         for (Vertice vert : vertices){

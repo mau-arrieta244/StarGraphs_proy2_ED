@@ -19,8 +19,8 @@ public class principal_gui extends javax.swing.JFrame {
     
     public principal_gui() {
         initComponents();
-        this.labelVidaJugador.setText("100 %");
-        this.labelVidaEnemigo.setText("100 %");
+        //this.labelVidaJugador.setText("100 %");
+        //this.labelVidaEnemigo.setText("100 %");
         colaAtaques = new ArrayList<String>();
     }
 
@@ -299,10 +299,68 @@ public class principal_gui extends javax.swing.JFrame {
         
         if(colaAtaques!=null){
             while(colaAtaques.size()>0){
-                System.out.println("ultimo "+colaAtaques.get(colaAtaques.size()-1));
+                //System.out.println("ultimo "+colaAtaques.get(colaAtaques.size()-1));
+                // (1,2)      (10,4)     (2,21)    (21,22)
                 String[] valores = colaAtaques.get(colaAtaques.size()-1).split("");
-                int x = Integer.valueOf(valores[1]);
-                int y = Integer.valueOf(valores[3]);
+                System.out.println(valores.length+"  longitud biatch!");
+                //   (5,7) lenght = 5
+                if(valores.length == 5){
+                   int x = Integer.valueOf(valores[1]);
+                   int y = Integer.valueOf(valores[3]); 
+                   atacar(x,y);
+                }
+                //    (3,21)   o   (12,4)
+                else if(valores.length == 6){
+                    System.out.println(valores[2]+"    valores [2]");
+                             
+                    //caso 1 (4,25)
+                    if(valores[2].equals(",")){
+                       
+                       int x = Integer.valueOf(valores[1]);
+                       String numero = valores[3]+valores[4];
+                       int y = Integer.valueOf(numero); 
+                       atacar(x,y);
+                    }
+                    //caso 2  (23,4)
+                    else{
+                        
+                       String numero = valores[1]+valores[2];
+                       int x = Integer.valueOf(numero); 
+                       int y = Integer.valueOf(valores[4]);
+                       atacar(x,y);  
+                    }
+                }
+                
+                // ej: (23,30)
+                else{
+                   String numeroX = valores[1]+valores[2]; 
+                   String numeroY = valores[4]+valores[5];
+                   
+                   int x = Integer.valueOf(numeroX); 
+                   int y = Integer.valueOf(numeroY);
+                   
+                   atacar(x,y);
+                }
+                
+                
+                
+                
+            }
+            
+            
+        }
+        
+        
+                
+    }//GEN-LAST:event_botonAtacarActionPerformed
+
+    private void atacar(int x,int y){
+        //aca poner el grafo enemigo
+        Grafo a = (Grafo) Main.grafos.get(1);
+        //nuestro grafo
+        Grafo b = (Grafo) Main.grafos.get(0);
+        //int x = Integer.valueOf(valores[1]);
+                //int y = Integer.valueOf(valores[3]);
                 bitacora.append("\n ---------------- ");
                 bitacora.append("\nAtaque en : ("+String.valueOf(x)+","+String.valueOf(y)+")");
                 
@@ -319,7 +377,7 @@ public class principal_gui extends javax.swing.JFrame {
                 int porcentaje = vidaActual*100/(a.pesoTotal);
                 this.labelVidaEnemigo.setText(String.valueOf(porcentaje)+" %");
                 //con esta vida se ira midiendo cuando termina una partida / perdemos
-                Main.vidaEnemigo = porcentaje;
+                a.vidaGrafo = porcentaje;
                 
                 
                 //recibir misma cantidad de ataques
@@ -340,20 +398,14 @@ public class principal_gui extends javax.swing.JFrame {
                 int vidaActualJugador = b.pesoAristas();
                 int porcentajeJugador = vidaActualJugador*100/(b.pesoTotal);
                 this.labelVidaJugador.setText(String.valueOf(porcentajeJugador)+" %");
+                b.vidaGrafo = porcentajeJugador;
                 //con esta vida se ira midiendo cuando termina una partida / perdemos
                 //Main.vidaJugador = porcentajeJugador;
-                
-                
-                
-            }
-            
-            
-        }
-        
-        
-                
-    }//GEN-LAST:event_botonAtacarActionPerformed
-
+    }
+    
+    
+    
+    
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         if(colaAtaques.size()<10){
            String valor = coordenadasAtaque.getText();

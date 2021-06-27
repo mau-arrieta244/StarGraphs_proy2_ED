@@ -28,8 +28,8 @@ public class Main {
     public static int poderJugador =0;
    
     //ambos empiezan con 100 de vida, se va a ir ajustando conforme pierdan vida
-    public static int vidaJugador = 100;
-    public static int vidaEnemigo = 100;
+    //public static int vidaJugador = 100;
+    //public static int vidaEnemigo = 100;
     
     //condicion de parada, se detendra cuando terminamos el juego totalmente
     //public static boolean condicion;
@@ -64,10 +64,16 @@ public class Main {
         
         //mientras queden tribus enemigas por batallar
         while(tribusEnemigas.size()>=1){
-            //siempre van a ser los mismos dos grafos/matrices
-            //los limpiamos luego de cada batalla
-            vidaEnemigo = 100; // reset babeyy
-            vidaJugador = 100;
+            //siempre van a ser las mismas matrices, pero diferentes grafos en cada batalla
+            //limpiamos matrices cada batalla
+            
+            //tal vez  ni sean necesarios
+            //vidaEnemigo = 100; // reset babeyy
+            //vidaJugador = 100;
+            
+            //ventana.labelVidaJugador.setText("100 %");
+            //ventana.labelVidaEnemigo.setText("100 %");
+        
             Grafo g = new Grafo(ventana,ventana.matriz);
             grafos.add(g);
             //System.out.println(grafos);
@@ -89,8 +95,6 @@ public class Main {
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(7));
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(8));
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(10));
-            //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(3));
-            //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(1));
             g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(2));
             g.agregarAristaNave(g.buscarVertice(6), g.buscarVertice(2));
         
@@ -99,8 +103,8 @@ public class Main {
             g.pesoTotal = abcd;
             
             int porcentaje = abcd*100/(g.pesoTotal);
-            ventana.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
-            vidaJugador = porcentaje; // reseteamos
+            ventana.labelVidaJugador.setText(String.valueOf(porcentaje)+" % aaaa yes");
+            g.vidaGrafo = porcentaje; // estaba en 0, le ponemos valor correcto
             
             
             Grafo a = new Grafo(ventana,ventana.matriz1);
@@ -113,6 +117,7 @@ public class Main {
             
             int porcentaje1 = abc*100/(a.pesoTotal);
             ventana.labelVidaEnemigo.setText(String.valueOf(porcentaje1)+" %");
+            a.vidaGrafo = porcentaje1;
             //vidaEnemigo = porcentaje1; // reseteamos
             
             g.poderAtaque = poderJugador;
@@ -120,22 +125,25 @@ public class Main {
             a.poderAtaque = Integer.valueOf(tribusEnemigas.get(myKey));
             
             //mientras tribu enemiga tenga vida... espere
-            while(vidaEnemigo>0){
+            while(a.vidaGrafo>0){
                 Thread.sleep(2000);
             }
             System.out.println("se quedo sin vida!");
-            JOptionPane.showMessageDialog(ventana,"vencio una tribu","warning",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(ventana,"Vencio tribu: "+myKey.toString(),"info",JOptionPane.INFORMATION_MESSAGE);
             //cuando se salga del while es que ya no tiene vida, seguimos con proxima tribu
             tribusEnemigas.remove(myKey); // sacamos tribu que ya vencimos y se repite este ciclo
             Thread.sleep(2000);
             a.limpiarMatriz();
             g.limpiarMatriz();
+            
+            //sacar ambos
+            grafos.remove(g);
             grafos.remove(a);
             
         }
         
         //aca ya vencimos a todas las tribus
-        JOptionPane.showMessageDialog(ventana,"EASY DUB! :)","warning",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(ventana,"Victoria! Has conquistado la Galaxia","info",JOptionPane.INFORMATION_MESSAGE);
         /*
         Grafo g = new Grafo(ventana,ventana.matriz);
         grafos.add(g);
