@@ -716,6 +716,40 @@ public class Grafo {
     }
     
     public void ingresoManual(){
+        
+        this.agregarVertice(1);
+        this.agregarVertice(2);
+        this.agregarVertice(3);
+        this.agregarVertice(4);
+        this.agregarVertice(5);
+        this.agregarVertice(6);
+        this.agregarVertice(7);
+        this.agregarVertice(8);
+        this.agregarVertice(9);
+        this.agregarVertice(10);
+            
+        this.agregarVertice(11);
+        this.agregarVertice(12);
+        this.agregarVertice(13);
+        this.agregarVertice(14);
+        this.agregarVertice(15);
+        this.agregarVertice(16);
+        this.agregarVertice(17);
+        this.agregarVertice(18);
+        this.agregarVertice(19);
+        this.agregarVertice(20);
+            
+        this.agregarVertice(21);
+        this.agregarVertice(22);
+        this.agregarVertice(23);
+        this.agregarVertice(24);
+        this.agregarVertice(25);
+        this.agregarVertice(26);
+        this.agregarVertice(27);
+        this.agregarVertice(28);
+        this.agregarVertice(29);
+        this.agregarVertice(30);
+            
         System.out.println("\n------------------------------");
         System.out.println("Digite cantidad de fuentes de poder: ");
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object

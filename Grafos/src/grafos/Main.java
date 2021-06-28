@@ -79,6 +79,7 @@ public class Main {
             Grafo g = new Grafo(ventana,ventana.matriz);
             grafos.add(g);
             //System.out.println(grafos);
+            /*
             g.agregarVertice(1);
             g.agregarVertice(2);
             g.agregarVertice(3);
@@ -111,7 +112,7 @@ public class Main {
             g.agregarVertice(28);
             g.agregarVertice(29);
             g.agregarVertice(30);
-            
+            */
             //mientras no se haya indicado si meter aristas manual o aleatorio.. espere
             while(g.ingresoDatos==false){
                 Thread.sleep(2000);
@@ -124,18 +125,7 @@ public class Main {
                 g.ingresoManual();
             }
             
-            //g.agregarFuentePoder(2);
-            /*
-            g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
-            g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
-            g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(7));
-            g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(8));
-            g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(10));
-            g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(2));
-            g.agregarAristaNave(g.buscarVertice(6), g.buscarVertice(2));
-        */
-            //g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
-            //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
+            
             
             int abcd = g.pesoAristas();
             g.pesoTotal = abcd;
@@ -172,8 +162,11 @@ public class Main {
             //cuando se salga del while es que ya no tiene vida, seguimos con proxima tribu
             tribusEnemigas.remove(myKey); // sacamos tribu que ya vencimos y se repite este ciclo
             Thread.sleep(2000);
+            //g.vertices.clear();
+            //a.vertices.clear();
             a.limpiarMatriz();
             g.limpiarMatriz();
+            
             
             //sacar ambos
             grafos.remove(g);
