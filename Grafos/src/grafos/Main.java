@@ -4,9 +4,11 @@
  */
 
 package grafos;
+import control.admTribus;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import modelo.Tribu;
 
 /**
  *
@@ -22,10 +24,11 @@ public class Main {
     //escogemos una y esta la tendremos hasta el final del juego
     public static String tribuSeleccionada= "";
     //tribus enemigas seran todas las otras (String,poder ataque)
-    public static HashMap<String, Integer> tribusEnemigas = new HashMap<String, Integer>();
+    public static HashMap<String, Double> hashTribus = new HashMap<String, Double>();
     
+    public static admTribus controlTribus = new admTribus(hashTribus);
     //nuestro poder de ataque, está acá para que ventan.atacarXY lo pueda acceder
-    public static int poderJugador =0;
+    public static double poderJugador =0;
    
     //ambos empiezan con 100 de vida, se va a ir ajustando conforme pierdan vida
     //public static int vidaJugador = 100;
@@ -35,11 +38,25 @@ public class Main {
     //public static boolean condicion;
     
     public static void main(String[] args) throws InterruptedException {
+
+        //-----------Creación de las tribus e enfrentamiento---------------------
+        //Esta lista permite llevar dentro de un arraylist los nombres de todas las tribus
+        //para asi ir descartando las que ya se usarion
+        ArrayList<String> nombresTribus = controlTribus.crearArrayListNombres();
+        //Se indica la tribu del jugador.
+        Tribu tribuJugador = controlTribus.crearTribu("clon");
+        Tribu tribuEnemigo;
+        tribuEnemigo  = controlTribus.crearTribus(tribuJugador, nombresTribus);
+        //Al comienzo se generan dos tribus, la del jugador y la de un enemigo.
+        //Cuando se quiere hacer otro enfrentamiento, primero se debe actualizar
+        //la fuerza y los poderes de la tribu del jugador y posteriormente, 
+        //llamar a la funcion crearTribus2 para asi crear una nueva tribu enemiga
+        //y llevar a cabo el enfrentamiento. Es importante cambiar /
         
-        //condicion = true;
-        tribusEnemigas.put("Clones", 24);
-        tribusEnemigas.put("Teek", 71);
-        tribusEnemigas.put("Sullustanos", 131);
+        //Nota: falta ver como se va a evolucionar la tribu del jugador.
+        //tribuEnemigo = controlTribus.crearTribus2(tribuJugador, tribuEnemigo, nombresTribus);
+        
+        //------------------------------------------------------------------------
         
         principal_gui ventana =  new principal_gui();
         ventana.setVisible(true);
@@ -49,12 +66,12 @@ public class Main {
             Thread.sleep(2000);
         }
         
-        if(tribusEnemigas.containsKey(tribuSeleccionada)){
+        if(hashTribus.containsKey(tribuSeleccionada)){
             
             //seteamos poder de nuestro ataque
-            poderJugador = tribusEnemigas.get(tribuSeleccionada);
+            poderJugador = hashTribus.get(tribuSeleccionada);
             //para no batallar contra nuestra misma tribu
-            tribusEnemigas.remove(tribuSeleccionada);
+            hashTribus.remove(tribuSeleccionada);
         }
         
         //para rellenar celdas con colores si tienen cierto valor
@@ -65,7 +82,7 @@ public class Main {
         //ventana.matriz1.setDefaultRenderer(Object.class,render);
         
         //mientras queden tribus enemigas por batallar
-        while(tribusEnemigas.size()>=1){
+        while(hashTribus.size()>=1){
             //siempre van a ser las mismas matrices, pero diferentes grafos en cada batalla
             //limpiamos matrices cada batalla
             
@@ -146,8 +163,8 @@ public class Main {
             //vidaEnemigo = porcentaje1; // reseteamos
             
             g.poderAtaque = poderJugador;
-            Object myKey = tribusEnemigas.keySet().toArray()[0];
-            a.poderAtaque = Integer.valueOf(tribusEnemigas.get(myKey));
+            Object myKey = hashTribus.keySet().toArray()[0];
+            a.poderAtaque = Double.valueOf(hashTribus.get(myKey));
             
             //mientras tribu enemiga tenga vida... espere
             while(a.vidaGrafo>0){
@@ -156,7 +173,7 @@ public class Main {
             System.out.println("se quedo sin vida!");
             JOptionPane.showMessageDialog(ventana,"Vencio tribu: "+myKey.toString(),"info",JOptionPane.INFORMATION_MESSAGE);
             //cuando se salga del while es que ya no tiene vida, seguimos con proxima tribu
-            tribusEnemigas.remove(myKey); // sacamos tribu que ya vencimos y se repite este ciclo
+            hashTribus.remove(myKey); // sacamos tribu que ya vencimos y se repite este ciclo
             Thread.sleep(2000);
             a.limpiarMatriz();
             g.limpiarMatriz();

@@ -5,9 +5,7 @@ package grafos;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.Scanner;
 import javax.swing.JTable;
-import modelo.Tribu;
 /**
  *
  * @author dmora
@@ -44,7 +42,7 @@ public class Grafo {
     ArrayList<Vertice> vertices;
     
     //para pasarle poder de ataque a atacarXY
-    int poderAtaque;
+    double poderAtaque;
     
     
 
@@ -159,7 +157,7 @@ public class Grafo {
        
     }
     */
-    public void atacarXY(int x,int y,int golpe){
+    public void atacarXY(int x,int y,double golpe){
         
         //obtiene lo que haya en GUI en ese punto X,Y
         //String valor = ventana.matriz.getModel().getValueAt(x-1, y).toString();
@@ -190,7 +188,7 @@ public class Grafo {
         
         
     }
-    public void atacarXYSoldado(int x,int y,int golpe){
+    public void atacarXYSoldado(int x,int y,double golpe){
         
         for (Vertice v : vertices){
             if(v.dato == x){
@@ -331,8 +329,7 @@ public class Grafo {
             } //fin de lo nuevo
     }
     
-    public void atacarXYNave(int x,int y,int golpe){
-        
+    public void atacarXYNave(int x,int y,double golpe){
         for (Vertice v : vertices){
             if(v.dato == x){
                 //ocupamos iterador para quitar arista de arrayList mientras lo recorremos
@@ -847,380 +844,5 @@ public class Grafo {
     //==========================================================================
     //==========================================================================
     //==========================================================================
-    
-    public Tribu crearTribu(String nombreTribu){
-        Tribu tribu;
-        if(nombreTribu.equalsIgnoreCase("clon")){
-            //Cantidad
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 100; 
-            tribu.getArray() [1] = 5; 
-            tribu.getArray() [2] = 5; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 0; 
-            tribu.getArray() [5] = 5; 
-            tribu.getArray() [6] = 10; 
-            tribu.getArray() [7] = 20; 
-            return tribu;  
-        }
-        else if(nombreTribu.equalsIgnoreCase("ewok")){
-            //Cantidad
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 80; 
-            tribu.getArray() [1] = 5; 
-            tribu.getArray() [2] = 5; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 0; 
-            tribu.getArray() [5] = 50; 
-            tribu.getArray() [6] = 0; 
-            tribu.getArray() [7] = 20; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("gungan")){
-            //Infanteria
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 30; 
-            tribu.getArray() [1] = 20; 
-            tribu.getArray() [2] = 45; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 60; 
-            tribu.getArray() [5] = 0; 
-            tribu.getArray() [6] = 55; 
-            tribu.getArray() [7] = 10; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("hutt")){
-            //Riqueza
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 10; 
-            tribu.getArray() [1] = 10; 
-            tribu.getArray() [2] = 40; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 90; 
-            tribu.getArray() [5] = 10; 
-            tribu.getArray() [6] = 50; 
-            tribu.getArray() [7] = 0; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("jawa")){
-            //Sigilo
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 50; 
-            tribu.getArray() [1] = 20; 
-            tribu.getArray() [2] = 50; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 50; 
-            tribu.getArray() [5] = 80; 
-            tribu.getArray() [6] = 50; 
-            tribu.getArray() [7] = 5; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("mandalorian")){
-            //Infanteria
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 10; 
-            tribu.getArray() [1] = 25; 
-            tribu.getArray() [2] = 90; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 20; 
-            tribu.getArray() [5] = 60; 
-            tribu.getArray() [6] = 70; 
-            tribu.getArray() [7] = 50; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("nightsister")){
-            //Lado oscuro
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 0; 
-            tribu.getArray() [1] = 50; 
-            tribu.getArray() [2] = 20; 
-            tribu.getArray() [3] = 50; 
-            tribu.getArray() [4] = 0; 
-            tribu.getArray() [5] = 40; 
-            tribu.getArray() [6] = 10; 
-            tribu.getArray() [7] = 40; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("sullustano")){
-            //Tecnologia
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 30; 
-            tribu.getArray() [1] = 10; 
-            tribu.getArray() [2] = 80; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 80; 
-            tribu.getArray() [5] = 20; 
-            tribu.getArray() [6] = 85; 
-            tribu.getArray() [7] = 10; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("teek")){
-            //Velocidad
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 20; 
-            tribu.getArray() [1] = 20; 
-            tribu.getArray() [2] = 0; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 0; 
-            tribu.getArray() [5] = 80; 
-            tribu.getArray() [6] = 0; 
-            tribu.getArray() [7] = 80; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("weekquay")){
-            //Sigilo
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 40; 
-            tribu.getArray() [1] = 40; 
-            tribu.getArray() [2] = 35; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 40; 
-            tribu.getArray() [5] = 80; 
-            tribu.getArray() [6] = 30; 
-            tribu.getArray() [7] = 20; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("wookie")){
-            //Fuerza
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 20; 
-            tribu.getArray() [1] = 80; 
-            tribu.getArray() [2] = 25; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 80; 
-            tribu.getArray() [5] = 5; 
-            tribu.getArray() [6] = 30; 
-            tribu.getArray() [7] = 40; 
-            return tribu;
-        }
-        else if(nombreTribu.equalsIgnoreCase("yuuzhanvong")){
-            //Tecnologia
-            tribu = new Tribu();
-            tribu.setNombre(nombreTribu);
-            tribu.getArray() [0] = 20; 
-            tribu.getArray() [1] = 15; 
-            tribu.getArray() [2] = 80; 
-            tribu.getArray() [3] = 0; 
-            tribu.getArray() [4] = 50; 
-            tribu.getArray() [5] = 10; 
-            tribu.getArray() [6] = 90; 
-            tribu.getArray() [7] = 40; 
-            return tribu;
-        }
-        return null;     
-    }
-    public int generadorAleatorio(){
-        return (int)(Math.random() * 101); 
-    }
-    public void ajustarCantidad(Tribu tribu){
-        if(tribu.getArray() [0] >= generadorAleatorio()){
-            int nCantidad = (int)(Math.random() * 9) + 2;
-            tribu.getArray() [0] = nCantidad;
-            System.out.println("Cantidad : " + tribu.getArray() [0]);
-        }
-        else{
-            tribu.getArray() [0] = 1;
-            System.out.println("Cantidad : " + tribu.getArray() [0]);
-        }
-    }
-    public void ajustarInfanteria(Tribu tribu){
-        if(tribu.getArray() [2] == generadorAleatorio()){
-            int numGenerado = (int)(Math.random() * 3) + 2;
-            tribu.getArray() [2] = numGenerado;
-            System.out.println("Infanteria : " + tribu.getArray() [2]);
-        }
-        else{
-            tribu.getArray() [2] = 1;
-            System.out.println("Infanteria : " + tribu.getArray() [2]);
-        }
-    }
-    public boolean ajustarRiqueza(Tribu tribu){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el atributo que quiere aumentar segun la riqueza: " + tribu.getArray() [4]);
-        String atributo = scanner.nextLine();
-        if(atributo.equalsIgnoreCase("cantidad")){
-            tribu.getArray() [0] += tribu.getArray() [4];
-        }
-        else if(atributo.equalsIgnoreCase("fuerza")){
-            tribu.getArray() [1] += tribu.getArray() [4];
-        }
-        else if(atributo.equalsIgnoreCase("infanteria")){
-            tribu.getArray() [2] += tribu.getArray() [4];
-        }
-        else if(atributo.equalsIgnoreCase("lado oscuro")){
-            tribu.getArray() [3] += tribu.getArray() [4];
-        }
-        else if(atributo.equalsIgnoreCase("riqueza")){
-            System.out.println("No puede seleccionar riqueza.");
-            return false;
-        }
-        else if(atributo.equalsIgnoreCase("sigilo")){
-            tribu.getArray() [5] += tribu.getArray() [4];
-        }
-        else if(atributo.equalsIgnoreCase("tecnologia")){
-            tribu.getArray() [6] += tribu.getArray() [4];
-        }
-        else if(atributo.equalsIgnoreCase("velocidad")){
-            tribu.getArray() [7] += tribu.getArray() [4];
-        }
-        else{
-            System.out.println("El atributo ingresado no existe.");
-            return false;
-        }
-        return true;
-    }
-    public boolean ajustarSigilo(Tribu tribu1, Tribu tribu2){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el atributo que quiere disminuir segun el sigilo: " + tribu1.getArray() [5]);
-        String atributo = scanner.nextLine();
-        if(atributo.equalsIgnoreCase("cantidad")){
-            tribu2.getArray() [0] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("fuerza")){
-            tribu2.getArray() [1] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("infanteria")){
-            tribu2.getArray() [2] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("lado oscuro")){
-            tribu2.getArray() [3] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("riqueza")){
-            tribu2.getArray() [4] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("sigilo")){
-            tribu2.getArray() [5] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("tecnologia")){
-            tribu2.getArray() [6] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("velocidad")){
-            tribu2.getArray() [7] -= tribu1.getArray() [5];
-        }
-        else{
-            System.out.println("El atributo ingresado no existe.");
-            return false;
-        }
-        return true;
-    }
-    public boolean ajustarTecnologia(Tribu tribu){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el atributo que quiere aumentar segun la tecnologia: " + tribu.getArray() [6]);
-        String atributo = scanner.nextLine();
-        if(atributo.equalsIgnoreCase("cantidad")){
-            tribu.getArray() [0] += tribu.getArray() [6];
-        }
-        else if(atributo.equalsIgnoreCase("fuerza")){
-            tribu.getArray() [1] += tribu.getArray() [6];
-        }
-        else if(atributo.equalsIgnoreCase("infanteria")){
-            tribu.getArray() [2] += tribu.getArray() [6];
-        }
-        else if(atributo.equalsIgnoreCase("lado oscuro")){
-            tribu.getArray() [3] += tribu.getArray() [6];
-        }
-        else if(atributo.equalsIgnoreCase("riqueza")){
-            tribu.getArray() [4] += tribu.getArray() [6];
-        }
-        else if(atributo.equalsIgnoreCase("sigilo")){
-            tribu.getArray() [5] += tribu.getArray() [6];
-        }
-        else if(atributo.equalsIgnoreCase("tecnologia")){
-            System.out.println("No puede seleccionar tecnologia.");
-            return false;
-        }
-        else if(atributo.equalsIgnoreCase("velocidad")){
-            tribu.getArray() [7] += tribu.getArray() [6];
-        }
-        else{
-            System.out.println("El atributo ingresado no existe.");
-            return false;
-        }
-        return true;
-    }
-    public void ajustarPoderes(Tribu tribu1, Tribu tribu2){
-        ajustarCantidad(tribu1);
-        //Fuerza no ocupa modificacion
-        ajustarInfanteria(tribu1);
-        //Lado oscuro no ocupa modificacion
-        boolean valorRiqueza = ajustarRiqueza(tribu1);
-        while(valorRiqueza == false){
-            valorRiqueza = ajustarRiqueza(tribu1);
-        }
-        boolean valorSigilo = ajustarSigilo(tribu1, tribu2);
-        while(valorSigilo == false){
-            valorSigilo = ajustarRiqueza(tribu1);
-        }
-        boolean valorTecnologia = ajustarTecnologia(tribu1);
-        while(valorTecnologia == false){
-            valorTecnologia = ajustarTecnologia(tribu1);
-        }
-        //La velocidad no ocupa modificacion.
-    }
-    public double determinarGolpe(Tribu tribu){
-        double porcentajeLadoOscuro = 1;
-        double porcentajeVelocidad;
-        double golpe;
-        //Solo el numPorcentaje se usa en nightsisters.
-        if(tribu.getArray() [3] != 0){
-            porcentajeLadoOscuro = 1 + (tribu.getArray() [3] / 100);
-        }
-        System.out.println(porcentajeLadoOscuro);
-        porcentajeVelocidad = 1 + (tribu.getArray() [7] * 1.0 / 100 * 1.0);
-        System.out.println(porcentajeVelocidad);
-        golpe = ((tribu.getArray() [0] * tribu.getArray() [1]) * 
-                porcentajeVelocidad * porcentajeLadoOscuro) * tribu.getArray() [2];
-        return golpe;
-    }
-    public void imprimirAtributos(Tribu tribu){
-        System.out.println(tribu.getNombre());
-        System.out.println("Cantidad: " +tribu.getArray() [0]);
-        System.out.println("Fuerza: " +tribu.getArray() [1]);
-        System.out.println("Infanteria: " +tribu.getArray() [2]);
-        System.out.println("Lado oscuro: " +tribu.getArray() [3]);
-        System.out.println("Riqueza: " +tribu.getArray() [4]);
-        System.out.println("Sigilo: " +tribu.getArray() [5]);
-        System.out.println("Tecnologia: " +tribu.getArray() [6]);
-        System.out.println("Velocidad: " + tribu.getArray() [7]);
-        System.out.println("Fuerza: " + determinarGolpe(tribu));
-        
-    }
-    
-    
-    //Falta iniciar poderes de la tribu 2.    
-    //Posteriormente, se eliminaran los parametros al integrar la GUI
-    public void iniciarPoderes(String nombre1, String nombre2){
-        Tribu tribu1 = crearTribu(nombre1);
-        if(tribu1 != null){
-            System.out.println("Tribu " + nombre1 + "generada.");
-            Tribu tribu2 = crearTribu(nombre2);
-            if(tribu2 != null){
-                System.out.println("Tribu " + nombre2 + "generada.");
-                System.out.println(tribu1);
-                System.out.println(tribu2);
-                ajustarPoderes(tribu1, tribu2);
-                System.out.println("\n");
-                imprimirAtributos(tribu1);
-                System.out.println("\n");
-                imprimirAtributos(tribu2);
-            }
-            else{
-                System.out.println("El nombre de la tribu 2 no existe.");
-            }
-        }
-        else{
-            System.out.println("El nombre de la tribu 1 no existe.");
-        }
-    }
+
 }
