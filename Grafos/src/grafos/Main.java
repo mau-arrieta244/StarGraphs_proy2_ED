@@ -60,7 +60,9 @@ public class Main {
         //para rellenar celdas con colores si tienen cierto valor
         TableColorCellRenderer render = new TableColorCellRenderer();
         ventana.matriz.setDefaultRenderer(Object.class,render);
-        ventana.matriz1.setDefaultRenderer(Object.class,render);
+        
+        //si queremos que no se rellene matriz con color (se mantenga escondida)
+        //ventana.matriz1.setDefaultRenderer(Object.class,render);
         
         //mientras queden tribus enemigas por batallar
         while(tribusEnemigas.size()>=1){
@@ -88,6 +90,28 @@ public class Main {
             g.agregarVertice(9);
             g.agregarVertice(10);
             
+            g.agregarVertice(11);
+            g.agregarVertice(12);
+            g.agregarVertice(13);
+            g.agregarVertice(14);
+            g.agregarVertice(15);
+            g.agregarVertice(16);
+            g.agregarVertice(17);
+            g.agregarVertice(18);
+            g.agregarVertice(19);
+            g.agregarVertice(20);
+            
+            g.agregarVertice(21);
+            g.agregarVertice(22);
+            g.agregarVertice(23);
+            g.agregarVertice(24);
+            g.agregarVertice(25);
+            g.agregarVertice(26);
+            g.agregarVertice(27);
+            g.agregarVertice(28);
+            g.agregarVertice(29);
+            g.agregarVertice(30);
+            
             g.agregarFuentePoder(2);
         
             g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
@@ -111,6 +135,7 @@ public class Main {
             //luego hay que sacarlo por que estamos atacando indice 1
             grafos.add(a);
             a.generarGrafoEnemigo();
+            //a.esconderMatriz();
             //batallar con la primera
             int abc = a.pesoAristas();
             a.pesoTotal = abc;
