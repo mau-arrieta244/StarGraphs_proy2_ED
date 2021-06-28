@@ -112,6 +112,11 @@ public class Main {
             g.agregarVertice(29);
             g.agregarVertice(30);
             
+            //mientras no se haya indicado si meter aristas manual o aleatorio.. espere
+            while(g.ingresoDatos==false){
+                Thread.sleep(2000);
+            }
+            
             g.agregarFuentePoder(2);
         
             g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
@@ -127,7 +132,7 @@ public class Main {
             g.pesoTotal = abcd;
             
             int porcentaje = abcd*100/(g.pesoTotal);
-            ventana.labelVidaJugador.setText(String.valueOf(porcentaje)+" % aaaa yes");
+            ventana.labelVidaJugador.setText(String.valueOf(porcentaje)+" % ");
             g.vidaGrafo = porcentaje; // estaba en 0, le ponemos valor correcto
             
             

@@ -46,6 +46,9 @@ public class Grafo {
     //para pasarle poder de ataque a atacarXY
     int poderAtaque;
     
+    //para saber si vamos a ingresar aristas manualmente o aleatorias
+    boolean ingresoDatos;
+    
     
 
     public Grafo(principal_gui pVentana,JTable pMatriz)
@@ -62,6 +65,9 @@ public class Grafo {
         poderAtaque = 0;
         
         vidaGrafo=0;
+        
+        
+        ingresoDatos = false;
     }
     public void imprimir2(){
         for (Vertice vert : vertices){
