@@ -15,6 +15,10 @@ import modelo.Tribu;
 public class Grafo {
     //para usar al calcular % de vida
     int pesoTotal;
+    
+    //para calcular su vida restante ej: 100 , 73 , 24, 0 (el propio numero)
+    int vidaGrafo;
+    
     //recibe ventana
     principal_gui ventana;
     
@@ -38,6 +42,11 @@ public class Grafo {
     
     //profe
     ArrayList<Vertice> vertices;
+    
+    //para pasarle poder de ataque a atacarXY
+    int poderAtaque;
+    
+    
 
     public Grafo(principal_gui pVentana,JTable pMatriz)
     {
@@ -50,6 +59,9 @@ public class Grafo {
         matriz = pMatriz;
         
         verticesNaves2 = new ArrayList<Integer>();
+        poderAtaque = 0;
+        
+        vidaGrafo=0;
     }
     public void imprimir2(){
         for (Vertice vert : vertices){
@@ -90,6 +102,55 @@ public class Grafo {
           matriz.getModel().setValueAt(".", origen.dato-1, destino.dato);
           matriz.getModel().setValueAt(".", destino.dato-1,origen.dato);
         }
+            
+    }
+    
+    //limpia la matriz  y deja vertices del grafo en blanco
+    public void limpiarMatriz()
+    {
+        for(Vertice v : this.vertices){
+            int total = this.vertices.size();
+            while(total>0){
+              matriz.getModel().setValueAt("", v.dato-1, total);  
+              total--;
+            }
+            //eliminar todas las aristas (limpiar los vertices)
+            for (Iterator<Vertice> iterator = v.aristas.iterator(); iterator.hasNext();) 
+            {
+                Vertice arista = iterator.next();
+                iterator.remove();
+                //v.aristas.remove(arista);
+            }
+        }
+        System.out.println("\n ----- grafo limpio : -----------------");
+        this.imprimir3();
+        System.out.println("\n --------------------------------------\n");
+        
+        
+          
+        
+            
+    }
+    
+    
+    //limpia la matriz del enemigo en GUI pero deja los vertices como están
+    public void esconderMatriz()
+    {
+        for(Vertice v : this.vertices){
+            int total = this.vertices.size();
+            while(total>0){
+              matriz.getModel().setValueAt("", v.dato-1, total);  
+              total--;
+            }
+            
+        }
+        System.out.println("\n ----- grafo limpio : -----------------");
+        this.imprimir3();
+        System.out.println("\n --------------------------------------\n");
+        
+        
+          
+        
             
     }
     /*
@@ -376,13 +437,35 @@ public class Grafo {
         this.agregarVertice(9);
         this.agregarVertice(10);
         
+        this.agregarVertice(11);
+        this.agregarVertice(12);
+        this.agregarVertice(13);
+        this.agregarVertice(14);
+        this.agregarVertice(15);
+        this.agregarVertice(16);
+        this.agregarVertice(17);
+        this.agregarVertice(18);
+        this.agregarVertice(19);
+        this.agregarVertice(20);
+        
+        this.agregarVertice(21);
+        this.agregarVertice(22);
+        this.agregarVertice(23);
+        this.agregarVertice(24);
+        this.agregarVertice(25);
+        this.agregarVertice(26);
+        this.agregarVertice(27);
+        this.agregarVertice(28);
+        this.agregarVertice(29);
+        this.agregarVertice(30);
+        
         //meter fuentes de poder , cuantas? cant. aleatoria entre un rango
         Random r1 = new Random();
         int random1 = r1.nextInt(3-1)+1;
         
         while(random1>0){
             Random r2 = new Random();
-            int random2 = r2.nextInt(10-2)+2;
+            int random2 = r2.nextInt(30-2)+2;
             this.agregarFuentePoder(random2);
             verticesEnemigo.add(random2);
             random1--;
@@ -399,7 +482,7 @@ public class Grafo {
             int random4 = verticesEnemigo.get(r4.nextInt(verticesEnemigo.size()));
             //destino aleatorio
             Random r5 = new Random();
-            int random5 = r5.nextInt(11-1)+1;
+            int random5 = r5.nextInt(31-1)+1;
             
             //si hay fuente en vertice 2, random4 será ese 2
             this.agregarAristaNave(this.buscarVertice(random5), this.buscarVertice(random4));
@@ -420,7 +503,7 @@ public class Grafo {
             int random7 = verticesEnemigoNaves.get(r7.nextInt(verticesEnemigoNaves.size()));
             //destino aleatorio
             Random r8 = new Random();
-            int random8 = r8.nextInt(11-1)+1;
+            int random8 = r8.nextInt(31-1)+1;
             
             this.agregarAristaSoldado(this.buscarVertice(random7), this.buscarVertice(random8));
             random6--;
@@ -567,6 +650,28 @@ public class Grafo {
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(8));
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(9));
             this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(10)); 
+            
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(11));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(12));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(13));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(14));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(15));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(16));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(17));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(18));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(19));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(20));
+            
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(21));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(22));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(23));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(24));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(25));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(26));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(27));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(28));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(29));
+            this.agregarAristaFuente(this.buscarVertice(valor), this.buscarVertice(30));
         }
         else
             System.out.println("ya hay fuente de poder en ese vertice");

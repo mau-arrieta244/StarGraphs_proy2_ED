@@ -14,9 +14,13 @@ public class principal_gui extends javax.swing.JFrame {
      */
     ArrayList<String> colaAtaques;
     
+    //para saber cual tribu seleccionó jugador y no dejarlo cambiarla
+    //ArrayList<String> tribuUsuario;
+    
     public principal_gui() {
         initComponents();
-        this.labelVidaJugador.setText("100 %");
+        //this.labelVidaJugador.setText("100 %");
+        //this.labelVidaEnemigo.setText("100 %");
         colaAtaques = new ArrayList<String>();
     }
 
@@ -35,32 +39,58 @@ public class principal_gui extends javax.swing.JFrame {
         labelVidaJugador = new javax.swing.JLabel();
         botonAtacar = new javax.swing.JButton();
         textField_ataque = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        matriz1 = new javax.swing.JTable();
         coordenadasAtaque = new javax.swing.JTextField();
         botonAgregar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         bitacora = new javax.swing.JTextArea();
         label_bitacora = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        labelVidaEnemigo = new javax.swing.JLabel();
+        seleccionTribu = new javax.swing.JTextField();
+        botonOKtribu = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        matriz1 = new javax.swing.JTable();
+        mostrarEnemigo = new javax.swing.JButton();
+        ocultarEnemigo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         matriz.setBorder(new javax.swing.border.MatteBorder(null));
         matriz.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", null, null, null, null, null, null, null, null, null, null},
-                {"2", null, null, null, null, null, null, null, null, null, null},
-                {"3", null, null, null, null, null, null, null, null, null, null},
-                {"4", null, null, null, null, null, null, null, null, null, null},
-                {"5", null, null, null, null, null, null, null, null, null, null},
-                {"6", null, null, null, null, null, null, null, null, null, null},
-                {"7", null, null, null, null, null, null, null, null, null, null},
-                {"8", null, null, null, null, null, null, null, null, null, null},
-                {"9", null, null, null, null, null, null, null, null, null, null},
-                {"10", null, null, null, null, null, null, null, null, null, null}
+                {"1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"2", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"3", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"4", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"5", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"6", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"7", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"8", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"9", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"10", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"11", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"12", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"13", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"14", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"15", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"16", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"17", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"18", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"19", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"20", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"21", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"22", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"23", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"24", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"25", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"26", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"27", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"28", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"29", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"30", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "a", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
+                "a", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
             }
         ));
         matriz.setGridColor(new java.awt.Color(0, 0, 0));
@@ -68,39 +98,59 @@ public class principal_gui extends javax.swing.JFrame {
         matriz.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(matriz);
         if (matriz.getColumnModel().getColumnCount() > 0) {
-            matriz.getColumnModel().getColumn(0).setMinWidth(15);
-            matriz.getColumnModel().getColumn(0).setPreferredWidth(15);
+            matriz.getColumnModel().getColumn(0).setMinWidth(23);
+            matriz.getColumnModel().getColumn(0).setPreferredWidth(20);
             matriz.getColumnModel().getColumn(0).setMaxWidth(20);
-            matriz.getColumnModel().getColumn(1).setMinWidth(15);
+            matriz.getColumnModel().getColumn(1).setMinWidth(17);
             matriz.getColumnModel().getColumn(1).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(1).setMaxWidth(15);
-            matriz.getColumnModel().getColumn(2).setMinWidth(15);
+            matriz.getColumnModel().getColumn(2).setMinWidth(17);
             matriz.getColumnModel().getColumn(2).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(2).setMaxWidth(15);
-            matriz.getColumnModel().getColumn(3).setMinWidth(15);
+            matriz.getColumnModel().getColumn(3).setMinWidth(17);
             matriz.getColumnModel().getColumn(3).setPreferredWidth(15);
-            matriz.getColumnModel().getColumn(3).setMaxWidth(15);
-            matriz.getColumnModel().getColumn(4).setMinWidth(15);
+            matriz.getColumnModel().getColumn(3).setMaxWidth(17);
+            matriz.getColumnModel().getColumn(4).setMinWidth(17);
             matriz.getColumnModel().getColumn(4).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(4).setMaxWidth(15);
-            matriz.getColumnModel().getColumn(5).setMinWidth(15);
+            matriz.getColumnModel().getColumn(5).setMinWidth(17);
             matriz.getColumnModel().getColumn(5).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(5).setMaxWidth(15);
-            matriz.getColumnModel().getColumn(6).setMinWidth(15);
+            matriz.getColumnModel().getColumn(6).setMinWidth(17);
             matriz.getColumnModel().getColumn(6).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(6).setMaxWidth(15);
-            matriz.getColumnModel().getColumn(7).setMinWidth(15);
+            matriz.getColumnModel().getColumn(7).setMinWidth(17);
             matriz.getColumnModel().getColumn(7).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(7).setMaxWidth(15);
-            matriz.getColumnModel().getColumn(8).setMinWidth(15);
+            matriz.getColumnModel().getColumn(8).setMinWidth(17);
             matriz.getColumnModel().getColumn(8).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(8).setMaxWidth(20);
-            matriz.getColumnModel().getColumn(9).setMinWidth(15);
+            matriz.getColumnModel().getColumn(9).setMinWidth(17);
             matriz.getColumnModel().getColumn(9).setPreferredWidth(15);
             matriz.getColumnModel().getColumn(9).setMaxWidth(20);
-            matriz.getColumnModel().getColumn(10).setMinWidth(15);
-            matriz.getColumnModel().getColumn(10).setPreferredWidth(15);
+            matriz.getColumnModel().getColumn(10).setMinWidth(17);
+            matriz.getColumnModel().getColumn(10).setPreferredWidth(23);
             matriz.getColumnModel().getColumn(10).setMaxWidth(20);
+            matriz.getColumnModel().getColumn(11).setMinWidth(17);
+            matriz.getColumnModel().getColumn(12).setMinWidth(17);
+            matriz.getColumnModel().getColumn(13).setMinWidth(17);
+            matriz.getColumnModel().getColumn(14).setMinWidth(17);
+            matriz.getColumnModel().getColumn(15).setMinWidth(17);
+            matriz.getColumnModel().getColumn(16).setMinWidth(17);
+            matriz.getColumnModel().getColumn(17).setMinWidth(17);
+            matriz.getColumnModel().getColumn(18).setMinWidth(17);
+            matriz.getColumnModel().getColumn(19).setMinWidth(17);
+            matriz.getColumnModel().getColumn(20).setMinWidth(17);
+            matriz.getColumnModel().getColumn(21).setMinWidth(17);
+            matriz.getColumnModel().getColumn(22).setMinWidth(17);
+            matriz.getColumnModel().getColumn(23).setMinWidth(17);
+            matriz.getColumnModel().getColumn(24).setMinWidth(17);
+            matriz.getColumnModel().getColumn(25).setMinWidth(17);
+            matriz.getColumnModel().getColumn(26).setMinWidth(17);
+            matriz.getColumnModel().getColumn(27).setMinWidth(17);
+            matriz.getColumnModel().getColumn(28).setMinWidth(17);
+            matriz.getColumnModel().getColumn(29).setMinWidth(17);
+            matriz.getColumnModel().getColumn(30).setMinWidth(17);
         }
 
         jLabel1.setText("Vida : ");
@@ -111,29 +161,6 @@ public class principal_gui extends javax.swing.JFrame {
                 botonAtacarActionPerformed(evt);
             }
         });
-
-        matriz1.setBorder(new javax.swing.border.MatteBorder(null));
-        matriz1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"1", null, null, null, null, null, null, null, null, null, null},
-                {"2", null, null, null, null, null, null, null, null, null, null},
-                {"3", null, null, null, null, null, null, null, null, null, null},
-                {"4", null, null, null, null, null, null, null, null, null, null},
-                {"5", null, null, null, null, null, null, null, null, null, null},
-                {"6", null, null, null, null, null, null, null, null, null, null},
-                {"7", null, null, null, null, null, null, null, null, null, null},
-                {"8", null, null, null, null, null, null, null, null, null, null},
-                {"9", null, null, null, null, null, null, null, null, null, null},
-                {"10", null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "a", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
-            }
-        ));
-        matriz1.setGridColor(new java.awt.Color(0, 0, 0));
-        matriz1.setShowGrid(true);
-        matriz1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(matriz1);
 
         botonAgregar.setText("Agregar");
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -148,63 +175,226 @@ public class principal_gui extends javax.swing.JFrame {
 
         label_bitacora.setText("Bitacora");
 
+        jLabel2.setText("Vida : ");
+
+        seleccionTribu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionTribuActionPerformed(evt);
+            }
+        });
+
+        botonOKtribu.setText("Escoger");
+        botonOKtribu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOKtribuActionPerformed(evt);
+            }
+        });
+
+        matriz1.setBorder(new javax.swing.border.MatteBorder(null));
+        matriz1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"2", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"3", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"4", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"5", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"6", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"7", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"8", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"9", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"10", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"11", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"12", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"13", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"14", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"15", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"16", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"17", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"18", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"19", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"20", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"21", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"22", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"23", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"24", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"25", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"26", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"27", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"28", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"29", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {"30", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "*", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
+            }
+        ));
+        matriz1.setGridColor(new java.awt.Color(0, 0, 0));
+        matriz1.setShowGrid(true);
+        matriz1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(matriz1);
+        if (matriz1.getColumnModel().getColumnCount() > 0) {
+            matriz1.getColumnModel().getColumn(1).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(2).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(3).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(4).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(5).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(6).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(7).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(8).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(9).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(10).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(11).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(11).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(12).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(12).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(13).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(13).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(14).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(14).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(15).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(15).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(16).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(16).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(17).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(17).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(18).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(18).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(19).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(19).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(20).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(20).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(21).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(21).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(22).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(22).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(23).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(23).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(24).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(24).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(25).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(25).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(26).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(26).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(27).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(27).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(28).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(28).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(29).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(29).setMaxWidth(17);
+            matriz1.getColumnModel().getColumn(30).setMinWidth(17);
+            matriz1.getColumnModel().getColumn(30).setMaxWidth(17);
+        }
+
+        mostrarEnemigo.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        mostrarEnemigo.setText("Mostrar");
+        mostrarEnemigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarEnemigoActionPerformed(evt);
+            }
+        });
+
+        ocultarEnemigo.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        ocultarEnemigo.setText("Ocultar");
+        ocultarEnemigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ocultarEnemigoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(coordenadasAtaque))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(botonAtacar)
-                            .addGap(18, 18, 18)
-                            .addComponent(botonAgregar)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonOKtribu))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(mostrarEnemigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(ocultarEnemigo))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(coordenadasAtaque))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(botonAtacar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(botonAgregar))))
+                        .addGap(139, 139, 139)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(112, 112, 112)
+                                .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 413, Short.MAX_VALUE))
+                            .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonOKtribu)
+                    .addComponent(mostrarEnemigo)
+                    .addComponent(ocultarEnemigo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(coordenadasAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonAtacar)
-                            .addComponent(botonAgregar)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(33, 33, 33)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(labelVidaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(textField_ataque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(coordenadasAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(botonAtacar)
+                                            .addComponent(botonAgregar))))
+                                .addContainerGap(12, Short.MAX_VALUE))))))
         );
 
         pack();
@@ -218,25 +408,86 @@ public class principal_gui extends javax.swing.JFrame {
         
         if(colaAtaques!=null){
             while(colaAtaques.size()>0){
-                System.out.println("ultimo "+colaAtaques.get(colaAtaques.size()-1));
+                //System.out.println("ultimo "+colaAtaques.get(colaAtaques.size()-1));
+                // (1,2)      (10,4)     (2,21)    (21,22)
                 String[] valores = colaAtaques.get(colaAtaques.size()-1).split("");
-                int x = Integer.valueOf(valores[1]);
-                int y = Integer.valueOf(valores[3]);;
+                System.out.println(valores.length+"  longitud biatch!");
+                //   (5,7) lenght = 5
+                if(valores.length == 5){
+                   int x = Integer.valueOf(valores[1]);
+                   int y = Integer.valueOf(valores[3]); 
+                   atacar(x,y);
+                }
+                //    (3,21)   o   (12,4)
+                else if(valores.length == 6){
+                    System.out.println(valores[2]+"    valores [2]");
+                             
+                    //caso 1 (4,25)
+                    if(valores[2].equals(",")){
+                       
+                       int x = Integer.valueOf(valores[1]);
+                       String numero = valores[3]+valores[4];
+                       int y = Integer.valueOf(numero); 
+                       atacar(x,y);
+                    }
+                    //caso 2  (23,4)
+                    else{
+                        
+                       String numero = valores[1]+valores[2];
+                       int x = Integer.valueOf(numero); 
+                       int y = Integer.valueOf(valores[4]);
+                       atacar(x,y);  
+                    }
+                }
+                
+                // ej: (23,30)
+                else{
+                   String numeroX = valores[1]+valores[2]; 
+                   String numeroY = valores[4]+valores[5];
+                   
+                   int x = Integer.valueOf(numeroX); 
+                   int y = Integer.valueOf(numeroY);
+                   
+                   atacar(x,y);
+                }
+                
+                
+                
+                
+            }
+            
+            
+        }
+        
+        
+                
+    }//GEN-LAST:event_botonAtacarActionPerformed
+
+    private void atacar(int x,int y){
+        //aca poner el grafo enemigo
+        Grafo a = (Grafo) Main.grafos.get(1);
+        //nuestro grafo
+        Grafo b = (Grafo) Main.grafos.get(0);
+        //int x = Integer.valueOf(valores[1]);
+                //int y = Integer.valueOf(valores[3]);
                 bitacora.append("\n ---------------- ");
                 bitacora.append("\nAtaque en : ("+String.valueOf(x)+","+String.valueOf(y)+")");
                 
-                int valor = Integer.valueOf(this.textField_ataque.getText());
-                bitacora.append("\nValor golpe: "+String.valueOf(valor));
-                a.atacarXY(x,y,valor);
+                //int valor = Integer.valueOf(this.textField_ataque.getText());
+                bitacora.append("\nValor golpe: "+String.valueOf(b.poderAtaque));
+                a.atacarXY(x,y,b.poderAtaque);
                 a.imprimir3();
                 colaAtaques.remove(colaAtaques.size()-1);
                 
                 int vidaActual = a.pesoAristas();
                 System.out.println("vida actual: "+vidaActual);
                 System.out.println("vida original: "+a.pesoTotal);
-                //este label de vida iria donde recibimos ataques no donde los hacemos
+                
                 int porcentaje = vidaActual*100/(a.pesoTotal);
-                this.labelVidaJugador.setText(String.valueOf(porcentaje)+" %");
+                this.labelVidaEnemigo.setText(String.valueOf(porcentaje)+" %");
+                //con esta vida se ira midiendo cuando termina una partida / perdemos
+                a.vidaGrafo = porcentaje;
+                
                 
                 //recibir misma cantidad de ataques
                 //X , Y aleatorios
@@ -249,22 +500,24 @@ public class principal_gui extends javax.swing.JFrame {
                 int rand1 = r1.nextInt(11-1) + 1;
                 bitacora.append("\nAtaque en : ("+String.valueOf(rand)+","+String.valueOf(rand1)+")");
                 
-                int valor1 = Integer.valueOf(this.textField_ataque.getText());
-                bitacora.append("\nValor golpe: "+String.valueOf(valor));
-                b.atacarXY(rand,rand1,valor);
+                //int valor1 = Integer.valueOf(this.textField_ataque.getText());
+                bitacora.append("\nValor golpe: "+String.valueOf(a.poderAtaque));
+                b.atacarXY(rand,rand1,a.poderAtaque);
                 
-            }
-            
-            
-        }
-        
-        
-                
-    }//GEN-LAST:event_botonAtacarActionPerformed
-
+                int vidaActualJugador = b.pesoAristas();
+                int porcentajeJugador = vidaActualJugador*100/(b.pesoTotal);
+                this.labelVidaJugador.setText(String.valueOf(porcentajeJugador)+" %");
+                b.vidaGrafo = porcentajeJugador;
+                //con esta vida se ira midiendo cuando termina una partida / perdemos
+                //Main.vidaJugador = porcentajeJugador;
+    }
+    
+    
+    
+    
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         if(colaAtaques.size()<10){
-           String valor = coordenadasAtaque.getText().toString();
+           String valor = coordenadasAtaque.getText();
             this.colaAtaques.add(valor);
             System.out.println("coordenadas "+colaAtaques); 
         }
@@ -273,9 +526,63 @@ public class principal_gui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonAgregarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void seleccionTribuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionTribuActionPerformed
+         
+        
+    }//GEN-LAST:event_seleccionTribuActionPerformed
+
+    private void botonOKtribuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOKtribuActionPerformed
+        //si aun no hemos seleccionado tribu...
+        if(Main.tribuSeleccionada==""){
+            Main.tribuSeleccionada = this.seleccionTribu.getText();
+            System.out.println("tribu: "+Main.tribuSeleccionada);
+        }
+        //tribu ya habia sido seleccionada
+        else{
+            JOptionPane.showMessageDialog(this,"Tribu ya fue seleccionada","warning",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_botonOKtribuActionPerformed
+
+    private void mostrarEnemigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarEnemigoActionPerformed
+        TableColorCellRenderer render = new TableColorCellRenderer();
+        this.matriz1.setDefaultRenderer(Object.class,render);
+        //volver a colocar todos los strings que hay en el display para que renderer los agarre
+        Grafo enemigo = (Grafo) Main.grafos.get(1);
+        for(Vertice v : enemigo.vertices){
+            int total = enemigo.vertices.size();
+            while(total>0){
+              
+              if(matriz1.getModel().getValueAt(v.dato-1, total)!=null){
+                  String valor = String.valueOf(matriz1.getModel().getValueAt(v.dato-1, total));
+                  matriz1.getModel().setValueAt(valor, v.dato-1, total); 
+              }
+               
+              total--;
+            }
+    }//GEN-LAST:event_mostrarEnemigoActionPerformed
+    }
+        
+        
+    private void ocultarEnemigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ocultarEnemigoActionPerformed
+        TableRendererClean render = new TableRendererClean();
+        this.matriz1.setDefaultRenderer(Object.class,render);
+        //volver a colocar todos los strings que hay en el display para que renderer los agarre
+        Grafo enemigo = (Grafo) Main.grafos.get(1);
+        for(Vertice v : enemigo.vertices){
+            int total = enemigo.vertices.size();
+            while(total>0){
+              
+              if(matriz1.getModel().getValueAt(v.dato-1, total)!=null){
+                  String valor = String.valueOf(matriz1.getModel().getValueAt(v.dato-1, total));
+                  matriz1.getModel().setValueAt(valor, v.dato-1, total); 
+              }
+               
+              total--;
+            }
+    }//GEN-LAST:event_ocultarEnemigoActionPerformed
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -312,15 +619,21 @@ public class principal_gui extends javax.swing.JFrame {
     public static javax.swing.JTextArea bitacora;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAtacar;
+    private javax.swing.JButton botonOKtribu;
     private javax.swing.JTextField coordenadasAtaque;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JLabel labelVidaJugador;
+    public static javax.swing.JLabel labelVidaEnemigo;
+    public static javax.swing.JLabel labelVidaJugador;
     private javax.swing.JLabel label_bitacora;
     public javax.swing.JTable matriz;
     public javax.swing.JTable matriz1;
+    private javax.swing.JButton mostrarEnemigo;
+    private javax.swing.JButton ocultarEnemigo;
+    private javax.swing.JTextField seleccionTribu;
     private javax.swing.JTextField textField_ataque;
     // End of variables declaration//GEN-END:variables
 }
