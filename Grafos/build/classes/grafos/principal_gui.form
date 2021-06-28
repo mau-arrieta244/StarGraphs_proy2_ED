@@ -32,6 +32,10 @@
                               <Component id="seleccionTribu" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="botonOKtribu" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="ingresoManual" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ingresoAleatorio" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -96,6 +100,8 @@
                   <Component id="botonOKtribu" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="mostrarEnemigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ocultarEnemigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ingresoManual" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ingresoAleatorio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -751,6 +757,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ocultarEnemigoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ingresoManual">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manual"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresoManualActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ingresoAleatorio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aleatorio"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresoAleatorioActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
