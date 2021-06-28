@@ -52,6 +52,8 @@ public class principal_gui extends javax.swing.JFrame {
         matriz1 = new javax.swing.JTable();
         mostrarEnemigo = new javax.swing.JButton();
         ocultarEnemigo = new javax.swing.JButton();
+        ingresoManual = new javax.swing.JButton();
+        ingresoAleatorio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -301,6 +303,20 @@ public class principal_gui extends javax.swing.JFrame {
             }
         });
 
+        ingresoManual.setText("Manual");
+        ingresoManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresoManualActionPerformed(evt);
+            }
+        });
+
+        ingresoAleatorio.setText("Aleatorio");
+        ingresoAleatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresoAleatorioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,7 +329,11 @@ public class principal_gui extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(botonOKtribu))
+                                .addComponent(botonOKtribu)
+                                .addGap(32, 32, 32)
+                                .addComponent(ingresoManual)
+                                .addGap(18, 18, 18)
+                                .addComponent(ingresoAleatorio))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -360,7 +380,9 @@ public class principal_gui extends javax.swing.JFrame {
                     .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonOKtribu)
                     .addComponent(mostrarEnemigo)
-                    .addComponent(ocultarEnemigo))
+                    .addComponent(ocultarEnemigo)
+                    .addComponent(ingresoManual)
+                    .addComponent(ingresoAleatorio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -583,6 +605,19 @@ public class principal_gui extends javax.swing.JFrame {
     }//GEN-LAST:event_ocultarEnemigoActionPerformed
     }
     
+    private void ingresoManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoManualActionPerformed
+        Grafo usuario = (Grafo) Main.grafos.get(0);
+        usuario.ingresoDatos=true;
+        usuario.tipoIngreso = "M";
+    }//GEN-LAST:event_ingresoManualActionPerformed
+
+    private void ingresoAleatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresoAleatorioActionPerformed
+        Grafo usuario = (Grafo) Main.grafos.get(0);
+        usuario.ingresoDatos=true;
+        usuario.tipoIngreso = "A";
+    }//GEN-LAST:event_ingresoAleatorioActionPerformed
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -621,6 +656,8 @@ public class principal_gui extends javax.swing.JFrame {
     private javax.swing.JButton botonAtacar;
     private javax.swing.JButton botonOKtribu;
     private javax.swing.JTextField coordenadasAtaque;
+    private javax.swing.JButton ingresoAleatorio;
+    private javax.swing.JButton ingresoManual;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;

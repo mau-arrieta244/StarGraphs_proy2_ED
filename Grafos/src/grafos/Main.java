@@ -116,9 +116,16 @@ public class Main {
             while(g.ingresoDatos==false){
                 Thread.sleep(2000);
             }
+            //aca ya salio del while
+            if(g.tipoIngreso.equals("A")){
+                g.generarGrafoEnemigo();
+            }
+            else if(g.tipoIngreso.equals("M")){
+                g.ingresoManual();
+            }
             
-            g.agregarFuentePoder(2);
-        
+            //g.agregarFuentePoder(2);
+            /*
             g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(7));
@@ -126,8 +133,10 @@ public class Main {
             g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(10));
             g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(2));
             g.agregarAristaNave(g.buscarVertice(6), g.buscarVertice(2));
-        
-        
+        */
+            //g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
+            //g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
+            
             int abcd = g.pesoAristas();
             g.pesoTotal = abcd;
             
@@ -174,67 +183,7 @@ public class Main {
         
         //aca ya vencimos a todas las tribus
         JOptionPane.showMessageDialog(ventana,"Victoria! Has conquistado la Galaxia","info",JOptionPane.INFORMATION_MESSAGE);
-        /*
-        Grafo g = new Grafo(ventana,ventana.matriz);
-        grafos.add(g);
-        //System.out.println(grafos);
-        g.agregarVertice(1);
-        g.agregarVertice(2);
-        g.agregarVertice(3);
-        g.agregarVertice(4);
-        g.agregarVertice(5);
-        g.agregarVertice(6);
-        g.agregarVertice(7);
-        g.agregarVertice(8);
-        g.agregarVertice(9);
-        g.agregarVertice(10);
         
-        g.agregarFuentePoder(2);
-        
-        g.agregarAristaNave(g.buscarVertice(4), g.buscarVertice(2));
-        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(9));
-        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(7));
-        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(8));
-        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(10));
-        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(3));
-        g.agregarAristaSoldado(g.buscarVertice(4), g.buscarVertice(1));
-        g.agregarAristaNave(g.buscarVertice(5), g.buscarVertice(2));
-        g.agregarAristaNave(g.buscarVertice(6), g.buscarVertice(2));
-        
-        g.imprimir3();
-        int abcd = g.pesoAristas();
-        g.pesoTotal = abcd;
-        */
-//-------------------------------------------------------------------------
-//-------------------------------------------------------------------------
-
-        /*
-        Grafo a = new Grafo(ventana,ventana.matriz1);
-        grafos.add(a);
-        
-        //System.out.println(grafos);
-        a.agregarVertice(1);
-        a.agregarVertice(2);
-        a.agregarVertice(3);
-        a.agregarVertice(4);
-        a.agregarVertice(5);
-        a.agregarVertice(6);
-        a.agregarVertice(7);
-        a.agregarVertice(8);
-        a.agregarVertice(9);
-        a.agregarVertice(10);
-        
-        a.agregarFuentePoder(2);
-        a.agregarAristaNave(a.buscarVertice(4), a.buscarVertice(2));
-        a.agregarAristaSoldado(a.buscarVertice(4), a.buscarVertice(9));
-        a.agregarAristaSoldado(a.buscarVertice(4), a.buscarVertice(6));
-        a.imprimir3();
-        //g.atacarXY(2, 4,50);
-        int abc = a.pesoAristas();
-        a.pesoTotal = abc;
-        */
-
-        
-        
+  
     }
 }

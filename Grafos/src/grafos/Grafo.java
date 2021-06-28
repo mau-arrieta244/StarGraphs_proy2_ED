@@ -46,8 +46,11 @@ public class Grafo {
     //para pasarle poder de ataque a atacarXY
     int poderAtaque;
     
-    //para saber si vamos a ingresar aristas manualmente o aleatorias
+    //para saber cuando pasar a ingreso aristas manualmente o aleatorias
     boolean ingresoDatos;
+    
+    //para saber si vamos a ingresar aristas manual o aleatorias
+    String tipoIngreso;
     
     
 
@@ -68,6 +71,8 @@ public class Grafo {
         
         
         ingresoDatos = false;
+        //luego cuando escogamos boton aleatoria o manual, se setea a "A" / "M"
+        tipoIngreso = "";
     }
     public void imprimir2(){
         for (Vertice vert : vertices){
@@ -708,6 +713,143 @@ public class Grafo {
         }
 
         return null;
+    }
+    
+    public void ingresoManual(){
+        System.out.println("\n------------------------------");
+        System.out.println("Digite cantidad de fuentes de poder: ");
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        String stringFuentes = myObj.nextLine();  // Read user input
+        int cantFuentes = Integer.valueOf(stringFuentes);
+        
+        while(cantFuentes>0){
+            System.out.println("Digite vertice donde colocar fuente: ");
+            Scanner scan1 = new Scanner(System.in);  // Create a Scanner object
+            String stringFuente1 = scan1.nextLine();  // Read user input
+            int posicionFuente = Integer.valueOf(stringFuente1);
+            this.agregarFuentePoder(posicionFuente);
+            cantFuentes--;
+        }
+        
+        System.out.println("\n------------------------------");
+        System.out.println("Digite cantidad de naves: ");
+        Scanner scan2 = new Scanner(System.in);  // Create a Scanner object
+        String stringCantNaves = scan2.nextLine();  // Read user input
+        int cantNaves = Integer.valueOf(stringCantNaves);
+        
+        while(cantNaves>0){
+            System.out.println("Digite (X,Y) donde colocar Nave: ");
+            Scanner scan3 = new Scanner(System.in);  // Create a Scanner object
+            String stringNave1 = scan3.nextLine();  // Read user input
+            String[] coordenadas = stringNave1.split("");
+            
+            
+            //   (5,7) lenght = 5
+                if(coordenadas.length == 5){
+                   int x = Integer.valueOf(coordenadas[1]);
+                   int y = Integer.valueOf(coordenadas[3]); 
+                   this.agregarAristaNave(this.buscarVertice(x),this.buscarVertice(y));
+                }
+                //    (3,21)   o   (12,4)
+                else if(coordenadas.length == 6){
+                    System.out.println(coordenadas[2]+"    valores [2]");
+                             
+                    //caso 1 (4,25)
+                    if(coordenadas[2].equals(",")){
+                       
+                       int x = Integer.valueOf(coordenadas[1]);
+                       String numero = coordenadas[3]+coordenadas[4];
+                       int y = Integer.valueOf(numero); 
+                       this.agregarAristaNave(this.buscarVertice(x),this.buscarVertice(y));
+                    }
+                    //caso 2  (23,4)
+                    else{
+                        
+                       String numero = coordenadas[1]+coordenadas[2];
+                       int x = Integer.valueOf(numero); 
+                       int y = Integer.valueOf(coordenadas[4]);
+                       this.agregarAristaNave(this.buscarVertice(x),this.buscarVertice(y));  
+                    }
+                }
+                
+                // ej: (23,30)
+                else{
+                   String numeroX = coordenadas[1]+coordenadas[2]; 
+                   String numeroY = coordenadas[4]+coordenadas[5];
+                   
+                   int x = Integer.valueOf(numeroX); 
+                   int y = Integer.valueOf(numeroY);
+                   
+                   this.agregarAristaNave(this.buscarVertice(x),this.buscarVertice(y));
+                }
+            
+            
+            
+            
+            cantNaves--;
+        }
+        
+        
+        System.out.println("\n------------------------------");
+        System.out.println("Digite cantidad de Soldados: ");
+        Scanner scan3 = new Scanner(System.in);  // Create a Scanner object
+        String stringCantSoldados = scan3.nextLine();  // Read user input
+        int cantSoldados = Integer.valueOf(stringCantSoldados);
+        
+        while(cantSoldados>0){
+            System.out.println("Digite (X,Y) donde colocar Soldado: ");
+            Scanner scan4 = new Scanner(System.in);  // Create a Scanner object
+            String stringSoldado1 = scan4.nextLine();  // Read user input
+            String[] coordenadas = stringSoldado1.split("");
+            
+            
+            //   (5,7) lenght = 5
+                if(coordenadas.length == 5){
+                   int x = Integer.valueOf(coordenadas[1]);
+                   int y = Integer.valueOf(coordenadas[3]); 
+                   this.agregarAristaSoldado(this.buscarVertice(x),this.buscarVertice(y));
+                }
+                //    (3,21)   o   (12,4)
+                else if(coordenadas.length == 6){
+                    System.out.println(coordenadas[2]+"    valores [2]");
+                             
+                    //caso 1 (4,25)
+                    if(coordenadas[2].equals(",")){
+                       
+                       int x = Integer.valueOf(coordenadas[1]);
+                       String numero = coordenadas[3]+coordenadas[4];
+                       int y = Integer.valueOf(numero); 
+                       this.agregarAristaSoldado(this.buscarVertice(x),this.buscarVertice(y));
+                    }
+                    //caso 2  (23,4)
+                    else{
+                        
+                       String numero = coordenadas[1]+coordenadas[2];
+                       int x = Integer.valueOf(numero); 
+                       int y = Integer.valueOf(coordenadas[4]);
+                       this.agregarAristaSoldado(this.buscarVertice(x),this.buscarVertice(y));  
+                    }
+                }
+                
+                // ej: (23,30)
+                else{
+                   String numeroX = coordenadas[1]+coordenadas[2]; 
+                   String numeroY = coordenadas[4]+coordenadas[5];
+                   
+                   int x = Integer.valueOf(numeroX); 
+                   int y = Integer.valueOf(numeroY);
+                   
+                   this.agregarAristaSoldado(this.buscarVertice(x),this.buscarVertice(y));
+                }
+            
+            
+            
+            
+            cantSoldados--;
+        }
+        
+        
+        
     }
 
     // imprime la lista con sus listas de adyacencia
