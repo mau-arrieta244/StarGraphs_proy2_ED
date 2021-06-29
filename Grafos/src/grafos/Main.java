@@ -119,8 +119,17 @@ public class Main {
             //vidaEnemigo = porcentaje1; // reseteamos
             
             g.poderAtaque = poderJugador;
+            
+            //colocar golpe jugador en GUI
+            ventana.golpeJugador.setText(String.valueOf(g.poderAtaque));
+            
+            
             Object myKey = hashTribus.keySet().toArray()[0];
+            //colocar nombre del enemigo en GUI
+            ventana.nombreEnemigo.setText(String.valueOf(myKey));
             a.poderAtaque = Double.valueOf(hashTribus.get(myKey));
+            //colocar golpe enemigo en GUI
+            ventana.golpeEnemigo.setText(String.valueOf(a.poderAtaque));
             
             //mientras tribu enemiga tenga vida... espere
             while(a.vidaGrafo>0){
