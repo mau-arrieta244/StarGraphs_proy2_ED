@@ -60,6 +60,7 @@ public class principal_gui extends javax.swing.JFrame {
         golpeEnemigo = new javax.swing.JLabel();
         golpeJugador = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        darthVader = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -336,6 +337,13 @@ public class principal_gui extends javax.swing.JFrame {
 
         jLabel5.setText("Golpe:");
 
+        darthVader.setText("Darth Vader");
+        darthVader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darthVaderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -389,7 +397,6 @@ public class principal_gui extends javax.swing.JFrame {
                                 .addGap(90, 90, 90)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deathStar)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(nombreEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
@@ -400,7 +407,10 @@ public class principal_gui extends javax.swing.JFrame {
                                 .addComponent(mostrarEnemigo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ocultarEnemigo)
-                                .addGap(20, 20, 20)))))
+                                .addGap(20, 20, 20))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(deathStar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(darthVader, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -455,6 +465,8 @@ public class principal_gui extends javax.swing.JFrame {
                                 .addContainerGap(18, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deathStar)
+                                .addGap(18, 18, 18)
+                                .addComponent(darthVader)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -660,6 +672,8 @@ public class principal_gui extends javax.swing.JFrame {
         usuario.tipoIngreso = "A";
     }//GEN-LAST:event_ingresoAleatorioActionPerformed
 
+    
+    
     private void deathStarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deathStarActionPerformed
         //4 opciones que representan cada uno de los 4    1/4 's que conforman la matriz
         Random r1 = new Random();
@@ -683,6 +697,42 @@ public class principal_gui extends javax.swing.JFrame {
             deathStar4();
         }
     }//GEN-LAST:event_deathStarActionPerformed
+
+    private void darthVaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darthVaderActionPerformed
+        Grafo enemigo = (Grafo) Main.grafos.get(1);
+        bitacora.append("\n###########################");
+        bitacora.append("\nDARTH VADER: ");
+        //primer vertice aleatorio
+        Random r1 = new Random();
+        int random1 = r1.nextInt(31-1)+1;
+        
+        //segundo vertice aleatorio
+        Random r2 = new Random();
+        int random2 = r2.nextInt(31-1)+1;
+        boolean encontrado = false;
+        
+        for(Vertice v: enemigo.vertices ){
+            //si estamos en vertice 1
+            if(v.dato==random1){
+                bitacora.append("\nVertice: "+v.dato);
+                
+                for(Vertice arista : v.aristas){
+                    //si hay relacion
+                    if(arista.dato == random2){
+                       bitacora.append("\nY Vertice: "+arista.dato); 
+                       bitacora.append("\nSe relacionan ");
+                       bitacora.append("\nPeso arista:  "+arista.peso);
+                       encontrado = true;
+                    }
+                }
+            }
+        }
+        if(encontrado==false){
+            bitacora.append("\nY Vertice: "+random2);
+            bitacora.append("\nAristas no tienen relacion");
+        }
+        bitacora.append("\n######################");
+    }//GEN-LAST:event_darthVaderActionPerformed
     
     
     
@@ -831,6 +881,7 @@ public class principal_gui extends javax.swing.JFrame {
     private javax.swing.JButton botonAtacar;
     private javax.swing.JButton botonOKtribu;
     private javax.swing.JTextField coordenadasAtaque;
+    private javax.swing.JButton darthVader;
     private javax.swing.JButton deathStar;
     public static javax.swing.JLabel golpeEnemigo;
     public static javax.swing.JLabel golpeJugador;
