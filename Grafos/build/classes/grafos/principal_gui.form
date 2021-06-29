@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -48,22 +48,14 @@
                       </Group>
                       <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label_bitacora" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jScrollPane4" min="-2" pref="198" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="labelVidaEnemigo" min="-2" pref="61" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="botonSiguiente" max="32767" attributes="0"/>
-                                  <Component id="botonIniciar" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Component id="cajaNombreTribu" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="label_bitacora" min="-2" pref="65" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -155,23 +147,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="deathStar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="botonIniciar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cajaNombreTribu" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="labelVidaEnemigo" min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane4" min="-2" pref="164" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
@@ -194,7 +169,6 @@
                               </Group>
                               <EmptySpace pref="18" max="32767" attributes="0"/>
                           </Group>
-<<<<<<< Updated upstream
                           <Group type="102" attributes="0">
                               <Component id="deathStar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -206,8 +180,6 @@
                               </Group>
                               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           </Group>
-=======
->>>>>>> Stashed changes
                       </Group>
                   </Group>
               </Group>
@@ -875,35 +847,12 @@
         <Property name="text" type="java.lang.String" value="Golpe:"/>
       </Properties>
     </Component>
-<<<<<<< Updated upstream
     <Component class="javax.swing.JButton" name="darthVader">
       <Properties>
         <Property name="text" type="java.lang.String" value="Darth Vader"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="darthVaderActionPerformed"/>
-=======
-    <Component class="javax.swing.JButton" name="botonIniciar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Iniciar tribus"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonIniciarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="botonSiguiente">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Siguiente batalla"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSiguienteActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="cajaNombreTribu">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaNombreTribuActionPerformed"/>
->>>>>>> Stashed changes
       </Events>
     </Component>
   </SubComponents>

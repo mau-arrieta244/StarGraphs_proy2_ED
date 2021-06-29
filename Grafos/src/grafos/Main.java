@@ -8,6 +8,7 @@ import control.admTribus;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import modelo.Tribu;
 
 /**
  *
@@ -37,7 +38,20 @@ public class Main {
     //public static boolean condicion;
     
     public static void main(String[] args) throws InterruptedException {
-           
+
+        //-----------Creación de las tribus e enfrentamientos---------------------
+        Tribu tribuJugador = controlTribus.crearTribu("clon");
+        Tribu tribuEnemigo;
+        tribuEnemigo  = controlTribus.crearTribus(tribuJugador);
+//        Al comienzo se generan dos tribus, la del jugador y la de un enemigo.
+//        Cuando se quiere hacer otro enfrentamiento, primero se debe actualizar
+//        la fuerza y los poderes de la tribu del jugador y posteriormente, 
+//        llamar a la funcion crearTribus2 para asi crear una nueva tribu enemiga
+//        y llevar a cabo el enfrentamiento.
+        
+        tribuEnemigo = controlTribus.crearTribus2(tribuJugador, tribuEnemigo);
+        
+        //------------------------------------------------------------------------   
         principal_gui ventana =  new principal_gui();
         ventana.setVisible(true);
         

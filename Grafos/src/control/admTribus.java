@@ -225,6 +225,20 @@ public class admTribus {
 //            System.out.println("Infanteria : " + tribu.getArray() [2]);
         }
     }
+    //Esta función se encarga de ajustar los poderes de las tribus enemigas
+    //de forma aleatoria.
+    public ArrayList<String> crearArrayListPoderes(){
+        ArrayList<String> nombresPoderes = new ArrayList <String>();
+        nombresPoderes.add("cantidad");
+        nombresPoderes.add("fuerza");
+        nombresPoderes.add("infanteria");
+        nombresPoderes.add("lado oscuro");
+        nombresPoderes.add("riqueza");
+        nombresPoderes.add("sigilo");
+        nombresPoderes.add("tecnologia");
+        nombresPoderes.add("velocidad");
+        return nombresPoderes;
+    }
     public boolean ajustarRiqueza(Tribu tribu, String pAtributo){
         String atributo;
         if(pAtributo.equalsIgnoreCase("")){
@@ -468,20 +482,7 @@ public class admTribus {
         System.out.println("\n");
         //La velocidad no ocupa modificacion.
     }
-   //Esta función se encarga de ajustar los poderes de las tribus enemigas
-    //de forma aleatoria.
-    public ArrayList<String> crearArrayListPoderes(){
-        ArrayList<String> nombresPoderes = new ArrayList <String>();
-        nombresPoderes.add("cantidad");
-        nombresPoderes.add("fuerza");
-        nombresPoderes.add("infanteria");
-        nombresPoderes.add("lado oscuro");
-        nombresPoderes.add("riqueza");
-        nombresPoderes.add("sigilo");
-        nombresPoderes.add("tecnologia");
-        nombresPoderes.add("velocidad");
-        return nombresPoderes;
-    }
+
     public void ajustarPoderes2(Tribu tribuEnemiga, Tribu tribuJugador){
         System.out.println("\n--------------Tribu " +tribuEnemiga.getNombre() +" enemiga--------------");
         ArrayList<String> nombresPoderes = crearArrayListPoderes();
@@ -557,7 +558,6 @@ public class admTribus {
     }
     //Esta funcion se usa para obtener los nombres de las tribus sin
     //repetir.
-    ArrayList<Integer> listaNumeros = new ArrayList<Integer>();
     public String nombreRandom(String tribuJugador){
         int num = (int)(Math.random() * 12);
         String nombreTribu = "";
@@ -602,10 +602,6 @@ public class admTribus {
         if(nombreTribu.equalsIgnoreCase(tribuJugador)){
             return nombreRandom(tribuJugador);
         }
-        if(listaNumeros.contains(num)){
-            return nombreRandom(tribuJugador);
-        }
-        listaNumeros.add(num);
         return nombreTribu;
     }
     
@@ -646,7 +642,7 @@ public class admTribus {
     //nada mas se toma como referencia la tribu y se hacen los cambios respectivos.
     public Tribu crearTribus(Tribu tribuJugador){
         if(tribuJugador != null){
-            System.out.println("\n-------------Nueva partida---------------");
+            System.out.println("-------------Nueva partida---------------");
             System.out.println("Tribu del jugador: " + tribuJugador.getNombre());
             String nombreTribuEnemiga = nombreRandom(tribuJugador.getNombre());
             Tribu tribuEnemiga = crearTribu(nombreTribuEnemiga);

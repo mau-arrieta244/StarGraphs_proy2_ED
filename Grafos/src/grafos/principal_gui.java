@@ -1,10 +1,11 @@
+
+
+
 package grafos;
 
-import static grafos.Main.controlTribus;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
-import modelo.Tribu;
 
 public class principal_gui extends javax.swing.JFrame {
 
@@ -59,13 +60,7 @@ public class principal_gui extends javax.swing.JFrame {
         golpeEnemigo = new javax.swing.JLabel();
         golpeJugador = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-<<<<<<< Updated upstream
         darthVader = new javax.swing.JButton();
-=======
-        botonIniciar = new javax.swing.JButton();
-        botonSiguiente = new javax.swing.JButton();
-        cajaNombreTribu = new javax.swing.JTextField();
->>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -342,31 +337,10 @@ public class principal_gui extends javax.swing.JFrame {
 
         jLabel5.setText("Golpe:");
 
-<<<<<<< Updated upstream
         darthVader.setText("Darth Vader");
         darthVader.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 darthVaderActionPerformed(evt);
-=======
-        botonIniciar.setText("Iniciar tribus");
-        botonIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonIniciarActionPerformed(evt);
-            }
-        });
-
-        botonSiguiente.setText("Siguiente batalla");
-        botonSiguiente.setToolTipText("");
-        botonSiguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSiguienteActionPerformed(evt);
-            }
-        });
-
-        cajaNombreTribu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cajaNombreTribuActionPerformed(evt);
->>>>>>> Stashed changes
             }
         });
 
@@ -375,7 +349,7 @@ public class principal_gui extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,20 +368,13 @@ public class principal_gui extends javax.swing.JFrame {
                                     .addComponent(botonAgregar))))
                         .addGap(139, 139, 139)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(60, 60, 60)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(botonSiguiente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(botonIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(14, 14, 14)
-                                .addComponent(cajaNombreTribu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(113, 113, 113))))
+                                .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -480,19 +447,6 @@ public class principal_gui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(deathStar)
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(botonIniciar)
-                                    .addComponent(cajaNombreTribu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(botonSiguiente))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
@@ -508,7 +462,6 @@ public class principal_gui extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(botonAtacar)
                                             .addComponent(botonAgregar))))
-<<<<<<< Updated upstream
                                 .addContainerGap(18, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deathStar)
@@ -519,9 +472,6 @@ public class principal_gui extends javax.swing.JFrame {
                                     .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(56, 56, 56))))))
-=======
-                                .addContainerGap(18, Short.MAX_VALUE))))))
->>>>>>> Stashed changes
         );
 
         pack();
@@ -747,7 +697,6 @@ public class principal_gui extends javax.swing.JFrame {
             deathStar4();
         }
     }//GEN-LAST:event_deathStarActionPerformed
-<<<<<<< Updated upstream
 
     private void darthVaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darthVaderActionPerformed
         Grafo enemigo = (Grafo) Main.grafos.get(1);
@@ -787,46 +736,6 @@ public class principal_gui extends javax.swing.JFrame {
     
     
     
-=======
-//        Al comienzo se generan dos tribus, la del jugador y la de un enemigo.
-//        Cuando se quiere hacer otro enfrentamiento, primero se debe actualizar
-//        la fuerza y los poderes de la tribu del jugador y posteriormente, 
-//        llamar a la funcion crearTribus2 para asi crear una nueva tribu enemiga
-//        y llevar a cabo el enfrentamiento.
-    Tribu tribuJugador;
-    Tribu tribuEnemigo;
-    int tribusCreadas = 0;
-    private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
-        botonIniciar.setEnabled(false);
-        botonSiguiente.setEnabled(false);
-        tribuJugador = controlTribus.crearTribu(cajaNombreTribu.getText());
-        tribuEnemigo  = controlTribus.crearTribus(tribuJugador);
-        if(tribuEnemigo == null){
-            botonIniciar.setEnabled(true);
-            botonSiguiente.setEnabled(true);
-        }
-        else{
-            tribusCreadas+=2;
-            botonSiguiente.setEnabled(true);
-        }
-        
-    }//GEN-LAST:event_botonIniciarActionPerformed
-
-    private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        botonSiguiente.setEnabled(false);
-        if(tribusCreadas != 12){   
-            tribuEnemigo = controlTribus.crearTribus2(tribuJugador, tribuEnemigo);
-            botonSiguiente.setEnabled(true);
-            tribusCreadas++;
-        }    
-
-    }//GEN-LAST:event_botonSiguienteActionPerformed
-
-    private void cajaNombreTribuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaNombreTribuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cajaNombreTribuActionPerformed
-
->>>>>>> Stashed changes
     
     // segundo 1/4 de la matriz (abajo derecha)
     private void deathStar1() {                                          
@@ -970,10 +879,7 @@ public class principal_gui extends javax.swing.JFrame {
     public static javax.swing.JTextArea bitacora;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAtacar;
-    private javax.swing.JButton botonIniciar;
     private javax.swing.JButton botonOKtribu;
-    private javax.swing.JButton botonSiguiente;
-    private javax.swing.JTextField cajaNombreTribu;
     private javax.swing.JTextField coordenadasAtaque;
     private javax.swing.JButton darthVader;
     private javax.swing.JButton deathStar;
