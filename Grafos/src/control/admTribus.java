@@ -502,7 +502,7 @@ public class admTribus {
         while(isInLimit == false){
             atributo = nombresPoderes.get((int)(Math.random() * 8));
             isInLimit = isLimiteResta(tribuEnemiga, tribuJugador, atributo);
-            if(i != 0){
+            if(i == 0){
                 break;
             }
             i--;
@@ -512,7 +512,7 @@ public class admTribus {
                     + "existe algun atributo que al restarlo el resultado "
                     + "sea mayor que 5.");
         }
-        else{
+        if(i != 0){
             ajustarSigilo(tribuEnemiga, tribuJugador, atributo);
         }
         atributo = nombresPoderes.get((int)(Math.random() * 8));
