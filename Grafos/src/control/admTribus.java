@@ -558,6 +558,7 @@ public class admTribus {
     }
     //Esta funcion se usa para obtener los nombres de las tribus sin
     //repetir.
+    ArrayList<Integer> listaNumeros = new ArrayList<Integer>();
     public String nombreRandom(String tribuJugador){
         int num = (int)(Math.random() * 12);
         String nombreTribu = "";
@@ -602,6 +603,10 @@ public class admTribus {
         if(nombreTribu.equalsIgnoreCase(tribuJugador)){
             return nombreRandom(tribuJugador);
         }
+        if(listaNumeros.contains(num)){
+            return nombreRandom(tribuJugador);
+        }
+        listaNumeros.add(num);
         return nombreTribu;
     }
     
@@ -642,7 +647,7 @@ public class admTribus {
     //nada mas se toma como referencia la tribu y se hacen los cambios respectivos.
     public Tribu crearTribus(Tribu tribuJugador){
         if(tribuJugador != null){
-            System.out.println("-------------Nueva partida---------------");
+            System.out.println("\n-------------Nueva partida---------------");
             System.out.println("Tribu del jugador: " + tribuJugador.getNombre());
             String nombreTribuEnemiga = nombreRandom(tribuJugador.getNombre());
             Tribu tribuEnemiga = crearTribu(nombreTribuEnemiga);
