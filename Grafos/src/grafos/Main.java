@@ -77,59 +77,17 @@ public class Main {
         //para rellenar celdas con colores si tienen cierto valor
         TableColorCellRenderer render = new TableColorCellRenderer();
         ventana.matriz.setDefaultRenderer(Object.class,render);
-        
-        //si queremos que no se rellene matriz con color (se mantenga escondida)
-        //ventana.matriz1.setDefaultRenderer(Object.class,render);
+        //a matriz1  no se lo colocamos para que se mantenga escondida
         
         //mientras queden tribus enemigas por batallar
         while(hashTribus.size()>=1){
             //siempre van a ser las mismas matrices, pero diferentes grafos en cada batalla
             //limpiamos matrices cada batalla
-            
-            //tal vez  ni sean necesarios
-            //vidaEnemigo = 100; // reset babeyy
-            //vidaJugador = 100;
-            
-            //ventana.labelVidaJugador.setText("100 %");
-            //ventana.labelVidaEnemigo.setText("100 %");
+           
         
             Grafo g = new Grafo(ventana,ventana.matriz);
             grafos.add(g);
-            //System.out.println(grafos);
-            /*
-            g.agregarVertice(1);
-            g.agregarVertice(2);
-            g.agregarVertice(3);
-            g.agregarVertice(4);
-            g.agregarVertice(5);
-            g.agregarVertice(6);
-            g.agregarVertice(7);
-            g.agregarVertice(8);
-            g.agregarVertice(9);
-            g.agregarVertice(10);
             
-            g.agregarVertice(11);
-            g.agregarVertice(12);
-            g.agregarVertice(13);
-            g.agregarVertice(14);
-            g.agregarVertice(15);
-            g.agregarVertice(16);
-            g.agregarVertice(17);
-            g.agregarVertice(18);
-            g.agregarVertice(19);
-            g.agregarVertice(20);
-            
-            g.agregarVertice(21);
-            g.agregarVertice(22);
-            g.agregarVertice(23);
-            g.agregarVertice(24);
-            g.agregarVertice(25);
-            g.agregarVertice(26);
-            g.agregarVertice(27);
-            g.agregarVertice(28);
-            g.agregarVertice(29);
-            g.agregarVertice(30);
-            */
             //mientras no se haya indicado si meter aristas manual o aleatorio.. espere
             while(g.ingresoDatos==false){
                 Thread.sleep(2000);
@@ -179,11 +137,9 @@ public class Main {
             //cuando se salga del while es que ya no tiene vida, seguimos con proxima tribu
             hashTribus.remove(myKey); // sacamos tribu que ya vencimos y se repite este ciclo
             Thread.sleep(2000);
-            //g.vertices.clear();
-            //a.vertices.clear();
+            
             a.limpiarMatriz();
             g.limpiarMatriz();
-            
             
             //sacar ambos
             grafos.remove(g);

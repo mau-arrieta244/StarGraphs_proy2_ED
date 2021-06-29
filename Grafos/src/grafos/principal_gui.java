@@ -54,6 +54,7 @@ public class principal_gui extends javax.swing.JFrame {
         ocultarEnemigo = new javax.swing.JButton();
         ingresoManual = new javax.swing.JButton();
         ingresoAleatorio = new javax.swing.JButton();
+        deathStar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -317,33 +318,19 @@ public class principal_gui extends javax.swing.JFrame {
             }
         });
 
+        deathStar.setText("Death Star");
+        deathStar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deathStarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonOKtribu)
-                                .addGap(32, 32, 32)
-                                .addComponent(ingresoManual)
-                                .addGap(18, 18, 18)
-                                .addComponent(ingresoAleatorio))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(mostrarEnemigo)
-                                .addGap(18, 18, 18)
-                                .addComponent(ocultarEnemigo))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,13 +351,34 @@ public class principal_gui extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                                .addGap(60, 60, 60)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(112, 112, 112)
-                                .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 413, Short.MAX_VALUE))
-                            .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(seleccionTribu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonOKtribu)
+                                .addGap(32, 32, 32)
+                                .addComponent(ingresoManual)
+                                .addGap(18, 18, 18)
+                                .addComponent(ingresoAleatorio))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(mostrarEnemigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(ocultarEnemigo))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deathStar))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,17 +398,11 @@ public class principal_gui extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(label_bitacora, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
@@ -416,7 +418,14 @@ public class principal_gui extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(botonAtacar)
                                             .addComponent(botonAgregar))))
-                                .addContainerGap(12, Short.MAX_VALUE))))))
+                                .addContainerGap(12, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(deathStar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(labelVidaEnemigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(56, 56, 56))))))
         );
 
         pack();
@@ -616,6 +625,138 @@ public class principal_gui extends javax.swing.JFrame {
         usuario.ingresoDatos=true;
         usuario.tipoIngreso = "A";
     }//GEN-LAST:event_ingresoAleatorioActionPerformed
+
+    private void deathStarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deathStarActionPerformed
+        //4 opciones que representan cada uno de los 4    1/4 's que conforman la matriz
+        Random r1 = new Random();
+        int random1 = r1.nextInt(5-1)+1;
+        
+        if (random1 == 1){
+            System.out.println("death1");
+            deathStar1();
+        }
+        else if(random1 == 2){
+            System.out.println("death2");
+            deathStar2();
+        }
+        else if(random1 == 3){
+            System.out.println("death3");
+            deathStar3();
+        }
+        
+        else if(random1 == 4){
+            System.out.println("death4");
+            deathStar4();
+        }
+    }//GEN-LAST:event_deathStarActionPerformed
+    
+    
+    
+    
+    // segundo 1/4 de la matriz (abajo derecha)
+    private void deathStar1() {                                          
+        TableColorCellRenderer render = new TableColorCellRenderer();
+        this.matriz1.setDefaultRenderer(Object.class,render);
+        //volver a colocar todos los strings que hay en el display para que renderer los agarre
+        Grafo enemigo = (Grafo) Main.grafos.get(1);
+        for(Vertice v : enemigo.vertices)
+        {
+            if(v.dato>15){
+                int total = enemigo.vertices.size();
+                while(total>=15)
+                {
+              
+                  if(matriz1.getModel().getValueAt(v.dato-1, total)!=null){
+                  String valor = String.valueOf(matriz1.getModel().getValueAt(v.dato-1, total));
+                  matriz1.getModel().setValueAt(valor, v.dato-1, total); 
+                    }
+               
+              total--;
+                }
+            }
+            
+        }
+    }
+    
+    
+    // segundo 1/4 de la matriz (arriba derecha)
+    private void deathStar2() {                                          
+        TableColorCellRenderer render = new TableColorCellRenderer();
+        this.matriz1.setDefaultRenderer(Object.class,render);
+        //volver a colocar todos los strings que hay en el display para que renderer los agarre
+        Grafo enemigo = (Grafo) Main.grafos.get(1);
+        for(Vertice v : enemigo.vertices)
+        {
+            if(v.dato>15){
+                //int total = enemigo.vertices.size();
+                int total = 15;
+                
+                while(total<=15&total>0)
+                {
+              
+                  if(matriz1.getModel().getValueAt(v.dato-1, total)!=null){
+                  String valor = String.valueOf(matriz1.getModel().getValueAt(v.dato-1, total));
+                  matriz1.getModel().setValueAt(valor, v.dato-1, total); 
+                    }
+               
+              total--;
+                }
+            }
+            
+        }
+    }
+    
+    
+    // segundo 1/4 de la matriz (arriba izq)
+    private void deathStar3() {                                          
+        TableColorCellRenderer render = new TableColorCellRenderer();
+        this.matriz1.setDefaultRenderer(Object.class,render);
+        //volver a colocar todos los strings que hay en el display para que renderer los agarre
+        Grafo enemigo = (Grafo) Main.grafos.get(1);
+        for(Vertice v : enemigo.vertices)
+        {
+            if(v.dato<=15){
+                //int total = enemigo.vertices.size();
+                int total = 15;
+                while(total<=15&total>0)
+                {
+              
+                  if(matriz1.getModel().getValueAt(v.dato-1, total)!=null){
+                  String valor = String.valueOf(matriz1.getModel().getValueAt(v.dato-1, total));
+                  matriz1.getModel().setValueAt(valor, v.dato-1, total); 
+                    }
+               
+              total--;
+                }
+            }
+            
+        }
+    }
+    
+    // cuarto 1/4 de la matriz (arriba derecha)
+    private void deathStar4() {                                          
+        TableColorCellRenderer render = new TableColorCellRenderer();
+        this.matriz1.setDefaultRenderer(Object.class,render);
+        //volver a colocar todos los strings que hay en el display para que renderer los agarre
+        Grafo enemigo = (Grafo) Main.grafos.get(1);
+        for(Vertice v : enemigo.vertices)
+        {
+            if(v.dato<=15){
+                int total = enemigo.vertices.size();
+                while(total>=15)
+                {
+              
+                  if(matriz1.getModel().getValueAt(v.dato-1, total)!=null){
+                  String valor = String.valueOf(matriz1.getModel().getValueAt(v.dato-1, total));
+                  matriz1.getModel().setValueAt(valor, v.dato-1, total); 
+                    }
+               
+              total--;
+                }
+            }
+            
+        }
+    } 
     
     
     public static void main(String args[]) {
@@ -656,6 +797,7 @@ public class principal_gui extends javax.swing.JFrame {
     private javax.swing.JButton botonAtacar;
     private javax.swing.JButton botonOKtribu;
     private javax.swing.JTextField coordenadasAtaque;
+    private javax.swing.JButton deathStar;
     private javax.swing.JButton ingresoAleatorio;
     private javax.swing.JButton ingresoManual;
     private javax.swing.JLabel jLabel1;
