@@ -42,11 +42,10 @@ public class Main {
         //-----------Creación de las tribus e enfrentamiento---------------------
         //Esta lista permite llevar dentro de un arraylist los nombres de todas las tribus
         //para asi ir descartando las que ya se usarion
-        ArrayList<String> nombresTribus = controlTribus.crearArrayListNombres();
         //Se indica la tribu del jugador.
         Tribu tribuJugador = controlTribus.crearTribu("clon");
         Tribu tribuEnemigo;
-        tribuEnemigo  = controlTribus.crearTribus(tribuJugador, nombresTribus);
+        tribuEnemigo  = controlTribus.crearTribus(tribuJugador);
         //Al comienzo se generan dos tribus, la del jugador y la de un enemigo.
         //Cuando se quiere hacer otro enfrentamiento, primero se debe actualizar
         //la fuerza y los poderes de la tribu del jugador y posteriormente, 

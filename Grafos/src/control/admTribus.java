@@ -7,6 +7,7 @@ package control;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 import modelo.Tribu;
 
@@ -198,24 +199,30 @@ public class admTribus {
     }
     public void ajustarCantidad(Tribu tribu){
         if(tribu.getArray() [0] >= generadorAleatorio()){
-            int nCantidad = (int)(Math.random() * 9) + 2;
+            Random rand = new Random();
+            int low = 2;
+            int high = 11;
+            int nCantidad = rand.nextInt(high-low) + low;
             tribu.getArray() [0] = nCantidad;
-            System.out.println("Cantidad : " + tribu.getArray() [0]);
+            //System.out.println("Cantidad : " + tribu.getArray() [0]);
         }
         else{
             tribu.getArray() [0] = 1;
-            System.out.println("Cantidad : " + tribu.getArray() [0]);
+            //System.out.println("Cantidad : " + tribu.getArray() [0]);
         }
     }
     public void ajustarInfanteria(Tribu tribu){
-        if(tribu.getArray() [2] == generadorAleatorio()){
-            int numGenerado = (int)(Math.random() * 3) + 2;
+        if(tribu.getArray() [2] >= generadorAleatorio()){
+            Random rand = new Random();
+            int low = 2;
+            int high = 5;
+            int numGenerado = rand.nextInt(high-low) + low;
             tribu.getArray() [2] = numGenerado;
-            System.out.println("Infanteria : " + tribu.getArray() [2]);
+//            System.out.println("Infanteria : " + tribu.getArray() [2]);
         }
         else{
             tribu.getArray() [2] = 1;
-            System.out.println("Infanteria : " + tribu.getArray() [2]);
+//            System.out.println("Infanteria : " + tribu.getArray() [2]);
         }
     }
     //Esta función se encarga de ajustar los poderes de las tribus enemigas
@@ -242,20 +249,25 @@ public class admTribus {
         else{
             atributo = pAtributo;
         }
+        System.out.println("******Riqueza******");
         if(atributo.equalsIgnoreCase("cantidad")){
-            System.out.println("El enemigo decidió aumentar en " + tribu.getArray() [4] + 
-            "al atributo " + atributo + "en " + tribu.getArray() [0]);
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);
             tribu.getArray() [0] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("fuerza")){
-            System.out.println("El enemigo decidió aumentar en " + tribu.getArray() [4] + 
-            "al atributo " + atributo + "en " + tribu.getArray() [1]);
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);
             tribu.getArray() [1] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("infanteria")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);            
             tribu.getArray() [2] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("lado oscuro")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);
             tribu.getArray() [3] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("riqueza")){
@@ -263,54 +275,19 @@ public class admTribus {
             return false;
         }
         else if(atributo.equalsIgnoreCase("sigilo")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);
             tribu.getArray() [5] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("tecnologia")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);
             tribu.getArray() [6] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("velocidad")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);
             tribu.getArray() [7] += tribu.getArray() [4];
-        }
-        else{
-            System.out.println("El atributo ingresado no existe.");
-            return false;
-        }
-        return true;
-    }
-    public boolean ajustarSigilo(Tribu tribu1, Tribu tribu2, String pAtributo){
-        String atributo;
-        if(pAtributo.equalsIgnoreCase("")){
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Ingrese el atributo que quiere disminuir segun el sigilo: " + tribu1.getArray() [5]);
-            atributo = scanner.nextLine();
-        }
-        else{
-           atributo = pAtributo; 
-        }
-        
-        if(atributo.equalsIgnoreCase("cantidad")){
-            tribu2.getArray() [0] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("fuerza")){
-            tribu2.getArray() [1] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("infanteria")){
-            tribu2.getArray() [2] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("lado oscuro")){
-            tribu2.getArray() [3] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("riqueza")){
-            tribu2.getArray() [4] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("sigilo")){
-            tribu2.getArray() [5] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("tecnologia")){
-            tribu2.getArray() [6] -= tribu1.getArray() [5];
-        }
-        else if(atributo.equalsIgnoreCase("velocidad")){
-            tribu2.getArray() [7] -= tribu1.getArray() [5];
         }
         else{
             System.out.println("El atributo ingresado no existe.");
@@ -328,22 +305,35 @@ public class admTribus {
         else{
             atributo = pAtributo;
         }
+        System.out.println("******Tecnologia******");
         if(atributo.equalsIgnoreCase("cantidad")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + "en " + tribu.getArray() [0]);
             tribu.getArray() [0] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("fuerza")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + " en " + tribu.getArray() [1]);
             tribu.getArray() [1] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("infanteria")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + " en " + tribu.getArray() [2]);
             tribu.getArray() [2] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("lado oscuro")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + " en " + tribu.getArray() [3]);
             tribu.getArray() [3] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("riqueza")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + " en " + tribu.getArray() [4]);
             tribu.getArray() [4] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("sigilo")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + " en " + tribu.getArray() [5]);
             tribu.getArray() [5] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("tecnologia")){
@@ -351,6 +341,8 @@ public class admTribus {
             return false;
         }
         else if(atributo.equalsIgnoreCase("velocidad")){
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + " en " + tribu.getArray() [7]);
             tribu.getArray() [7] += tribu.getArray() [6];
         }
         else{
@@ -359,7 +351,118 @@ public class admTribus {
         }
         return true;
     }
+    public boolean isLimiteResta(Tribu tribu1, Tribu tribu2, String atributo){
+        if(atributo.equalsIgnoreCase("cantidad")){
+            if((tribu2.getArray() [0] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }       
+        }
+        else if(atributo.equalsIgnoreCase("fuerza")){
+            if((tribu2.getArray() [1] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }    
+        }
+        else if(atributo.equalsIgnoreCase("infanteria")){
+            if((tribu2.getArray() [2] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }    
+        }
+        else if(atributo.equalsIgnoreCase("lado oscuro")){
+            if((tribu2.getArray() [3] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }    
+        }
+        else if(atributo.equalsIgnoreCase("riqueza")){
+            if((tribu2.getArray() [4] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }    
+        }
+        else if(atributo.equalsIgnoreCase("sigilo")){
+            if((tribu2.getArray() [5] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }    
+        }
+        else if(atributo.equalsIgnoreCase("tecnologia")){
+            if((tribu2.getArray() [6] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }    
+        }
+        else if(atributo.equalsIgnoreCase("velocidad")){
+            if((tribu2.getArray() [6] - tribu1.getArray() [5]) >= 5){
+                return true;
+            }    
+        }
+        return false;
+    }
+    public boolean ajustarSigilo(Tribu tribu1, Tribu tribu2, String pAtributo){
+        String atributo;
+        if(pAtributo.equalsIgnoreCase("")){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Ingrese el atributo que quiere disminuir segun el sigilo: " 
+                    + tribu1.getArray() [5]);
+            atributo = scanner.nextLine();
+            boolean isInLimit = isLimiteResta(tribu1, tribu2, atributo);
+            while(isInLimit == false){
+                System.out.println("El atributo ingresado no es permitido reducirlo, debido a que su "
+                        + "resta es menor que 5.");
+                System.out.println("Ingrese el atributo que quiere disminuir segun el sigilo: " + tribu1.getArray() [5]);
+                atributo = scanner.nextLine();
+                isInLimit = isLimiteResta(tribu1, tribu2, atributo);
+            }
+        }
+        else{
+           atributo = pAtributo; 
+        }
+        System.out.println("******Sigilo******");
+        if(atributo.equalsIgnoreCase("cantidad")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [0]);
+            tribu2.getArray() [0] -= tribu1.getArray() [5];
+        }
+        else if(atributo.equalsIgnoreCase("fuerza")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [1]);
+            tribu2.getArray() [1] -= tribu1.getArray() [5];
+        }
+        else if(atributo.equalsIgnoreCase("infanteria")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [2]);
+            tribu2.getArray() [2] -= tribu1.getArray() [5];
+        }
+        else if(atributo.equalsIgnoreCase("lado oscuro")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [3]);
+            tribu2.getArray() [3] -= tribu1.getArray() [5];
+        }
+        else if(atributo.equalsIgnoreCase("riqueza")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [4]);
+            tribu2.getArray() [4] -= tribu1.getArray() [5];
+        }
+        else if(atributo.equalsIgnoreCase("sigilo")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [5]);
+            tribu2.getArray() [5] -= tribu1.getArray() [5];
+        }
+        else if(atributo.equalsIgnoreCase("tecnologia")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [6]);
+            tribu2.getArray() [6] -= tribu1.getArray() [5];
+        }
+        else if(atributo.equalsIgnoreCase("velocidad")){
+            System.out.println("Se decidió disminuir " + tribu1.getArray() [5] + 
+            " al atributo " + atributo + " que es igual a " + tribu2.getArray() [7]);
+            tribu2.getArray() [7] -= tribu1.getArray() [5];
+        }
+        else{
+            System.out.println("El atributo ingresado no existe.");
+            return false;
+        }
+        return true;
+    }
+
     public void ajustarPoderes(Tribu tribu1, Tribu tribu2){
+        System.out.println("\n--------------Tribu " +tribu1.getNombre() +" del jugador--------------");
         ajustarCantidad(tribu1);
         //Fuerza no ocupa modificacion
         ajustarInfanteria(tribu1);
@@ -376,10 +479,12 @@ public class admTribus {
         while(valorTecnologia == false){
             valorTecnologia = ajustarTecnologia(tribu1, "");
         }
+        System.out.println("\n");
         //La velocidad no ocupa modificacion.
     }
-    
+
     public void ajustarPoderes2(Tribu tribuEnemiga, Tribu tribuJugador){
+        System.out.println("\n--------------Tribu " +tribuEnemiga.getNombre() +" enemiga--------------");
         ArrayList<String> nombresPoderes = crearArrayListPoderes();
         ajustarCantidad(tribuEnemiga);
         //Fuerza no ocupa modificacion
@@ -392,35 +497,54 @@ public class admTribus {
             valorRiqueza = ajustarRiqueza(tribuEnemiga, atributo);
         }
         atributo = nombresPoderes.get((int)(Math.random() * 8));
-        boolean valorSigilo = ajustarSigilo(tribuEnemiga, tribuJugador, atributo);
-        while(valorSigilo == false){
+        boolean isInLimit = isLimiteResta(tribuEnemiga, tribuJugador, atributo);
+        int i = 8;
+        while(isInLimit == false){
             atributo = nombresPoderes.get((int)(Math.random() * 8));
-            valorSigilo = ajustarSigilo(tribuEnemiga, tribuJugador, atributo);
+            isInLimit = isLimiteResta(tribuEnemiga, tribuJugador, atributo);
+            if(i != 0){
+                break;
+            }
+            i--;
+        }
+        if(i == 0){
+            System.out.println("No se pudo hacer la disminución con el sigiloporque no "
+                    + "existe algun atributo que al restarlo el resultado "
+                    + "sea mayor que 5.");
+        }
+        else{
+            ajustarSigilo(tribuEnemiga, tribuJugador, atributo);
         }
         atributo = nombresPoderes.get((int)(Math.random() * 8));
         boolean valorTecnologia = ajustarTecnologia(tribuEnemiga, atributo);
+        
         while(valorTecnologia == false){
             atributo = nombresPoderes.get((int)(Math.random() * 8));
             valorTecnologia = ajustarTecnologia(tribuEnemiga, atributo);
         }
+        System.out.println("\n");
     }
     public double determinarGolpe(Tribu tribu){
         double porcentajeLadoOscuro = 0;
         double porcentajeVelocidad;
         double golpe;
         //Solo el numPorcentaje se usa en nightsisters.
-        if(tribu.getArray() [3] != 0){
+        if(tribu.getArray() [3] > 0){
             porcentajeLadoOscuro = 1 + (tribu.getArray() [3] / 100);
         }
-        System.out.println("Porcentaje del lado oscuro: " + porcentajeLadoOscuro);
         porcentajeVelocidad = 1 + (tribu.getArray() [7] * 1.0 / 100 * 1.0);
-        System.out.println("Porcentaje de valocidad: " + porcentajeVelocidad);
-        golpe = ((tribu.getArray() [0] * tribu.getArray() [1]) * 
+        if(porcentajeLadoOscuro == 0){
+            golpe = ((tribu.getArray() [0] * tribu.getArray() [1]) * 
+                porcentajeVelocidad) * tribu.getArray() [2];
+        }
+        else{
+            golpe = ((tribu.getArray() [0] * tribu.getArray() [1]) * 
                 porcentajeVelocidad * porcentajeLadoOscuro) * tribu.getArray() [2];
+        }
         return golpe;
     }
     public void imprimirAtributos(Tribu tribu){
-        System.out.println(tribu.getNombre());
+        System.out.println("\n--------------Tribu " + tribu.getNombre() + " --------------");
         System.out.println("Cantidad: " +tribu.getArray() [0]);
         System.out.println("Fuerza: " +tribu.getArray() [1]);
         System.out.println("Infanteria: " +tribu.getArray() [2]);
@@ -434,30 +558,59 @@ public class admTribus {
     }
     //Esta funcion se usa para obtener los nombres de las tribus sin
     //repetir.
-    public ArrayList<String> crearArrayListNombres(){
-        ArrayList<String> nombresTribus = new ArrayList <String>();
-        nombresTribus.add("clon");
-        nombresTribus.add("ewok");
-        nombresTribus.add("gungan");
-        nombresTribus.add("hutt");
-        nombresTribus.add("jawa");
-        nombresTribus.add("mandalorian");
-        nombresTribus.add("nightsister");
-        nombresTribus.add("sullustano");
-        nombresTribus.add("teek");
-        nombresTribus.add("weekquay");
-        nombresTribus.add("wookie");
-        nombresTribus.add("yuuzhanvong");
-        return nombresTribus;
+    public String nombreRandom(String tribuJugador){
+        int num = (int)(Math.random() * 12);
+        String nombreTribu = "";
+        switch(num){
+            case 0:
+                nombreTribu = "clon";
+                break;
+            case 1:
+                nombreTribu = "ewok";
+                break;
+            case 2:
+                nombreTribu = "gungan";
+                break;
+            case 3:
+                nombreTribu = "hutt";
+                break;
+            case 4:
+                nombreTribu = "jawa";
+                break;
+            case 5:
+                nombreTribu = "mandalorian";
+                break;
+            case 6:
+                nombreTribu = "nightsister";
+                break;
+            case 7:
+                nombreTribu = "sullustano";
+                break;
+            case 8:
+                nombreTribu = "teek";
+                break;
+            case 9:
+                nombreTribu = "weekquay";
+                break;
+            case 10:
+                nombreTribu = "wookie";
+                break;
+            case 11:
+                nombreTribu = "yuuzhanvong";
+                break;
+        }
+        if(nombreTribu.equalsIgnoreCase(tribuJugador)){
+            return nombreRandom(tribuJugador);
+        }
+        return nombreTribu;
     }    
     //Esta funcion se encarga de iniciar los parametros de todas las tribus
     //al comienzo de la partida. Para ir incrementando los poderes 
     //nada mas se toma como referencia la tribu y se hacen los cambios respectivos.
-    public Tribu crearTribus(Tribu tribuJugador, ArrayList<String> nombresTribus){
+    public Tribu crearTribus(Tribu tribuJugador){
         if(tribuJugador != null){
-            nombresTribus.remove(tribuJugador.getNombre());
             System.out.println("Tribu del jugador: " + tribuJugador.getNombre());
-            String nombreTribuEnemiga = nombresTribus.remove(0);
+            String nombreTribuEnemiga = nombreRandom(tribuJugador.getNombre());
             Tribu tribuEnemiga = crearTribu(nombreTribuEnemiga);
             System.out.println("Tribu enemiga: " + nombreTribuEnemiga);
             ajustarPoderes(tribuJugador, tribuEnemiga);
@@ -477,10 +630,10 @@ public class admTribus {
         System.out.println("El nombre de la tribu elegida no existe.");
         return null;
     }
-    public Tribu crearTribus2(Tribu tribuJugador, Tribu tribuDerrotada, ArrayList<String> nombresTribus){
+    public Tribu crearTribus2(Tribu tribuJugador, Tribu tribuDerrotada){
         if(tribuJugador != null){
             System.out.println("Tribu del jugador: " + tribuJugador.getNombre());
-            String nombreTribuEnemiga = nombresTribus.remove(0);
+            String nombreTribuEnemiga = nombreRandom(tribuJugador.getNombre());
             Tribu tribuEnemiga = crearTribu(nombreTribuEnemiga);
             System.out.println("Tribu enemiga: " + nombreTribuEnemiga);
             //El actualizar tribu se usa para aumentar los atributos de la tribu del jugador
