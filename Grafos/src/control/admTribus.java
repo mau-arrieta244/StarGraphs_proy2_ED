@@ -508,7 +508,7 @@ public class admTribus {
             i--;
         }
         if(i == 0){
-            System.out.println("No se pudo hacer la disminución con el sigiloporque no "
+            System.out.println("No se pudo hacer la disminución con el sigilo porque no "
                     + "existe algun atributo que al restarlo el resultado "
                     + "sea mayor que 5.");
         }
@@ -603,16 +603,52 @@ public class admTribus {
             return nombreRandom(tribuJugador);
         }
         return nombreTribu;
-    }    
+    }
+    
+    //Esta funcion se encarga de devolver el nombre del atributo a 
+    //partir de su indice.
+    public String determinarNombrePosicion(int num){
+        String atributo = "";
+        switch(num){
+            case 0:
+                atributo = "cantidad";
+                break;
+            case 1:
+                atributo = "fuerza";
+                break;
+            case 2:
+                atributo = "infanteria";
+                break;
+            case 3:
+                atributo = "lado oscuro";
+                break;
+            case 4:
+                atributo = "riqueza";
+                break;
+            case 5:
+                atributo = "sigilo";
+                break;
+            case 6:
+                atributo = "tecnologia";
+                break;
+            case 7:
+                atributo = "velocidad";
+                break;
+        }
+        return atributo;
+    }      
     //Esta funcion se encarga de iniciar los parametros de todas las tribus
     //al comienzo de la partida. Para ir incrementando los poderes 
     //nada mas se toma como referencia la tribu y se hacen los cambios respectivos.
     public Tribu crearTribus(Tribu tribuJugador){
         if(tribuJugador != null){
+            System.out.println("-------------Nueva partida---------------");
             System.out.println("Tribu del jugador: " + tribuJugador.getNombre());
             String nombreTribuEnemiga = nombreRandom(tribuJugador.getNombre());
             Tribu tribuEnemiga = crearTribu(nombreTribuEnemiga);
             System.out.println("Tribu enemiga: " + nombreTribuEnemiga);
+            System.out.println("-----------------------------------------");
+            System.out.println("\n");
             ajustarPoderes(tribuJugador, tribuEnemiga);
             ajustarPoderes2(tribuEnemiga, tribuJugador);
             tribus.put(tribuJugador.getNombre(), determinarGolpe(tribuJugador));
@@ -636,10 +672,7 @@ public class admTribus {
             String nombreTribuEnemiga = nombreRandom(tribuJugador.getNombre());
             Tribu tribuEnemiga = crearTribu(nombreTribuEnemiga);
             System.out.println("Tribu enemiga: " + nombreTribuEnemiga);
-            //El actualizar tribu se usa para aumentar los atributos de la tribu del jugador
-            //al momento de la evolucion.
-            //actualizarTribu(tribuJugador, tribuDerrotada);
-            imprimirAtributos(tribuJugador);
+            provocarEvolucion(tribuJugador, tribuDerrotada);
             System.out.println("\n");
             ajustarPoderes2(tribuEnemiga, tribuJugador);
             tribus.put(tribuEnemiga.getNombre(), determinarGolpe(tribuEnemiga));
@@ -654,31 +687,54 @@ public class admTribus {
         System.out.println("El nombre de la tribu elegida no existe.");
         return null;
     }
-//    public int extraerPoderContrario(){
-//        
-//    }
-    //Esta funcion se encarga de actualizar una tribu cuando esta llega a 
-    //evolucionar, a partir de esto los datos dentro del hash map que le pertenecen
-    //se actualizan.
-//    public void actualizarTribu(Tribu tribuJugador, Tribu tribuDerrotada){
-//        if(tribuJugador != null){
-//            System.out.println(tribus);
-//                Dentro de esta parte comentada se puede evolucionar la especie
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.println("Ingrese el atributo del enemigo que desea obtener: " + tribu.getArray() [4]);
-//            atributo = scanner.nextLine();
-//            extraerPoderContrario();
-//            
-//            
-//            
-//            tribus.replace(tribuJugador.getNombre(), determinarGolpe(tribuJugador));
-//            System.out.println(tribus);
-//            System.out.println("Hash map actualizado con los nuevos poderes de la tribu del jugador.");
-//        }
-//        else{
-//            System.out.println("La tribu elegida no existe.");
-//        }
-//    }
+    //--------------------------------Evolucion-------------------------------
+    //Esta funcion es la encarga de provocar la evolucion despues de que 
+    //el jugador haya ganado su primera batalla.
+    public void provocarEvolucion(Tribu tribuJugador, Tribu tribuDerrotada){
+        System.out.println("\n");
+        System.out.println("-------------------Fase de evolución ----------------------");
+        int indiceAtributo;
+        int indiceAtributo2;
+        double golpeViejo = determinarGolpe(tribuJugador);
+        for(int i = 1; i <= 10 ; i++){
+            System.out.println("Iteración número: " + i);
+            indiceAtributo = (int)(Math.random() * 8);
+            indiceAtributo2 = (int)(Math.random() * 8);
+            String nombreAtributo1 = determinarNombrePosicion(indiceAtributo);
+            String nombreAtributo2 = determinarNombrePosicion(indiceAtributo2);
+            if((tribuJugador.getArray()[indiceAtributo] < tribuDerrotada.getArray()[indiceAtributo] 
+                    && (tribuJugador.getArray()[indiceAtributo2] < tribuDerrotada.getArray()[indiceAtributo2]))){
+                System.out.println("Se cambió el atributo " + nombreAtributo1 + " de la tribu del jugador porque"
+                        + " el valor era " + tribuJugador.getArray()[indiceAtributo] + " y el de la tribu enemeiga era de "
+                + tribuDerrotada.getArray()[indiceAtributo] + " esto permite hacer más fuerte la tribu del jugador.");
+                
+                tribuJugador.getArray()[indiceAtributo] =  tribuDerrotada.getArray()[indiceAtributo];
+                
+                System.out.println("Se cambió el atributo " + nombreAtributo2 + " de la tribu del jugador porque"
+                        + " el valor era " + tribuJugador.getArray()[indiceAtributo2] + " y el de la tribu enemeiga era de "
+                + tribuDerrotada.getArray()[indiceAtributo2] + " esto permite hacer más fuerte la tribu del jugador.");
+                
+                tribuJugador.getArray()[indiceAtributo2] = tribuDerrotada.getArray()[indiceAtributo2];
+            }
+        }
+        double golpeNuevo = determinarGolpe(tribuJugador);
+        if(golpeNuevo > golpeViejo){
+            tribus.replace(tribuJugador.getNombre(), determinarGolpe(tribuJugador));
+            System.out.println("\nTribu evolucionada");
+            imprimirAtributos(tribuJugador);
+            System.out.println("\n");
+            System.out.println(tribus);
+        }
+        else{
+            System.out.println("\nTribu sin evolucionar");
+            System.out.println("La tribu no evolucionó porque no se encontraron atributos"
+                    + " que permitiesen crecer su golpe");
+            imprimirAtributos(tribuJugador);
+            System.out.println("\n");
+            System.out.println(tribus);
+        }
+    }
+    //------------------------------------------------------------------------
     @Override
     public String toString() {
         return "admTribus{" + "tribus=" + tribus + '}';

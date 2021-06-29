@@ -14,12 +14,6 @@ import java.util.Random;
  */
 public class Example {
     public static void main(String args[]){
-
-        int i = 8;
-        while( i != 0){
-
-            i--;
-        }
-        System.out.println(i);
+        
     }
 }    

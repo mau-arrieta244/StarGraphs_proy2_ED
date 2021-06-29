@@ -39,24 +39,19 @@ public class Main {
     
     public static void main(String[] args) throws InterruptedException {
 
-        //-----------Creación de las tribus e enfrentamiento---------------------
-        //Esta lista permite llevar dentro de un arraylist los nombres de todas las tribus
-        //para asi ir descartando las que ya se usarion
-        //Se indica la tribu del jugador.
+        //-----------Creación de las tribus e enfrentamientos---------------------
         Tribu tribuJugador = controlTribus.crearTribu("clon");
         Tribu tribuEnemigo;
         tribuEnemigo  = controlTribus.crearTribus(tribuJugador);
-        //Al comienzo se generan dos tribus, la del jugador y la de un enemigo.
-        //Cuando se quiere hacer otro enfrentamiento, primero se debe actualizar
-        //la fuerza y los poderes de la tribu del jugador y posteriormente, 
-        //llamar a la funcion crearTribus2 para asi crear una nueva tribu enemiga
-        //y llevar a cabo el enfrentamiento. Es importante cambiar /
+//        Al comienzo se generan dos tribus, la del jugador y la de un enemigo.
+//        Cuando se quiere hacer otro enfrentamiento, primero se debe actualizar
+//        la fuerza y los poderes de la tribu del jugador y posteriormente, 
+//        llamar a la funcion crearTribus2 para asi crear una nueva tribu enemiga
+//        y llevar a cabo el enfrentamiento.
         
-        //Nota: falta ver como se va a evolucionar la tribu del jugador.
-        //tribuEnemigo = controlTribus.crearTribus2(tribuJugador, tribuEnemigo, nombresTribus);
+        tribuEnemigo = controlTribus.crearTribus2(tribuJugador, tribuEnemigo);
         
-        //------------------------------------------------------------------------
-        
+        //------------------------------------------------------------------------   
         principal_gui ventana =  new principal_gui();
         ventana.setVisible(true);
         
