@@ -820,7 +820,15 @@ public class principal_gui extends javax.swing.JFrame {
 //        la fuerza y los poderes de la tribu del jugador y posteriormente, 
 //        llamar a la funcion crearTribus2 para asi crear una nueva tribu enemiga
 //        y llevar a cabo el enfrentamiento.
+<<<<<<< HEAD
 
+=======
+    Tribu tribuJugador;
+    Tribu tribuEnemigo;
+    int tribusCreadas = 0;
+    
+    
+>>>>>>> main
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
         botonIniciar.setEnabled(false);
         botonSiguiente.setEnabled(false);
