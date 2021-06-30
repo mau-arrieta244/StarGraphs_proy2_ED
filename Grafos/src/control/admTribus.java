@@ -204,11 +204,10 @@ public class admTribus {
             int high = 11;
             int nCantidad = rand.nextInt(high-low) + low;
             tribu.getArray() [0] = nCantidad;
-            //System.out.println("Cantidad : " + tribu.getArray() [0]);
+            System.out.println("Cantidad : " + tribu.getArray() [0]);
         }
         else{
             tribu.getArray() [0] = 1;
-            //System.out.println("Cantidad : " + tribu.getArray() [0]);
         }
     }
     public void ajustarInfanteria(Tribu tribu){
@@ -271,8 +270,9 @@ public class admTribus {
             tribu.getArray() [3] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("riqueza")){
-            System.out.println("No puede seleccionar riqueza.");
-            return false;
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
+            " al atributo " + atributo);
+            tribu.getArray() [4] += tribu.getArray() [4];
         }
         else if(atributo.equalsIgnoreCase("sigilo")){
             System.out.println("Se decidió aumentar en " + tribu.getArray() [4] + 
@@ -337,8 +337,9 @@ public class admTribus {
             tribu.getArray() [5] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("tecnologia")){
-            System.out.println("No puede seleccionar tecnologia.");
-            return false;
+            System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
+            " al atributo " + atributo + " en " + tribu.getArray() [6]);
+            tribu.getArray() [6] += tribu.getArray() [6];
         }
         else if(atributo.equalsIgnoreCase("velocidad")){
             System.out.println("Se decidió aumentar en " + tribu.getArray() [6] + 
@@ -554,6 +555,9 @@ public class admTribus {
         System.out.println("Tecnologia: " +tribu.getArray() [6]);
         System.out.println("Velocidad: " + tribu.getArray() [7]);
         System.out.println("Fuerza: " + determinarGolpe(tribu));
+        System.out.println("Extras");
+        double porcentajeVelocidad = 1 + (tribu.getArray() [7] * 1.0 / 100 * 1.0);
+        System.out.println("Porcentaje de velocidad: " + porcentajeVelocidad);
         
     }
     //Esta funcion se usa para obtener los nombres de las tribus sin
