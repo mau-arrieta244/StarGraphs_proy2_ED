@@ -11,7 +11,9 @@ import static grafos.Main.controlTribus;
 import modelo.MaxHeap;
 
 public class principal_gui extends javax.swing.JFrame {
-
+    public static Tribu tribuJugador;
+    public static Tribu tribuEnemigo;
+    public static int tribusCreadas = 0;
      /*
      * Creates new form principal_gui
      */
@@ -818,9 +820,7 @@ public class principal_gui extends javax.swing.JFrame {
 //        la fuerza y los poderes de la tribu del jugador y posteriormente, 
 //        llamar a la funcion crearTribus2 para asi crear una nueva tribu enemiga
 //        y llevar a cabo el enfrentamiento.
-    Tribu tribuJugador;
-    Tribu tribuEnemigo;
-    int tribusCreadas = 0;
+
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
         botonIniciar.setEnabled(false);
         botonSiguiente.setEnabled(false);

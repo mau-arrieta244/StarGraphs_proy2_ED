@@ -5,6 +5,7 @@
 
 package grafos;
 import control.admTribus;
+import static grafos.principal_gui.tribuJugador;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -104,7 +105,8 @@ public class Main {
             a.vidaGrafo = porcentaje1;
             //vidaEnemigo = porcentaje1; // reseteamos
             
-            g.poderAtaque = poderJugador;
+            //g.poderAtaque = poderJugador;
+            g.poderAtaque = admTribus.determinarGolpe(tribuJugador);
             
             //colocar golpe jugador en GUI
             ventana.golpeJugador.setText(String.valueOf(g.poderAtaque));
@@ -133,7 +135,7 @@ public class Main {
             //sacar ambos
             grafos.remove(g);
             grafos.remove(a);
-            
+            Thread.sleep(15000);
         }
         
         //aca ya vencimos a todas las tribus

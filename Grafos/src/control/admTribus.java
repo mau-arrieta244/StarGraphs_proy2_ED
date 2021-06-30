@@ -525,7 +525,7 @@ public class admTribus {
         }
         System.out.println("\n");
     }
-    public double determinarGolpe(Tribu tribu){
+    public static double determinarGolpe(Tribu tribu){
         double porcentajeLadoOscuro = 0;
         double porcentajeVelocidad;
         double golpe;
