@@ -133,7 +133,7 @@ public class Main {
             //sacar ambos
             grafos.remove(g);
             grafos.remove(a);
-            
+            Thread.sleep(15000);
         }
         
         //aca ya vencimos a todas las tribus

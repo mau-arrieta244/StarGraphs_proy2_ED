@@ -821,6 +821,8 @@ public class principal_gui extends javax.swing.JFrame {
     Tribu tribuJugador;
     Tribu tribuEnemigo;
     int tribusCreadas = 0;
+    
+    
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
         botonIniciar.setEnabled(false);
         botonSiguiente.setEnabled(false);
